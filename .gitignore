@@ -1,6 +1,6 @@
 # custom
 datasets/
-indices/
+whoosh_indices/
 
 
 
