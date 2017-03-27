@@ -2,11 +2,14 @@ import json
 import os.path
 from whoosh.index import create_in, open_dir
 from whoosh.fields import *
+from whoosh.query import *
+from whoosh.qparser import MultifieldParser
 
 
 class UdacitySearchEngine:
     DATASET_PATH = 'datasets/udacity-api.json'
     INDEX_PATH = 'whoosh_indices/udacity'
+    SEARCH_FIELDS = ["title", "subtitle", "expected_learning", "syllabus", "summary", "short_summary"]
 
     def __init__(self, create=False):
         """
@@ -25,6 +28,10 @@ class UdacitySearchEngine:
             self.index = self.create_index()
         else:
             self.index = self.load_index()
+
+        # set up searching
+        # first, query parser
+        self.parser = MultifieldParser(self.SEARCH_FIELDS, self.index.schema)
 
 
     def create_index(self):
@@ -84,3 +91,21 @@ class UdacitySearchEngine:
 
         index = open_dir(self.INDEX_PATH)
         return index
+
+
+    def search(self, query_string):
+        """
+        Runs a plain-English search and returns results.
+        :param query_string {String}: a query like you'd type into Google.
+        :return: a list of dicts, each of which encodes a search result.
+        """
+        outer_results = []
+
+        with self.index.searcher() as searcher:
+            query_obj = self.parser.parse(query_string)
+            # this variable is closed when the searcher is closed, so save this data
+            # in a variable outside the with-block
+            results = searcher.search(query_obj)
+            outer_results = results
+
+        return outer_results
