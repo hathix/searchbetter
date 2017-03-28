@@ -4,6 +4,7 @@ from whoosh.index import create_in, open_dir
 from whoosh.fields import *
 from whoosh.query import *
 from whoosh.qparser import MultifieldParser
+import copy
 
 
 class UdacitySearchEngine:
@@ -106,6 +107,9 @@ class UdacitySearchEngine:
             # this variable is closed when the searcher is closed, so save this data
             # in a variable outside the with-block
             results = searcher.search(query_obj)
-            outer_results = results
+            # this is still a list of Hits; convert to just a list of dicts
+            result_dicts = [hit.fields() for hit in list(results)]
+            # make sure we store it outside the with-block b/c scope
+            outer_results = result_dicts
 
         return outer_results
