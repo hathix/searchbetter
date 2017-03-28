@@ -47,7 +47,7 @@ class SearchEngine(object):
 
 class UdacitySearchEngine(SearchEngine):
     DATASET_PATH = 'datasets/udacity-api.json'
-    INDEX_PATH = 'whoosh_indices/udacity'
+    INDEX_PATH = 'models/whoosh_indices/udacity'
     SEARCH_FIELDS = ["title", "subtitle", "expected_learning", "syllabus", "summary", "short_summary"]
 
     def __init__(self, create=False):
