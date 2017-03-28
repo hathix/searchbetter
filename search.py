@@ -87,6 +87,11 @@ class UdacitySearchEngine(SearchEngine):
 
         # set up whoosh
         # schema
+
+        # TODO: use StemmingAnalyzer here so we get the built-in benefits
+        # of stemming in our search engine
+        # http://whoosh.readthedocs.io/en/latest/stemming.html
+
         schema = Schema(
             slug=ID(stored=True),
             title=TEXT(stored=True),
