@@ -1,7 +1,7 @@
 # custom
 datasets/
 whoosh_indices/
-
+models/
 
 
 # Created by https://www.gitignore.io/api/macos,python
