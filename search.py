@@ -5,9 +5,47 @@ from whoosh.fields import *
 from whoosh.query import *
 from whoosh.qparser import MultifieldParser
 import copy
+import abc
 
 
-class UdacitySearchEngine:
+# Abstract Search Engine class
+# TODO: abstract out more functionality here
+class SearchEngine(object):
+    __metaclass__ = abc.ABCMeta
+
+    def load_index(self):
+        """
+        Used when the index is already created. This just loads it and
+        returns it for you.
+        """
+
+        index = open_dir(self.INDEX_PATH)
+        return index
+
+
+    def search(self, query_string):
+        """
+        Runs a plain-English search and returns results.
+        :param query_string {String}: a query like you'd type into Google.
+        :return: a list of dicts, each of which encodes a search result.
+        """
+        outer_results = []
+
+        with self.index.searcher() as searcher:
+            query_obj = self.parser.parse(query_string)
+            # this variable is closed when the searcher is closed, so save this data
+            # in a variable outside the with-block
+            results = searcher.search(query_obj)
+            # this is still a list of Hits; convert to just a list of dicts
+            result_dicts = [hit.fields() for hit in list(results)]
+            # make sure we store it outside the with-block b/c scope
+            outer_results = result_dicts
+
+        return outer_results
+
+
+
+class UdacitySearchEngine(SearchEngine):
     DATASET_PATH = 'datasets/udacity-api.json'
     INDEX_PATH = 'whoosh_indices/udacity'
     SEARCH_FIELDS = ["title", "subtitle", "expected_learning", "syllabus", "summary", "short_summary"]
@@ -82,34 +120,3 @@ class UdacitySearchEngine:
 
         # all done for now
         return index
-
-
-    def load_index(self):
-        """
-        Used when the index is already created. This just loads it and
-        returns it for you.
-        """
-
-        index = open_dir(self.INDEX_PATH)
-        return index
-
-
-    def search(self, query_string):
-        """
-        Runs a plain-English search and returns results.
-        :param query_string {String}: a query like you'd type into Google.
-        :return: a list of dicts, each of which encodes a search result.
-        """
-        outer_results = []
-
-        with self.index.searcher() as searcher:
-            query_obj = self.parser.parse(query_string)
-            # this variable is closed when the searcher is closed, so save this data
-            # in a variable outside the with-block
-            results = searcher.search(query_obj)
-            # this is still a list of Hits; convert to just a list of dicts
-            result_dicts = [hit.fields() for hit in list(results)]
-            # make sure we store it outside the with-block b/c scope
-            outer_results = result_dicts
-
-        return outer_results
