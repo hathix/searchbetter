@@ -168,7 +168,11 @@ class HarvardXSearchEngine(SearchEngine):
 
     def __init__(self, create=False):
         """
-        Creates a new HarvardX search engine.
+        Creates a new HarvardX search engine. Searches over the HarvardX/DART
+        database of all courses and course materials used in HarvardX. This includes
+        videos, quizzes, etc.
+
+        TODO: consider renaming to DART, probz
 
         :param create {bool}: If True, recreates an index from scratch.
             If False, loads the existing index
