@@ -1,19 +1,28 @@
-import json
-import csv
-import os.path
-from whoosh.index import create_in, open_dir
 from whoosh.fields import *
-from whoosh.query import *
+from whoosh.index import create_in, open_dir
 from whoosh.qparser import MultifieldParser
-import copy
+from whoosh.query import *
 import abc
+import copy
+import csv
+import json
+import os.path
+import sys
 
 
 # Abstract Search Engine class
 # TODO: abstract out more functionality here
 class SearchEngine(object):
     # make it an abstract class
+    #
     __metaclass__ = abc.ABCMeta
+
+    # TODO consider making more hierarchy. This is the WhooshSearchEngine,
+    # which has the cool indexing capabilities. But more generally, you
+    # could have a search engine that only has to support search().
+    # but at that point it's just a useless interface, mostly.
+    # anyway, such a search engine would let the query rewriting search engine
+    # inherit from search engine too.
 
     def __init__(self, create, search_fields, index_path):
         """
@@ -52,7 +61,7 @@ class SearchEngine(object):
         return index
 
 
-    def create_idnex(self):
+    def create_index(self):
         """
         Subclasses must implement!
         """
@@ -178,8 +187,10 @@ class HarvardXSearchEngine(SearchEngine):
         """
 
         # load data
-        # csvfile_path = 'datasets/corpus_HarvardX_LatestCourses_based_on_2016-10-18.csv'
-        csvfile_path = 'datasets/test.csv'
+        # real data
+        csvfile_path = 'datasets/corpus_HarvardX_LatestCourses_based_on_2016-10-18.csv'
+        # test data
+        # csvfile_path = 'datasets/test.csv'
 
         # only consider resources with this category (type of content)
         # unsure about courses (b/c they have no content) and html (b/c they often include messy CSS/JS in there)
@@ -206,6 +217,10 @@ class HarvardXSearchEngine(SearchEngine):
         index = create_in(self.INDEX_PATH, schema)
 
         # start adding documents (i.e. the courses) to the index
+
+        # first, some of the fields are HUGE so we need to let the csv
+        # reader handle them
+        csv.field_size_limit(sys.maxsize)
 
         with open(csvfile_path, 'r') as csvfile:
             reader = csv.DictReader(csvfile)
