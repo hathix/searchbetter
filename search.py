@@ -12,7 +12,35 @@ import abc
 # Abstract Search Engine class
 # TODO: abstract out more functionality here
 class SearchEngine(object):
+    # make it an abstract class
     __metaclass__ = abc.ABCMeta
+
+    def __init__(self, create, search_fields, index_path):
+        """
+        Creates a new search engine.
+
+        :param create {bool}: If True, recreates an index from scratch.
+            If False, loads the existing index
+        :param search_fields {str[]}: An array names of fields in the index that our
+            search engine will search against.
+        :param index_path {str}: A relative path to a folder where the whoosh
+            index should be stored.
+        """
+        # TODO have an auto-detect feature that will determine if the
+        # index exists, and depending on that creates or loads the index
+
+        self.index_path = index_path
+
+        # both these functions return an index
+        if create:
+            self.index = self.create_index()
+        else:
+            self.index = self.load_index()
+
+        # set up searching
+        # first, query parser
+        self.parser = MultifieldParser(search_fields, self.index.schema)
+
 
     def load_index(self):
         """
@@ -20,8 +48,15 @@ class SearchEngine(object):
         returns it for you.
         """
 
-        index = open_dir(self.INDEX_PATH)
+        index = open_dir(self.index_path)
         return index
+
+
+    def create_idnex(self):
+        """
+        Subclasses must implement!
+        """
+        raise NotImplementedError("Subclasses must implement!")
 
 
     def search(self, query_string):
@@ -58,20 +93,8 @@ class UdacitySearchEngine(SearchEngine):
         :param create {bool}: If True, recreates an index from scratch.
             If False, loads the existing index
         """
-        # TODO have an auto-detect feature that will determine if the
-        # index exists, and depending on that creates or loads the index
-
-        # TODO clean up the object orientation here
-
-        # both these functions return an index
-        if create:
-            self.index = self.create_index()
-        else:
-            self.index = self.load_index()
-
-        # set up searching
-        # first, query parser
-        self.parser = MultifieldParser(self.SEARCH_FIELDS, self.index.schema)
+        super(UdacitySearchEngine, self).__init__(
+            create, self.SEARCH_FIELDS, self.INDEX_PATH)
 
 
     def create_index(self):
@@ -130,7 +153,6 @@ class UdacitySearchEngine(SearchEngine):
 
 
 
-
 class HarvardXSearchEngine(SearchEngine):
     INDEX_PATH = 'models/whoosh_indices/harvardx'
     SEARCH_FIELDS = ["display_name", "contents"]
@@ -142,17 +164,8 @@ class HarvardXSearchEngine(SearchEngine):
         :param create {bool}: If True, recreates an index from scratch.
             If False, loads the existing index
         """
-        # TODO lots of redundancy, abstract out
-
-        # both these functions return an index
-        if create:
-            self.index = self.create_index()
-        else:
-            self.index = self.load_index()
-
-        # set up searching
-        # first, query parser
-        self.parser = MultifieldParser(self.SEARCH_FIELDS, self.index.schema)
+        super(HarvardXSearchEngine, self).__init__(
+            create, self.SEARCH_FIELDS, self.INDEX_PATH)
 
 
     def create_index(self):
