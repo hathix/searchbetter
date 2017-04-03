@@ -104,7 +104,7 @@ class Word2VecRewriter(Rewriter):
             pass
 
         # finally, tack on the original term to the results for completeness
-        return cleaned_results + [term]
+        return cleaned_results + [term.decode("utf8")]
 
 
 class RewritingSearchEngine(object):
