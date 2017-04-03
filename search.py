@@ -183,7 +183,7 @@ class HarvardXSearchEngine(SearchEngine):
 
     def create_index(self):
         """
-        Creates a new index to search the Udacity dataset. You only need to
+        Creates a new index to search the dataset. You only need to
         call this once; once the index is created, you can just load it again
         instead of creating it afresh all the time.
 
@@ -248,6 +248,73 @@ class HarvardXSearchEngine(SearchEngine):
                 print e
                 writer.cancel()
 
+
+        # all done for now
+        return index
+
+
+
+
+class EdXSearchEngine(SearchEngine):
+    INDEX_PATH = 'models/whoosh_indices/edx'
+    SEARCH_FIELDS = ["name"]
+
+    def __init__(self, create=False):
+        """
+        Creates a new search engine that searches over edX courses.
+
+        :param create {bool}: If True, recreates an index from scratch.
+            If False, loads the existing index
+        """
+        super(EdXSearchEngine, self).__init__(
+            create, self.SEARCH_FIELDS, self.INDEX_PATH)
+
+
+    def create_index(self):
+        """
+        Creates a new index to search the dataset. You only need to
+        call this once; once the index is created, you can just load it again
+        instead of creating it afresh all the time.
+
+        Returns the index object.
+        """
+
+        # load data
+        csvfile_path = 'datasets/Master CourseListings - edX.csv'
+
+        # set up whoosh schema
+        schema = Schema(
+            course_id=ID(stored=True),
+            name=TEXT(stored=True)
+        )
+
+        # TODO: use StemmingAnalyzer here so we get the built-in benefits
+        # of stemming in our search engine
+        # http://whoosh.readthedocs.io/en/latest/stemming.html
+
+        # make an index to store this stuff in
+        if not os.path.exists(self.INDEX_PATH):
+            os.mkdir(self.INDEX_PATH)
+        index = create_in(self.INDEX_PATH, schema)
+
+        # start adding documents (i.e. the courses) to the index
+
+        with open(csvfile_path, 'r') as csvfile:
+            reader = csv.DictReader(csvfile)
+
+            writer = index.writer()
+
+            try:
+                for row in reader:
+                    # write
+                    writer.add_document(
+                        course_id=row['course_id'].decode('utf8'),
+                        name=row['name'].decode('utf8'))
+
+                writer.commit()
+            except Exception as e:
+                print e
+                writer.cancel()
 
         # all done for now
         return index
