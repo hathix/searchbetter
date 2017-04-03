@@ -133,7 +133,7 @@ class UdacitySearchEngine(SearchEngine):
 
 class HarvardXSearchEngine(SearchEngine):
     INDEX_PATH = 'models/whoosh_indices/harvardx'
-    SEARCH_FIELDS = ["title", "subtitle", "expected_learning", "syllabus", "summary", "short_summary"]
+    SEARCH_FIELDS = ["display_name", "contents"]
 
     def __init__(self, create=False):
         """
