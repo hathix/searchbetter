@@ -1,4 +1,5 @@
 import json
+import csv
 import os.path
 from whoosh.index import create_in, open_dir
 from whoosh.fields import *
@@ -122,6 +123,99 @@ class UdacitySearchEngine(SearchEngine):
             writer.commit()
         except Exception as e:
             print e
+
+        # all done for now
+        return index
+
+
+
+
+
+class HarvardXSearchEngine(SearchEngine):
+    INDEX_PATH = 'models/whoosh_indices/harvardx'
+    SEARCH_FIELDS = ["title", "subtitle", "expected_learning", "syllabus", "summary", "short_summary"]
+
+    def __init__(self, create=False):
+        """
+        Creates a new HarvardX search engine.
+
+        :param create {bool}: If True, recreates an index from scratch.
+            If False, loads the existing index
+        """
+        # TODO lots of redundancy, abstract out
+
+        # both these functions return an index
+        if create:
+            self.index = self.create_index()
+        else:
+            self.index = self.load_index()
+
+        # set up searching
+        # first, query parser
+        self.parser = MultifieldParser(self.SEARCH_FIELDS, self.index.schema)
+
+
+    def create_index(self):
+        """
+        Creates a new index to search the Udacity dataset. You only need to
+        call this once; once the index is created, you can just load it again
+        instead of creating it afresh all the time.
+
+        Returns the index object.
+        """
+
+        # load data
+        # csvfile_path = 'datasets/corpus_HarvardX_LatestCourses_based_on_2016-10-18.csv'
+        csvfile_path = 'datasets/test.csv'
+
+        # only consider resources with this category (type of content)
+        # unsure about courses (b/c they have no content) and html (b/c they often include messy CSS/JS in there)
+        # TODO: add "html" support. requires stripping comments
+        #       http://stackoverflow.com/questions/753052/strip-html-from-strings-in-python
+        #
+        supported_categories = ('problem', 'video', 'course')
+
+        # set up whoosh schema
+        schema = Schema(
+            course_id=ID(stored=True),
+            display_name=TEXT(stored=True),
+            contents=TEXT
+        )
+
+
+        # TODO: use StemmingAnalyzer here so we get the built-in benefits
+        # of stemming in our search engine
+        # http://whoosh.readthedocs.io/en/latest/stemming.html
+
+        # make an index to store this stuff in
+        if not os.path.exists(self.INDEX_PATH):
+            os.mkdir(self.INDEX_PATH)
+        index = create_in(self.INDEX_PATH, schema)
+
+        # start adding documents (i.e. the courses) to the index
+
+        with open(csvfile_path, 'r') as csvfile:
+            reader = csv.DictReader(csvfile)
+
+            writer = index.writer()
+
+            try:
+                for row in reader:
+                    # ensure the content is actually a valid type
+                    if row['category'] not in supported_categories:
+                        pass
+
+                    # write
+                    writer.add_document(
+                        course_id=row['course_id'].decode('utf8'),
+                        display_name=row['display_name'].decode('utf8'),
+                        contents=row['contents'].decode('utf8'))
+
+                writer.commit()
+            except Exception as e:
+                print e
+                writer.cancel()
+
 
         # all done for now
         return index
