@@ -87,6 +87,8 @@ class Word2VecRewriter(Rewriter):
         `*[[Games`.
         """
         # remove [[, ]], *
+        # TODO: also remove commas and punctuation
+        # (though apostrophes and dashes can stay, i guess)
         return re.sub(r"(\[\[|\]\]|\*)", "", string)
 
 
@@ -137,6 +139,7 @@ class RewritingSearchEngine(object):
         results = [self.search_engine.search(q) for q in rewritten_queries]
 
         # results are multi-level... flatten it
+        # TODO: use set() to remove duplicates
         flattened_results = self.flatten(results)
 
         return flattened_results
