@@ -68,6 +68,17 @@ class SearchEngine(object):
         raise NotImplementedError("Subclasses must implement!")
 
 
+    def get_empty_index(self, path, schema):
+        """
+        Creates an empty index file, making the directory where it needs
+        to be stored if necessary. Returns the index.
+        """
+        if not os.path.exists(path):
+            os.mkdir(path)
+        index = create_in(path, schema)
+        return index
+
+
     def search(self, query_string):
         """
         Runs a plain-English search and returns results.
@@ -136,9 +147,7 @@ class UdacitySearchEngine(SearchEngine):
         )
 
         # make an index to store this stuff in
-        if not os.path.exists(self.INDEX_PATH):
-            os.mkdir(self.INDEX_PATH)
-        index = create_in(self.INDEX_PATH, schema)
+        index = self.get_empty_index(self.INDEX_PATH, schema)
 
         # start adding documents (i.e. the courses) to the index
         try:
@@ -216,9 +225,7 @@ class HarvardXSearchEngine(SearchEngine):
         # http://whoosh.readthedocs.io/en/latest/stemming.html
 
         # make an index to store this stuff in
-        if not os.path.exists(self.INDEX_PATH):
-            os.mkdir(self.INDEX_PATH)
-        index = create_in(self.INDEX_PATH, schema)
+        index = self.get_empty_index(self.INDEX_PATH, schema)
 
         # start adding documents (i.e. the courses) to the index
 
@@ -293,9 +300,7 @@ class EdXSearchEngine(SearchEngine):
         # http://whoosh.readthedocs.io/en/latest/stemming.html
 
         # make an index to store this stuff in
-        if not os.path.exists(self.INDEX_PATH):
-            os.mkdir(self.INDEX_PATH)
-        index = create_in(self.INDEX_PATH, schema)
+        index = self.get_empty_index(self.INDEX_PATH, schema)
 
         # start adding documents (i.e. the courses) to the index
 
