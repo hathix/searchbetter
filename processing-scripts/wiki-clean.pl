@@ -10,6 +10,7 @@
 # perl [thisfile].pl enwik9 > text
 
 # Written by Matt Mahoney, June 10, 2006.  This program is released to the public domain.
+# Slightly edited by Neel Mehta, April 13, 2017, for use in Word2Vec.
 
 $/=">";                     # input record separator
 while (<>) {

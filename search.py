@@ -39,6 +39,9 @@ class SearchEngine(object):
         """
         # TODO have an auto-detect feature that will determine if the
         # index exists, and depending on that creates or loads the index
+        # TODO have the `create` option become `force_create`; normally
+        #   it'll intelligently auto-generate, but if you force it it'll
+        #   do what you say
 
         self.index_path = index_path
 
