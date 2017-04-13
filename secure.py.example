@@ -1,0 +1,8 @@
+### Datasets
+DATASET_PATH_BASE = '<Your Path>/query-rewriter/datasets/'
+
+### Search Engines
+INDEX_PATH_BASE = '<Your Path>/query-rewriter/search_indices/whoosh_indices/'
+
+### Query Rewriters
+MODEL_PATH_BASE = '<Your Path>/query-rewriter/models/whoosh_indices/'

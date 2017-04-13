@@ -5,7 +5,7 @@ import requests
 
 import gensim.models as models
 import gensim.models.word2vec as word2vec
-
+import secure
 
 
 # Abstract Rewriter class
@@ -52,7 +52,14 @@ class WikipediaRewriter(Rewriter):
         # https://en.wikipedia.org/wiki/Category:Tracking_categories
         wikipedia_results = [self.clean_category(x.get('title')) for x in tree.findall('.//cl')]
 
+        # Words that identify a need to drop the category
+        dropwords = ['articles','wikipedia','accuracy','articles','statements','magic','pages','authors','editors','appearances','redirects','cs1']
+        dropwords.append(term)
+        wikipedia_results = [w.split('Category:')[-1].lower() for w in wikipedia_results if not any(d in w.lower() for d in dropwords)]
+
         # append the original term just for completeness
+        print wikipedia_results
+        print ' '.join(wikipedia_results + [term])
         return wikipedia_results + [term]
 
 
@@ -63,7 +70,7 @@ class Word2VecRewriter(Rewriter):
     """
 
     # where the model will be stored
-    MODEL_PATH = 'models/word2vec/word2vec'
+    MODEL_PATH = secure.MODEL_PATH_BASE+'word2vec/word2vec'
 
     def __init__(self, create=False):
         """
@@ -74,7 +81,7 @@ class Word2VecRewriter(Rewriter):
 
         if create:
             # generate a new Word2Vec model... takes a while!
-            corpus = word2vec.Text8Corpus('datasets/enwik8')
+            corpus = word2vec.Text8Corpus(secure.DATASET_PATH_BASE + 'enwik8')
             self.model = word2vec.Word2Vec(corpus, workers=8)
             self.model.save(self.MODEL_PATH)
         else:

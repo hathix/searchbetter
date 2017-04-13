@@ -8,6 +8,7 @@ import csv
 import json
 import os.path
 import sys
+import secure
 
 
 # Abstract Search Engine class
@@ -102,8 +103,8 @@ class SearchEngine(object):
 
 
 class UdacitySearchEngine(SearchEngine):
-    DATASET_PATH = 'datasets/udacity-api.json'
-    INDEX_PATH = 'models/whoosh_indices/udacity'
+    DATASET_PATH = secure.DATASET_PATH_BASE+'udacity-api.json'
+    INDEX_PATH = secure.INDEX_PATH_BASE+'udacity'
     SEARCH_FIELDS = ["title", "subtitle", "expected_learning", "syllabus", "summary", "short_summary"]
 
     def __init__(self, create=False):
@@ -172,7 +173,7 @@ class UdacitySearchEngine(SearchEngine):
 
 
 class HarvardXSearchEngine(SearchEngine):
-    INDEX_PATH = 'models/whoosh_indices/harvardx'
+    INDEX_PATH = secure.INDEX_PATH_BASE+'harvardx'
     SEARCH_FIELDS = ["display_name", "contents"]
 
     def __init__(self, create=False):
@@ -263,7 +264,7 @@ class HarvardXSearchEngine(SearchEngine):
 
 
 class EdXSearchEngine(SearchEngine):
-    INDEX_PATH = 'models/whoosh_indices/edx'
+    INDEX_PATH = secure.INDEX_PATH_BASE+'edx'
     SEARCH_FIELDS = ["name"]
 
     def __init__(self, create=False):
