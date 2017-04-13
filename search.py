@@ -328,3 +328,42 @@ class EdXSearchEngine(SearchEngine):
 
         # all done for now
         return index
+
+
+
+
+
+class RewritingSearchEngine(object):
+    """
+    A query rewriting-enabled search engine. Wraps a search engine and a rewriter
+    so you can, hopefully, get better results. Note that this doesn't inherit
+    the "SearchEngine" class because it works so differently.
+    """
+    # TODO: rethink inheritence structures
+
+    def __init__(self, rewriter, search_engine):
+        self.rewriter = rewriter
+        self.search_engine = search_engine
+
+
+    def flatten(self, l):
+        """
+        Flattens a list.
+        """
+        return [item for sublist in l for item in sublist]
+
+
+    def search(self, term):
+        """
+        Using the given search term (or query), rewrites it according to the
+        rewriter and then passes that through the search engine.
+        """
+        rewritten_queries = self.rewriter.rewrite(term)
+
+        results = [self.search_engine.search(q) for q in rewritten_queries]
+
+        # results are multi-level... flatten it
+        # TODO: use set() to remove duplicates
+        flattened_results = self.flatten(results)
+
+        return flattened_results
