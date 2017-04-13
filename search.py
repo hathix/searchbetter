@@ -9,6 +9,7 @@ import json
 import os.path
 import sys
 import secure
+# reload(secure)
 
 
 # Abstract Search Engine class
