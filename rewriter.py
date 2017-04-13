@@ -72,15 +72,18 @@ class Word2VecRewriter(Rewriter):
     # where the model will be stored
     MODEL_PATH = secure.MODEL_PATH_BASE+'word2vec/word2vec'
 
-    def __init__(self, corpus, create=False):
+    def __init__(self, corpus=None, create=False):
         """
         Initializes the rewriter, given a particular word2vec corpus.
         A good example corpus is the Text8Corpus or the Brown corpus.
+        You only need the corpus if you aren't recreating this from scratch.
 
         If create is True, this generates a new Word2Vec
         model (which takes a really long time to build.) If False, this loads
         an existing model we already saved.
         """
+
+        # TODO: add logic around defaulting to creating or not
 
         if create:
             # generate a new Word2Vec model... takes a while!
@@ -89,26 +92,14 @@ class Word2VecRewriter(Rewriter):
         else:
             self.model = word2vec.Word2Vec.load(self.MODEL_PATH)
 
-
-    def clean(self, string):
-        """
-        Cleans up a string of text you get from wikipedia, which is often formatted like
-        `*[[Games`.
-        """
-        # remove [[, ]], *
-        # TODO: also remove commas and punctuation
-        # (though apostrophes and dashes can stay, i guess)
-        return re.sub(r"(\[\[|\]\]|\*)", "", string)
-
-
     def rewrite(self, term):
         # try using the model to rewrite the term
         cleaned_results = []
         try:
-            # most_similar returns an array of tuples... extract just the name, which is index 0
-            # we also have to clean the text
-            raw_results = self.model.most_similar(positive=[term], topn=10)
-            cleaned_results = [self.clean(r[0]) for r in raw_results]
+            # most_similar returns an array of tuples
+            raw_results = self.model.similar_by_word(term, topn=10)
+            # extract just the name, which is index 0
+            cleaned_results = [r[0] for r in raw_results]
         except KeyError as k:
             # the word wasn't found in the model... must be too niche.
             # just return nothing then.
