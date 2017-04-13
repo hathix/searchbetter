@@ -65,23 +65,25 @@ class WikipediaRewriter(Rewriter):
 
 class Word2VecRewriter(Rewriter):
     """
-    A class to rewrite queries using Word2Vec trained on a corpus gathered
-    from Wikipedia.
+    A class to rewrite queries using Word2Vec trained on a user-provided
+    corpus.
     """
 
     # where the model will be stored
     MODEL_PATH = secure.MODEL_PATH_BASE+'word2vec/word2vec'
 
-    def __init__(self, create=False):
+    def __init__(self, corpus, create=False):
         """
-        Initializes the rewriter. If create is True, this generates a new Word2Vec
-        model (which takes a really long time to build.) If false, this loads
+        Initializes the rewriter, given a particular word2vec corpus.
+        A good example corpus is the Text8Corpus or the Brown corpus.
+
+        If create is True, this generates a new Word2Vec
+        model (which takes a really long time to build.) If False, this loads
         an existing model we already saved.
         """
 
         if create:
             # generate a new Word2Vec model... takes a while!
-            corpus = word2vec.Text8Corpus(secure.DATASET_PATH_BASE + 'enwik8')
             self.model = word2vec.Word2Vec(corpus, workers=8)
             self.model.save(self.MODEL_PATH)
         else:
