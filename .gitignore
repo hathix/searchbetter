@@ -1,6 +1,7 @@
 # custom
 datasets/
 models/
+search_indices/
 
 # secure files
 secure.py
