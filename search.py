@@ -202,7 +202,7 @@ class HarvardXSearchEngine(SearchEngine):
 
         # load data
         # real data
-        csvfile_path = 'datasets/corpus_HarvardX_LatestCourses_based_on_2016-10-18.csv'
+        csvfile_path = secure.DATASET_PATH_BASE+'corpus_HarvardX_LatestCourses_based_on_2016-10-18.csv'
         # test data
         # csvfile_path = 'datasets/test.csv'
 
@@ -288,7 +288,7 @@ class EdXSearchEngine(SearchEngine):
         """
 
         # load data
-        csvfile_path = 'datasets/Master CourseListings - edX.csv'
+        csvfile_path = secure.DATASET_PATH_BASE+'Master CourseListings - edX.csv'
 
         # set up whoosh schema
         schema = Schema(

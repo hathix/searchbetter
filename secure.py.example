@@ -1,8 +1,8 @@
 ### Datasets
-DATASET_PATH_BASE = '<Your Path>/query-rewriter/datasets/'
+DATASET_PATH_BASE = '/path/to/query-rewriter/search_indices/datasets/'
 
-### Search Engines
-INDEX_PATH_BASE = '<Your Path>/query-rewriter/search_indices/whoosh_indices/'
+### Indices used by the Whoosh-based search engines
+INDEX_PATH_BASE = '/path/to/query-rewriter/search_indices/'
 
-### Query Rewriters
-MODEL_PATH_BASE = '<Your Path>/query-rewriter/models/whoosh_indices/'
+### Machine learning models used by query rewriters
+MODEL_PATH_BASE = '/path/to/query-rewriter/search_indices/models/'
