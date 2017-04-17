@@ -4,6 +4,7 @@ import re
 import requests
 
 import gensim.models as models
+import gensim.models.phrases as phrases
 import gensim.models.word2vec as word2vec
 
 
@@ -47,7 +48,7 @@ class WikipediaRewriter(Rewriter):
         r = requests.get(api)
         tree = etree.fromstring(r.text)
 
-        # TODO join this an dthe below
+        # TODO join this and the below
         wikipedia_results = [self.clean_category(x.get('title')) for x in tree.findall('.//cl')]
 
         # Words that identify a need to drop the category
@@ -67,10 +68,9 @@ class Word2VecRewriter(Rewriter):
     corpus.
     """
 
-    # where the model will be stored
-    # MODEL_PATH = secure.MODEL_PATH_BASE+'word2vec/word2vec'
-
-    def __init__(self, model_path, corpus=None, create=False):
+    # TODO use kwargs or something to make creating this less insane
+    # http://stackoverflow.com/questions/1098549/proper-way-to-use-kwargs-in-python#1098556
+    def __init__(self, model_path, create=False, corpus=None, bigrams=True):
         """
         Initializes the rewriter, given a particular word2vec corpus.
         A good example corpus is the Text8Corpus or the Brown corpus.
@@ -82,6 +82,14 @@ class Word2VecRewriter(Rewriter):
 
         :param model_path {string}: where to store the model files. This file
             needn't exist, but its parent folder should.
+        :param create {bool}: True to create a new Word2Vec model, False to
+            use the one stored at `model_path`.
+        :param corpus {Iterable}: only needed if `create=True`. Defines a corpus
+            for Word2Vec to learn from.
+        :param bigrams {bool}: only needed if `create=True`. If True, takes some
+            more time to build a model that supports bigrams (e.g. `new_york`).
+            Otherwise, it'll only support one-word searches. `bigram=True` makes
+            this slower but more complete.
         """
 
         self.model_path = model_path
@@ -91,7 +99,24 @@ class Word2VecRewriter(Rewriter):
         if create:
             # generate a new Word2Vec model... takes a while!
             # TODO optimize parameters
-            self.model = word2vec.Word2Vec(corpus, workers=8)
+
+            transformed_corpus = None
+            if bigrams:
+                # TODO save the phraser somewhere... but that requires
+                # even more arguments.
+                # the Phrases class lets you generate bigrams, but the
+                # Phraser class is a more compact version of the same
+                bigram_generator = phrases.Phraser(phrases.Phrases(corpus))
+                # weird bug where the bigram generator won't work unless
+                # it's turned into a list first. if you try to do it straight,
+                # it'll give you total gibberish. FIXME
+                bigram_corpus = list(bigram_generator[corpus])
+                transformed_corpus = bigram_corpus
+            else:
+                # no bigrams, same old corpus
+                transformed_corpus = corpus
+
+            self.model = word2vec.Word2Vec(transformed_corpus, workers=8)
             self.model.save(self.model_path)
         else:
             self.model = word2vec.Word2Vec.load(self.model_path)
@@ -106,8 +131,8 @@ class Word2VecRewriter(Rewriter):
             cleaned_results = [r[0] for r in raw_results]
         except KeyError as k:
             # the word wasn't found in the model... must be too niche.
-            # just return nothing then.
-            pass
+            # no results then
+            cleaned_results = []
 
         # finally, tack on the original term to the results for completeness
         return cleaned_results + [term.decode("utf8")]
