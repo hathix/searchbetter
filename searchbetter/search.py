@@ -13,376 +13,361 @@ import sys
 
 # Abstract Search Engine class
 # TODO: abstract out more functionality here
+
+
 class SearchEngine(object):
-    # make it an abstract class
-    __metaclass__ = abc.ABCMeta
+  # make it an abstract class
+  __metaclass__ = abc.ABCMeta
 
-    # TODO consider making more hierarchy. This is the WhooshSearchEngine,
-    # which has the cool indexing capabilities. But more generally, you
-    # could have a search engine that only has to support search().
-    # but at that point it's just a useless interface, mostly.
-    # anyway, such a search engine would let the query rewriting search engine
-    # inherit from search engine too.
+  # TODO consider making more hierarchy. This is the WhooshSearchEngine,
+  # which has the cool indexing capabilities. But more generally, you
+  # could have a search engine that only has to support search().
+  # but at that point it's just a useless interface, mostly.
+  # anyway, such a search engine would let the query rewriting search engine
+  # inherit from search engine too.
 
-    def __init__(self, create, search_fields, index_path):
-        """
-        Creates a new search engine.
+  def __init__(self, create, search_fields, index_path):
+    """
+    Creates a new search engine.
 
-        :param create {bool}: If True, recreates an index from scratch.
-            If False, loads the existing index
-        :param search_fields {str[]}: An array names of fields in the index that our
-            search engine will search against.
-        :param index_path {str}: A relative path to a folder where the whoosh
-            index should be stored.
-        """
-        # TODO have an auto-detect feature that will determine if the
-        # index exists, and depending on that creates or loads the index
-        # TODO have the `create` option become `force_create`; normally
-        #   it'll intelligently auto-generate, but if you force it it'll
-        #   do what you say
+    :param create {bool}: If True, recreates an index from scratch.
+        If False, loads the existing index
+    :param search_fields {str[]}: An array names of fields in the index that our
+        search engine will search against.
+    :param index_path {str}: A relative path to a folder where the whoosh
+        index should be stored.
+    """
+    # TODO have an auto-detect feature that will determine if the
+    # index exists, and depending on that creates or loads the index
+    # TODO have the `create` option become `force_create`; normally
+    #   it'll intelligently auto-generate, but if you force it it'll
+    #   do what you say
 
-        self.index_path = index_path
+    self.index_path = index_path
 
-        # both these functions return an index
-        if create:
-            self.index = self.create_index()
-        else:
-            self.index = self.load_index()
+    # both these functions return an index
+    if create:
+      self.index = self.create_index()
+    else:
+      self.index = self.load_index()
 
-        # set up searching
-        # first, query parser
-        self.parser = MultifieldParser(search_fields, self.index.schema)
+    # set up searching
+    # first, query parser
+    self.parser = MultifieldParser(search_fields, self.index.schema)
 
+  def load_index(self):
+    """
+    Used when the index is already created. This just loads it and
+    returns it for you.
+    """
+    index = open_dir(self.index_path)
+    return index
 
-    def load_index(self):
-        """
-        Used when the index is already created. This just loads it and
-        returns it for you.
-        """
-        index = open_dir(self.index_path)
-        return index
+  def create_index(self):
+    """
+    Creates and returns a brand-new index. This will call
+    get_empty_index() behind the scenes.
+    Subclasses must implement!
+    """
+    raise NotImplementedError("Subclasses must implement!")
 
+  def get_empty_index(self, path, schema):
+    """
+    Makes an empty index file, making the directory where it needs
+    to be stored if necessary. Returns the index.
 
-    def create_index(self):
-        """
-        Creates and returns a brand-new index. This will call
-        get_empty_index() behind the scenes.
-        Subclasses must implement!
-        """
-        raise NotImplementedError("Subclasses must implement!")
+    This is called within create_index().
+    TODO this breakdown is still confusing
+    """
+    if not os.path.exists(path):
+      os.mkdir(path)
+    index = create_in(path, schema)
+    return index
 
+  def search(self, query_string):
+    """
+    Runs a plain-English search and returns results.
+    :param query_string {String}: a query like you'd type into Google.
+    :return: a list of dicts, each of which encodes a search result.
+    """
+    outer_results = []
 
-    def get_empty_index(self, path, schema):
-        """
-        Makes an empty index file, making the directory where it needs
-        to be stored if necessary. Returns the index.
+    with self.index.searcher() as searcher:
+      query_obj = self.parser.parse(query_string)
+      # this variable is closed when the searcher is closed, so save this data
+      # in a variable outside the with-block
+      results = searcher.search(query_obj)
+      # this is still a list of Hits; convert to just a list of dicts
+      result_dicts = [hit.fields() for hit in list(results)]
+      # make sure we store it outside the with-block b/c scope
+      outer_results = result_dicts
 
-        This is called within create_index().
-        TODO this breakdown is still confusing
-        """
-        if not os.path.exists(path):
-            os.mkdir(path)
-        index = create_in(path, schema)
-        return index
-
-
-    def search(self, query_string):
-        """
-        Runs a plain-English search and returns results.
-        :param query_string {String}: a query like you'd type into Google.
-        :return: a list of dicts, each of which encodes a search result.
-        """
-        outer_results = []
-
-        with self.index.searcher() as searcher:
-            query_obj = self.parser.parse(query_string)
-            # this variable is closed when the searcher is closed, so save this data
-            # in a variable outside the with-block
-            results = searcher.search(query_obj)
-            # this is still a list of Hits; convert to just a list of dicts
-            result_dicts = [hit.fields() for hit in list(results)]
-            # make sure we store it outside the with-block b/c scope
-            outer_results = result_dicts
-
-        return outer_results
-
+    return outer_results
 
 
 class UdacitySearchEngine(SearchEngine):
-    # DATASET_PATH = secure.DATASET_PATH_BASE+'udacity-api.json'
-    # INDEX_PATH = secure.INDEX_PATH_BASE+'udacity'
-    SEARCH_FIELDS = ["title", "subtitle", "expected_learning", "syllabus", "summary", "short_summary"]
+  # DATASET_PATH = secure.DATASET_PATH_BASE+'udacity-api.json'
+  # INDEX_PATH = secure.INDEX_PATH_BASE+'udacity'
+  SEARCH_FIELDS = ["title", "subtitle", "expected_learning",
+                   "syllabus", "summary", "short_summary"]
 
-    def __init__(self, dataset_path, index_path, create=False):
-        """
-        Creates a new Udacity search engine.
+  def __init__(self, dataset_path, index_path, create=False):
+    """
+    Creates a new Udacity search engine.
 
-        :param dataset_path {string}: the path to the Udacity API JSON file.
-        :param index_path {string}: the path to a folder where you'd like to
-            store the search engine index. The given folder doesn't have to exist,
-            but its *parent* folder does.
-        :param create {bool}: If True, recreates an index from scratch.
-            If False, loads the existing index
-        """
-        super(UdacitySearchEngine, self).__init__(
-            create, self.SEARCH_FIELDS, index_path)
+    :param dataset_path {string}: the path to the Udacity API JSON file.
+    :param index_path {string}: the path to a folder where you'd like to
+        store the search engine index. The given folder doesn't have to exist,
+        but its *parent* folder does.
+    :param create {bool}: If True, recreates an index from scratch.
+        If False, loads the existing index
+    """
+    super(UdacitySearchEngine, self).__init__(
+        create, self.SEARCH_FIELDS, index_path)
 
-        self.dataset_path = dataset_path
+    self.dataset_path = dataset_path
 
+  def create_index(self):
+    """
+    Creates a new index to search the Udacity dataset. You only need to
+    call this once; once the index is created, you can just load it again
+    instead of creating it afresh all the time.
+    """
 
-    def create_index(self):
-        """
-        Creates a new index to search the Udacity dataset. You only need to
-        call this once; once the index is created, you can just load it again
-        instead of creating it afresh all the time.
-        """
+    # load data
+    udacity_data = None
+    with open(self.dataset_path, 'r') as file:
+      udacity_data = json.load(file)
 
-        # load data
-        udacity_data = None
-        with open(self.dataset_path, 'r') as file:
-            udacity_data = json.load(file)
+    # set up whoosh
+    # schema
 
-        # set up whoosh
-        # schema
+    # TODO: use StemmingAnalyzer here so we get the built-in benefits
+    # of stemming in our search engine
+    # http://whoosh.readthedocs.io/en/latest/stemming.html
 
-        # TODO: use StemmingAnalyzer here so we get the built-in benefits
-        # of stemming in our search engine
-        # http://whoosh.readthedocs.io/en/latest/stemming.html
+    schema = Schema(
+        slug=ID(stored=True),
+        title=TEXT(stored=True),
+        subtitle=TEXT,
+        expected_learning=TEXT,
+        syllabus=TEXT,
+        summary=TEXT,
+        short_summary=TEXT
+    )
 
-        schema = Schema(
-            slug=ID(stored=True),
-            title=TEXT(stored=True),
-            subtitle=TEXT,
-            expected_learning=TEXT,
-            syllabus=TEXT,
-            summary=TEXT,
-            short_summary=TEXT
-        )
+    # make an index to store this stuff in
+    index = self.get_empty_index(self.index_path, schema)
 
-        # make an index to store this stuff in
-        index = self.get_empty_index(self.index_path, schema)
+    # start adding documents (i.e. the courses) to the index
+    try:
+      writer = index.writer()
+      for course in udacity_data['courses']:
+        writer.add_document(
+            slug=course['slug'],
+            title=course['title'],
+            subtitle=course['subtitle'],
+            expected_learning=course['expected_learning'],
+            syllabus=course['syllabus'],
+            summary=course['summary'],
+            short_summary=course['short_summary'])
+      writer.commit()
+    except Exception as e:
+      print e
 
-        # start adding documents (i.e. the courses) to the index
-        try:
-            writer = index.writer()
-            for course in udacity_data['courses']:
-                writer.add_document(
-                    slug=course['slug'],
-                    title=course['title'],
-                    subtitle=course['subtitle'],
-                    expected_learning=course['expected_learning'],
-                    syllabus=course['syllabus'],
-                    summary=course['summary'],
-                    short_summary=course['short_summary'])
-            writer.commit()
-        except Exception as e:
-            print e
-
-        # all done for now
-        return index
-
-
+    # all done for now
+    return index
 
 
 class HarvardXSearchEngine(SearchEngine):
-    # INDEX_PATH = secure.INDEX_PATH_BASE+'harvardx'
-    SEARCH_FIELDS = ["display_name", "contents"]
+  # INDEX_PATH = secure.INDEX_PATH_BASE+'harvardx'
+  SEARCH_FIELDS = ["display_name", "contents"]
 
-    def __init__(self, dataset_path, index_path, create=False):
-        """
-        Creates a new HarvardX search engine. Searches over the HarvardX/DART
-        database of all courses and course materials used in HarvardX. This includes
-        videos, quizzes, etc.
+  def __init__(self, dataset_path, index_path, create=False):
+    """
+    Creates a new HarvardX search engine. Searches over the HarvardX/DART
+    database of all courses and course materials used in HarvardX. This includes
+    videos, quizzes, etc.
 
-        TODO: consider renaming to DART, probz
+    TODO: consider renaming to DART, probz
 
-        :param dataset_path {string}: the path to the HarvardX course catalog CSV file.
-        :param index_path {string}: the path to a folder where you'd like to
-            store the search engine index. The given folder doesn't have to exist,
-            but its *parent* folder does.
-        :param create {bool}: If True, recreates an index from scratch.
-            If False, loads the existing index
-        """
-        super(HarvardXSearchEngine, self).__init__(
-            create, self.SEARCH_FIELDS, index_path)
+    :param dataset_path {string}: the path to the HarvardX course catalog CSV file.
+    :param index_path {string}: the path to a folder where you'd like to
+        store the search engine index. The given folder doesn't have to exist,
+        but its *parent* folder does.
+    :param create {bool}: If True, recreates an index from scratch.
+        If False, loads the existing index
+    """
+    super(HarvardXSearchEngine, self).__init__(
+        create, self.SEARCH_FIELDS, index_path)
 
-        self.dataset_path = dataset_path
+    self.dataset_path = dataset_path
 
+  def create_index(self):
+    """
+    Creates a new index to search the dataset. You only need to
+    call this once; once the index is created, you can just load it again
+    instead of creating it afresh all the time.
 
-    def create_index(self):
-        """
-        Creates a new index to search the dataset. You only need to
-        call this once; once the index is created, you can just load it again
-        instead of creating it afresh all the time.
+    Returns the index object.
+    """
 
-        Returns the index object.
-        """
+    # load data
+    # real data
+    # csvfile_path = secure.DATASET_PATH_BASE+'corpus_HarvardX_LatestCourses_based_on_2016-10-18.csv'
+    # test data
+    # csvfile_path = 'datasets/test.csv'
 
-        # load data
-        # real data
-        # csvfile_path = secure.DATASET_PATH_BASE+'corpus_HarvardX_LatestCourses_based_on_2016-10-18.csv'
-        # test data
-        # csvfile_path = 'datasets/test.csv'
+    # only consider resources with this category (type of content)
+    # unsure about courses (b/c they have no content) and html (b/c they often include messy CSS/JS in there)
+    # TODO: add "html" support. requires stripping comments
+    #       http://stackoverflow.com/questions/753052/strip-html-from-strings-in-python
+    #
+    supported_categories = ('problem', 'video', 'course')
 
-        # only consider resources with this category (type of content)
-        # unsure about courses (b/c they have no content) and html (b/c they often include messy CSS/JS in there)
-        # TODO: add "html" support. requires stripping comments
-        #       http://stackoverflow.com/questions/753052/strip-html-from-strings-in-python
-        #
-        supported_categories = ('problem', 'video', 'course')
+    # set up whoosh schema
+    schema = Schema(
+        course_id=ID(stored=True),
+        display_name=TEXT(stored=True),
+        contents=TEXT
+    )
 
-        # set up whoosh schema
-        schema = Schema(
-            course_id=ID(stored=True),
-            display_name=TEXT(stored=True),
-            contents=TEXT
-        )
+    # TODO: use StemmingAnalyzer here so we get the built-in benefits
+    # of stemming in our search engine
+    # http://whoosh.readthedocs.io/en/latest/stemming.html
 
+    # make an index to store this stuff in
+    index = self.get_empty_index(self.index_path, schema)
 
-        # TODO: use StemmingAnalyzer here so we get the built-in benefits
-        # of stemming in our search engine
-        # http://whoosh.readthedocs.io/en/latest/stemming.html
+    # start adding documents (i.e. the courses) to the index
 
-        # make an index to store this stuff in
-        index = self.get_empty_index(self.index_path, schema)
+    # first, some of the fields are HUGE so we need to let the csv
+    # reader handle them
+    csv.field_size_limit(sys.maxsize)
 
-        # start adding documents (i.e. the courses) to the index
+    with open(self.dataset_path, 'r') as csvfile:
+      reader = csv.DictReader(csvfile)
 
-        # first, some of the fields are HUGE so we need to let the csv
-        # reader handle them
-        csv.field_size_limit(sys.maxsize)
+      writer = index.writer()
 
-        with open(self.dataset_path, 'r') as csvfile:
-            reader = csv.DictReader(csvfile)
+      try:
+        for row in reader:
+          # ensure the content is actually a valid type
+          if row['category'] not in supported_categories:
+            pass
 
-            writer = index.writer()
+          # write
+          writer.add_document(
+              course_id=row['course_id'].decode('utf8'),
+              display_name=row['display_name'].decode('utf8'),
+              contents=row['contents'].decode('utf8'))
 
-            try:
-                for row in reader:
-                    # ensure the content is actually a valid type
-                    if row['category'] not in supported_categories:
-                        pass
+        writer.commit()
+      except Exception as e:
+        print e
+        writer.cancel()
 
-                    # write
-                    writer.add_document(
-                        course_id=row['course_id'].decode('utf8'),
-                        display_name=row['display_name'].decode('utf8'),
-                        contents=row['contents'].decode('utf8'))
-
-                writer.commit()
-            except Exception as e:
-                print e
-                writer.cancel()
-
-
-        # all done for now
-        return index
-
-
+    # all done for now
+    return index
 
 
 class EdXSearchEngine(SearchEngine):
-    # INDEX_PATH = secure.INDEX_PATH_BASE+'edx'
-    SEARCH_FIELDS = ["name"]
+  # INDEX_PATH = secure.INDEX_PATH_BASE+'edx'
+  SEARCH_FIELDS = ["name"]
 
-    def __init__(self, dataset_path, index_path, create=False):
-        """
-        Creates a new search engine that searches over edX courses.
+  def __init__(self, dataset_path, index_path, create=False):
+    """
+    Creates a new search engine that searches over edX courses.
 
-        :param dataset_path {string}: the path to the edX course listings file.
-        :param index_path {string}: the path to a folder where you'd like to
-            store the search engine index. The given folder doesn't have to exist,
-            but its *parent* folder does.
-        :param create {bool}: If True, recreates an index from scratch.
-            If False, loads the existing index
-        """
-        super(EdXSearchEngine, self).__init__(
-            create, self.SEARCH_FIELDS, index_path)
+    :param dataset_path {string}: the path to the edX course listings file.
+    :param index_path {string}: the path to a folder where you'd like to
+        store the search engine index. The given folder doesn't have to exist,
+        but its *parent* folder does.
+    :param create {bool}: If True, recreates an index from scratch.
+        If False, loads the existing index
+    """
+    super(EdXSearchEngine, self).__init__(
+        create, self.SEARCH_FIELDS, index_path)
 
-        self.dataset_path = dataset_path
+    self.dataset_path = dataset_path
 
+  def create_index(self):
+    """
+    Creates a new index to search the dataset. You only need to
+    call this once; once the index is created, you can just load it again
+    instead of creating it afresh all the time.
 
-    def create_index(self):
-        """
-        Creates a new index to search the dataset. You only need to
-        call this once; once the index is created, you can just load it again
-        instead of creating it afresh all the time.
+    Returns the index object.
+    """
 
-        Returns the index object.
-        """
+    # load data
+    # csvfile_path = secure.DATASET_PATH_BASE+'Master CourseListings - edX.csv'
 
-        # load data
-        # csvfile_path = secure.DATASET_PATH_BASE+'Master CourseListings - edX.csv'
+    # set up whoosh schema
+    schema = Schema(
+        course_id=ID(stored=True),
+        name=TEXT(stored=True)
+    )
 
-        # set up whoosh schema
-        schema = Schema(
-            course_id=ID(stored=True),
-            name=TEXT(stored=True)
-        )
+    # TODO: use StemmingAnalyzer here so we get the built-in benefits
+    # of stemming in our search engine
+    # http://whoosh.readthedocs.io/en/latest/stemming.html
 
-        # TODO: use StemmingAnalyzer here so we get the built-in benefits
-        # of stemming in our search engine
-        # http://whoosh.readthedocs.io/en/latest/stemming.html
+    # make an index to store this stuff in
+    index = self.get_empty_index(self.index_path, schema)
 
-        # make an index to store this stuff in
-        index = self.get_empty_index(self.index_path, schema)
+    # start adding documents (i.e. the courses) to the index
 
-        # start adding documents (i.e. the courses) to the index
+    with open(self.dataset_path, 'r') as csvfile:
+      reader = csv.DictReader(csvfile)
 
-        with open(self.dataset_path, 'r') as csvfile:
-            reader = csv.DictReader(csvfile)
+      writer = index.writer()
 
-            writer = index.writer()
+      try:
+        for row in reader:
+          # write
+          writer.add_document(
+              course_id=row['course_id'].decode('utf8'),
+              name=row['name'].decode('utf8'))
 
-            try:
-                for row in reader:
-                    # write
-                    writer.add_document(
-                        course_id=row['course_id'].decode('utf8'),
-                        name=row['name'].decode('utf8'))
+        writer.commit()
+      except Exception as e:
+        print e
+        writer.cancel()
 
-                writer.commit()
-            except Exception as e:
-                print e
-                writer.cancel()
-
-        # all done for now
-        return index
-
-
+    # all done for now
+    return index
 
 
 class RewritingSearchEngine(object):
+  """
+  A query rewriting-enabled search engine. Wraps a search engine and a rewriter
+  so you can, hopefully, get better results. Note that this doesn't inherit
+  the "SearchEngine" class because it works so differently.
+  """
+  # TODO: rethink inheritence structures
+
+  def __init__(self, rewriter, search_engine):
+    self.rewriter = rewriter
+    self.search_engine = search_engine
+
+  def flatten(self, l):
     """
-    A query rewriting-enabled search engine. Wraps a search engine and a rewriter
-    so you can, hopefully, get better results. Note that this doesn't inherit
-    the "SearchEngine" class because it works so differently.
+    Flattens a list.
     """
-    # TODO: rethink inheritence structures
+    return [item for sublist in l for item in sublist]
 
-    def __init__(self, rewriter, search_engine):
-        self.rewriter = rewriter
-        self.search_engine = search_engine
+  def search(self, term):
+    """
+    Using the given search term (or query), rewrites it according to the
+    rewriter and then passes that through the search engine.
+    """
+    rewritten_queries = self.rewriter.rewrite(term)
 
+    results = [self.search_engine.search(q) for q in rewritten_queries]
 
-    def flatten(self, l):
-        """
-        Flattens a list.
-        """
-        return [item for sublist in l for item in sublist]
+    # results are multi-level... flatten it
+    # TODO: use set() to remove duplicates
+    flattened_results = self.flatten(results)
 
-
-    def search(self, term):
-        """
-        Using the given search term (or query), rewrites it according to the
-        rewriter and then passes that through the search engine.
-        """
-        rewritten_queries = self.rewriter.rewrite(term)
-
-        results = [self.search_engine.search(q) for q in rewritten_queries]
-
-        # results are multi-level... flatten it
-        # TODO: use set() to remove duplicates
-        flattened_results = self.flatten(results)
-
-        return flattened_results
+    return flattened_results
