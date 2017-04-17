@@ -9,10 +9,7 @@ import json
 import os.path
 import sys
 
-# TODO remove secure
-import secure
-# reload(secure)
-
+# TODO clean up formatting
 
 # Abstract Search Engine class
 # TODO: abstract out more functionality here
