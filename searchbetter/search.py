@@ -13,8 +13,6 @@ import sys
 
 # Abstract Search Engine class
 # TODO: abstract out more functionality here
-
-
 class SearchEngine(object):
   # make it an abstract class
   __metaclass__ = abc.ABCMeta
