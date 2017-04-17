@@ -106,6 +106,9 @@ class Word2VecRewriter(Rewriter):
                 # even more arguments.
                 # the Phrases class lets you generate bigrams, but the
                 # Phraser class is a more compact version of the same
+                # TODO making the phrases takes forever, making the phraser
+                # takes forever, turning it into a list takes forever... this
+                # is really annoying. is there any way to speed it up?
                 bigram_generator = phrases.Phraser(phrases.Phrases(corpus))
                 # weird bug where the bigram generator won't work unless
                 # it's turned into a list first. if you try to do it straight,
