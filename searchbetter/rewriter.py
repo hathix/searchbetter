@@ -5,7 +5,6 @@ import requests
 
 import gensim.models as models
 import gensim.models.word2vec as word2vec
-import secure
 
 
 # Abstract Rewriter class
@@ -16,7 +15,7 @@ class Rewriter(object):
 
     def rewrite(self, term):
         """
-        Subclasses must implement!
+        Rewrites a term to a list of new terms to search with.
         """
         raise NotImplementedError("Subclasses must implement!")
 
@@ -28,7 +27,6 @@ class ControlRewriter(Rewriter):
 
     def rewrite(self, term):
         return [term]
-
 
 
 class WikipediaRewriter(Rewriter):
@@ -48,8 +46,8 @@ class WikipediaRewriter(Rewriter):
         api = self.WIKI_BASE + term
         r = requests.get(api)
         tree = etree.fromstring(r.text)
-        # TODO: ignore wikipedia internal categories
-        # https://en.wikipedia.org/wiki/Category:Tracking_categories
+
+        # TODO join this an dthe below
         wikipedia_results = [self.clean_category(x.get('title')) for x in tree.findall('.//cl')]
 
         # Words that identify a need to drop the category
@@ -70,9 +68,9 @@ class Word2VecRewriter(Rewriter):
     """
 
     # where the model will be stored
-    MODEL_PATH = secure.MODEL_PATH_BASE+'word2vec/word2vec'
+    # MODEL_PATH = secure.MODEL_PATH_BASE+'word2vec/word2vec'
 
-    def __init__(self, corpus=None, create=False):
+    def __init__(self, model_path, corpus=None, create=False):
         """
         Initializes the rewriter, given a particular word2vec corpus.
         A good example corpus is the Text8Corpus or the Brown corpus.
@@ -81,16 +79,22 @@ class Word2VecRewriter(Rewriter):
         If create is True, this generates a new Word2Vec
         model (which takes a really long time to build.) If False, this loads
         an existing model we already saved.
+
+        :param model_path {string}: where to store the model files. This file
+            needn't exist, but its parent folder should.
         """
+
+        self.model_path = model_path
 
         # TODO: add logic around defaulting to creating or not
 
         if create:
             # generate a new Word2Vec model... takes a while!
+            # TODO optimize parameters
             self.model = word2vec.Word2Vec(corpus, workers=8)
-            self.model.save(self.MODEL_PATH)
+            self.model.save(self.model_path)
         else:
-            self.model = word2vec.Word2Vec.load(self.MODEL_PATH)
+            self.model = word2vec.Word2Vec.load(self.model_path)
 
     def rewrite(self, term):
         # try using the model to rewrite the term
