@@ -57,8 +57,6 @@ class WikipediaRewriter(Rewriter):
         wikipedia_results = [w.split('Category:')[-1].lower() for w in wikipedia_results if not any(d in w.lower() for d in dropwords)]
 
         # append the original term just for completeness
-        print wikipedia_results
-        print ' '.join(wikipedia_results + [term])
         return wikipedia_results + [term]
 
 
