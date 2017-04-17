@@ -74,7 +74,7 @@ class Word2VecRewriter(Rewriter):
         """
         Initializes the rewriter, given a particular word2vec corpus.
         A good example corpus is the Text8Corpus or the Brown corpus.
-        You only need the corpus if you aren't recreating this from scratch.
+        You only need the corpus if you are recreating the model from scratch.
 
         If create is True, this generates a new Word2Vec
         model (which takes a really long time to build.) If False, this loads
