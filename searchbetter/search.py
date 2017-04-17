@@ -8,6 +8,8 @@ import csv
 import json
 import os.path
 import sys
+
+# TODO remove secure
 import secure
 # reload(secure)
 
@@ -16,7 +18,6 @@ import secure
 # TODO: abstract out more functionality here
 class SearchEngine(object):
     # make it an abstract class
-    #
     __metaclass__ = abc.ABCMeta
 
     # TODO consider making more hierarchy. This is the WhooshSearchEngine,
@@ -61,13 +62,14 @@ class SearchEngine(object):
         Used when the index is already created. This just loads it and
         returns it for you.
         """
-
         index = open_dir(self.index_path)
         return index
 
 
     def create_index(self):
         """
+        Creates and returns a brand-new index. This will call
+        get_empty_index() behind the scenes.
         Subclasses must implement!
         """
         raise NotImplementedError("Subclasses must implement!")
@@ -75,8 +77,11 @@ class SearchEngine(object):
 
     def get_empty_index(self, path, schema):
         """
-        Creates an empty index file, making the directory where it needs
+        Makes an empty index file, making the directory where it needs
         to be stored if necessary. Returns the index.
+
+        This is called within create_index().
+        TODO this breakdown is still confusing
         """
         if not os.path.exists(path):
             os.mkdir(path)
@@ -107,19 +112,25 @@ class SearchEngine(object):
 
 
 class UdacitySearchEngine(SearchEngine):
-    DATASET_PATH = secure.DATASET_PATH_BASE+'udacity-api.json'
-    INDEX_PATH = secure.INDEX_PATH_BASE+'udacity'
+    # DATASET_PATH = secure.DATASET_PATH_BASE+'udacity-api.json'
+    # INDEX_PATH = secure.INDEX_PATH_BASE+'udacity'
     SEARCH_FIELDS = ["title", "subtitle", "expected_learning", "syllabus", "summary", "short_summary"]
 
-    def __init__(self, create=False):
+    def __init__(self, dataset_path, index_path, create=False):
         """
         Creates a new Udacity search engine.
 
+        :param dataset_path {string}: the path to the Udacity API JSON file.
+        :param index_path {string}: the path to a folder where you'd like to
+            store the search engine index. The given folder doesn't have to exist,
+            but its *parent* folder does.
         :param create {bool}: If True, recreates an index from scratch.
             If False, loads the existing index
         """
         super(UdacitySearchEngine, self).__init__(
-            create, self.SEARCH_FIELDS, self.INDEX_PATH)
+            create, self.SEARCH_FIELDS, index_path)
+
+        self.dataset_path = dataset_path
 
 
     def create_index(self):
@@ -131,7 +142,7 @@ class UdacitySearchEngine(SearchEngine):
 
         # load data
         udacity_data = None
-        with open(self.DATASET_PATH, 'r') as file:
+        with open(self.dataset_path, 'r') as file:
             udacity_data = json.load(file)
 
         # set up whoosh
@@ -152,7 +163,7 @@ class UdacitySearchEngine(SearchEngine):
         )
 
         # make an index to store this stuff in
-        index = self.get_empty_index(self.INDEX_PATH, schema)
+        index = self.get_empty_index(self.index_path, schema)
 
         # start adding documents (i.e. the courses) to the index
         try:
@@ -177,10 +188,10 @@ class UdacitySearchEngine(SearchEngine):
 
 
 class HarvardXSearchEngine(SearchEngine):
-    INDEX_PATH = secure.INDEX_PATH_BASE+'harvardx'
+    # INDEX_PATH = secure.INDEX_PATH_BASE+'harvardx'
     SEARCH_FIELDS = ["display_name", "contents"]
 
-    def __init__(self, create=False):
+    def __init__(self, dataset_path, index_path, create=False):
         """
         Creates a new HarvardX search engine. Searches over the HarvardX/DART
         database of all courses and course materials used in HarvardX. This includes
@@ -188,11 +199,17 @@ class HarvardXSearchEngine(SearchEngine):
 
         TODO: consider renaming to DART, probz
 
+        :param dataset_path {string}: the path to the HarvardX course catalog CSV file.
+        :param index_path {string}: the path to a folder where you'd like to
+            store the search engine index. The given folder doesn't have to exist,
+            but its *parent* folder does.
         :param create {bool}: If True, recreates an index from scratch.
             If False, loads the existing index
         """
         super(HarvardXSearchEngine, self).__init__(
-            create, self.SEARCH_FIELDS, self.INDEX_PATH)
+            create, self.SEARCH_FIELDS, index_path)
+
+        self.dataset_path = dataset_path
 
 
     def create_index(self):
@@ -206,7 +223,7 @@ class HarvardXSearchEngine(SearchEngine):
 
         # load data
         # real data
-        csvfile_path = secure.DATASET_PATH_BASE+'corpus_HarvardX_LatestCourses_based_on_2016-10-18.csv'
+        # csvfile_path = secure.DATASET_PATH_BASE+'corpus_HarvardX_LatestCourses_based_on_2016-10-18.csv'
         # test data
         # csvfile_path = 'datasets/test.csv'
 
@@ -230,7 +247,7 @@ class HarvardXSearchEngine(SearchEngine):
         # http://whoosh.readthedocs.io/en/latest/stemming.html
 
         # make an index to store this stuff in
-        index = self.get_empty_index(self.INDEX_PATH, schema)
+        index = self.get_empty_index(self.index_path, schema)
 
         # start adding documents (i.e. the courses) to the index
 
@@ -238,7 +255,7 @@ class HarvardXSearchEngine(SearchEngine):
         # reader handle them
         csv.field_size_limit(sys.maxsize)
 
-        with open(csvfile_path, 'r') as csvfile:
+        with open(self.dataset_path, 'r') as csvfile:
             reader = csv.DictReader(csvfile)
 
             writer = index.writer()
@@ -268,18 +285,24 @@ class HarvardXSearchEngine(SearchEngine):
 
 
 class EdXSearchEngine(SearchEngine):
-    INDEX_PATH = secure.INDEX_PATH_BASE+'edx'
+    # INDEX_PATH = secure.INDEX_PATH_BASE+'edx'
     SEARCH_FIELDS = ["name"]
 
-    def __init__(self, create=False):
+    def __init__(self, dataset_path, index_path, create=False):
         """
         Creates a new search engine that searches over edX courses.
 
+        :param dataset_path {string}: the path to the edX course listings file.
+        :param index_path {string}: the path to a folder where you'd like to
+            store the search engine index. The given folder doesn't have to exist,
+            but its *parent* folder does.
         :param create {bool}: If True, recreates an index from scratch.
             If False, loads the existing index
         """
         super(EdXSearchEngine, self).__init__(
-            create, self.SEARCH_FIELDS, self.INDEX_PATH)
+            create, self.SEARCH_FIELDS, index_path)
+
+        self.dataset_path = dataset_path
 
 
     def create_index(self):
@@ -292,7 +315,7 @@ class EdXSearchEngine(SearchEngine):
         """
 
         # load data
-        csvfile_path = secure.DATASET_PATH_BASE+'Master CourseListings - edX.csv'
+        # csvfile_path = secure.DATASET_PATH_BASE+'Master CourseListings - edX.csv'
 
         # set up whoosh schema
         schema = Schema(
@@ -305,11 +328,11 @@ class EdXSearchEngine(SearchEngine):
         # http://whoosh.readthedocs.io/en/latest/stemming.html
 
         # make an index to store this stuff in
-        index = self.get_empty_index(self.INDEX_PATH, schema)
+        index = self.get_empty_index(self.index_path, schema)
 
         # start adding documents (i.e. the courses) to the index
 
-        with open(csvfile_path, 'r') as csvfile:
+        with open(self.dataset_path, 'r') as csvfile:
             reader = csv.DictReader(csvfile)
 
             writer = index.writer()
@@ -328,7 +351,6 @@ class EdXSearchEngine(SearchEngine):
 
         # all done for now
         return index
-
 
 
 
