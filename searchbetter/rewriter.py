@@ -34,6 +34,7 @@ class WikipediaRewriter(Rewriter):
   """
   A class to rewrite queries using Wikipedia's category api.
   """
+
   WIKI_BASE = 'https://en.wikipedia.org/w/api.php?format=xml&action=query&prop=categories&titles='
 
   def clean_category(self, x):
@@ -131,7 +132,9 @@ class Word2VecRewriter(Rewriter):
     try:
       # preprocess the term so it's more palatable to word2vec
       encoded_term = self.encode_term(term)
-      # most_similar returns an array of tuples
+      # most_similar returns an array of tuples, each representing a term/phrase
+      # that is close to the original
+      # TODO consider choosing fewer results! or have a higher bar on how related they need to be
       raw_results = self.model.similar_by_word(encoded_term, topn=10)
       # extract just the name, which is index 0
       # and decode all the results we get from word2vec

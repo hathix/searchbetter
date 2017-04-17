@@ -13,7 +13,15 @@ import sys
 
 # Abstract Search Engine class
 # TODO: abstract out more functionality here
+
+
 class SearchEngine(object):
+  """
+  A batteries-included search engine that can operate on any
+  given dataset. Uses the Whoosh library to index and run searches
+  on the dataset. Has built-in support for query rewriting.
+  """
+
   # make it an abstract class
   __metaclass__ = abc.ABCMeta
 
@@ -53,6 +61,10 @@ class SearchEngine(object):
     # first, query parser
     self.parser = MultifieldParser(search_fields, self.index.schema)
 
+    # no rewriter yet
+    # TODO let someone pass it
+    self.rewriter = None
+
   def load_index(self):
     """
     Used when the index is already created. This just loads it and
@@ -82,16 +94,51 @@ class SearchEngine(object):
     index = create_in(path, schema)
     return index
 
-  def search(self, query_string):
+
+  def flatten(self, l):
+    """
+    Flattens a list.
+    """
+    return [item for sublist in l for item in sublist]
+
+
+  def set_rewriter(self, rewriter):
+      """
+      Sets a new query rewriter (from this_package.rewriter) as the default
+      rewriter for this search engine.
+      """
+      self.rewriter = rewriter
+
+  def search(self, term):
     """
     Runs a plain-English search and returns results.
-    :param query_string {String}: a query like you'd type into Google.
+    :param term {String}: a query like you'd type into Google.
     :return: a list of dicts, each of which encodes a search result.
+    """
+    if not self.rewriter:
+        # if there's no query rewriter in place, just search for the
+        # original term
+        return self._single_search(term)
+    else:
+        # there's a rewriter! use it
+        rewritten_queries = self.rewriter.rewrite(term)
+        results = [self._single_search(q) for q in rewritten_queries]
+
+        # results are multi-level... flatten it
+        flattened_results = self.flatten(results)
+
+        return flattened_results
+
+
+  def _single_search(self, term):
+    """
+    Helper function for search() that just returns search results for a
+    single, non-rewritten search term.
     """
     outer_results = []
 
     with self.index.searcher() as searcher:
-      query_obj = self.parser.parse(query_string)
+      query_obj = self.parser.parse(term)
       # this variable is closed when the searcher is closed, so save this data
       # in a variable outside the with-block
       results = searcher.search(query_obj)
@@ -335,37 +382,3 @@ class EdXSearchEngine(SearchEngine):
 
     # all done for now
     return index
-
-
-class RewritingSearchEngine(object):
-  """
-  A query rewriting-enabled search engine. Wraps a search engine and a rewriter
-  so you can, hopefully, get better results. Note that this doesn't inherit
-  the "SearchEngine" class because it works so differently.
-  """
-  # TODO: rethink inheritence structures
-
-  def __init__(self, rewriter, search_engine):
-    self.rewriter = rewriter
-    self.search_engine = search_engine
-
-  def flatten(self, l):
-    """
-    Flattens a list.
-    """
-    return [item for sublist in l for item in sublist]
-
-  def search(self, term):
-    """
-    Using the given search term (or query), rewrites it according to the
-    rewriter and then passes that through the search engine.
-    """
-    rewritten_queries = self.rewriter.rewrite(term)
-
-    results = [self.search_engine.search(q) for q in rewritten_queries]
-
-    # results are multi-level... flatten it
-    # TODO: use set() to remove duplicates
-    flattened_results = self.flatten(results)
-
-    return flattened_results
