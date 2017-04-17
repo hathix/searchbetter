@@ -124,16 +124,43 @@ class Word2VecRewriter(Rewriter):
 
     def rewrite(self, term):
         # try using the model to rewrite the term
-        cleaned_results = []
+        results = []
         try:
+            # preprocess the term so it's more palatable to word2vec
+            encoded_term = self.encode_term(term)
             # most_similar returns an array of tuples
-            raw_results = self.model.similar_by_word(term, topn=10)
+            raw_results = self.model.similar_by_word(encoded_term, topn=10)
             # extract just the name, which is index 0
-            cleaned_results = [r[0] for r in raw_results]
+            # and decode all the results we get from word2vec
+            results = [self.decode_term(r[0]) for r in raw_results]
         except KeyError as k:
             # the word wasn't found in the model... must be too niche.
             # no results then
-            cleaned_results = []
+            results = []
 
         # finally, tack on the original term to the results for completeness
-        return cleaned_results + [term.decode("utf8")]
+        return results + [term.decode("utf8")]
+
+    def encode_term(self, term):
+        """
+        Converts a search term like `Hadrian's Wall` to `hadrians_wall`, which
+        plays better with word2vec.
+        """
+        # remove anything that isn't alphanumeric or space
+        alphanum_pattern = re.compile(r'[^\w\d\s]')
+        cleaned = alphanum_pattern.sub('', term)
+        # sub out spaces for underscores
+        space_pattern = re.compile(' ')
+        cleaned = space_pattern.sub('_', cleaned)
+        # finally lowercase it all
+        return cleaned.lower()
+
+
+    def decode_term(self, encoded):
+        """
+        Converts an encoded search term into something more human readable,
+        like `hadrians_wall` to `hadrians wall`.
+        """
+        # not much we can do besides replace underscores with spaces
+        underscore_pattern = re.compile('_')
+        return underscore_pattern.sub(' ', encoded)
