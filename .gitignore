@@ -1,6 +1,9 @@
 # custom
 .idea
 
+datasets
+search_indices
+
 # secure files
 secure.py
 
