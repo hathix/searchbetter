@@ -10,6 +10,8 @@ import os.path
 import sys
 
 # TODO clean up formattin
+
+
 class SearchEngine(object):
   """
   An abstract class for search engines.
@@ -90,20 +92,18 @@ class SearchEngine(object):
     index = create_in(path, schema)
     return index
 
-
   def flatten(self, l):
     """
     Flattens a list.
     """
     return [item for sublist in l for item in sublist]
 
-
   def set_rewriter(self, rewriter):
-      """
-      Sets a new query rewriter (from this_package.rewriter) as the default
-      rewriter for this search engine.
-      """
-      self.rewriter = rewriter
+    """
+    Sets a new query rewriter (from this_package.rewriter) as the default
+    rewriter for this search engine.
+    """
+    self.rewriter = rewriter
 
   def search(self, term):
     """
@@ -112,19 +112,18 @@ class SearchEngine(object):
     :return: a list of dicts, each of which encodes a search result.
     """
     if self.rewriter is None:
-        # if there's no query rewriter in place, just search for the
-        # original term
-        return self._single_search(term)
+      # if there's no query rewriter in place, just search for the
+      # original term
+      return self._single_search(term)
     else:
-        # there's a rewriter! use it
-        rewritten_queries = self.rewriter.rewrite(term)
-        results = [self._single_search(q) for q in rewritten_queries]
+      # there's a rewriter! use it
+      rewritten_queries = self.rewriter.rewrite(term)
+      results = [self._single_search(q) for q in rewritten_queries]
 
-        # results are multi-level... flatten it
-        flattened_results = self.flatten(results)
+      # results are multi-level... flatten it
+      flattened_results = self.flatten(results)
 
-        return flattened_results
-
+      return flattened_results
 
   def _single_search(self, term):
     """

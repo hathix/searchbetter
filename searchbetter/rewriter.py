@@ -134,7 +134,8 @@ class Word2VecRewriter(Rewriter):
       encoded_term = self.encode_term(term)
       # most_similar returns an array of tuples, each representing a term/phrase
       # that is close to the original
-      # TODO consider choosing fewer results! or have a higher bar on how related they need to be
+      # TODO consider choosing fewer results! or have a higher bar on how
+      # related they need to be
       raw_results = self.model.similar_by_word(encoded_term, topn=10)
       # extract just the name, which is index 0
       # and decode all the results we get from word2vec
@@ -159,6 +160,7 @@ class Word2VecRewriter(Rewriter):
     space_pattern = re.compile(' ')
     cleaned = space_pattern.sub('_', cleaned)
     # finally lowercase it all
+    # TODO replace numbers with words (mp3 => mp_three)
     return cleaned.lower()
 
   def decode_term(self, encoded):
