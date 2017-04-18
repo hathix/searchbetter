@@ -9,14 +9,10 @@ import json
 import os.path
 import sys
 
-# TODO clean up formatting
-
-# Abstract Search Engine class
-# TODO: abstract out more functionality here
-
-
+# TODO clean up formattin
 class SearchEngine(object):
   """
+  An abstract class for search engines.
   A batteries-included search engine that can operate on any
   given dataset. Uses the Whoosh library to index and run searches
   on the dataset. Has built-in support for query rewriting.
@@ -62,7 +58,7 @@ class SearchEngine(object):
     self.parser = MultifieldParser(search_fields, self.index.schema)
 
     # no rewriter yet
-    # TODO let someone pass it
+    # TODO let someone pass this in the constructor
     self.rewriter = None
 
   def load_index(self):
@@ -115,7 +111,7 @@ class SearchEngine(object):
     :param term {String}: a query like you'd type into Google.
     :return: a list of dicts, each of which encodes a search result.
     """
-    if not self.rewriter:
+    if self.rewriter is None:
         # if there's no query rewriter in place, just search for the
         # original term
         return self._single_search(term)
