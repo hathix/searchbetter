@@ -14,7 +14,7 @@ DART data      | Proprietary                                     | `corpus_Harva
 Download and unzip the `enwik9` dataset from <http://www.mattmahoney.net/dc/enwik9.zip>. Then run:
 
 ```
-perl processing-scripts/wiki-clean.pl enwik9 > wikclean9
+perl processing-scripts/wiki-clean.pl enwik9 > wikiclean9
 ```
 
 This might take a minute or two to run.
