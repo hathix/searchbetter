@@ -1,5 +1,9 @@
 # Query Rewriter
 
+## Demo
+
+[Try out the interactive demo](https://github.com/hathix/searchbetter/blob/master/notebooks/searchbetter-demo.ipynb)!
+
 ## Where to find data
 
 Name           | URL                                             | Where to put file
