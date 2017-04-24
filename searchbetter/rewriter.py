@@ -61,7 +61,9 @@ class WikipediaRewriter(Rewriter):
                          for w in wikipedia_results if not any(d in w.lower() for d in dropwords)]
 
     # append the original term just for completeness
-    return wikipedia_results + [term]
+    raw_results = wikipedia_results + [term]
+    # convert to unicode for consistency w/ other rewriters
+    return [unicode(rr) for rr in raw_results]
 
 
 class Word2VecRewriter(Rewriter):
