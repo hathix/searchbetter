@@ -129,6 +129,8 @@ class SearchEngine(object):
     """
     Helper function for search() that just returns search results for a
     single, non-rewritten search term.
+    Returns a list of results. The makeup of the results objects varies
+    from search engine to search engine.
     """
     outer_results = []
 
