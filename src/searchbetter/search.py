@@ -385,3 +385,21 @@ class EdXSearchEngine(SearchEngine):
 
     # all done for now
     return index
+
+
+class PrebuiltSearchEngine(search.SearchEngine):
+    """
+    A search engine designed for when you're just given a model file and can
+    use that directly without having to build anything.
+    """
+
+    def __init__(self, search_fields, index_path):
+        super(PrebuiltSearchEngine, self).__init__(
+            create=False, search_fields=search_fields, index_path=index_path)
+
+
+    def create_index(self):
+        # no need to create!!
+        # TODO raise an error
+        raise NotImplementedError("This search engine doesn't need to create an index! Use create = False.")
+        pass
