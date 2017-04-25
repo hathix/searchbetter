@@ -123,6 +123,11 @@ class SearchEngine(object):
       # results are multi-level... flatten it
       flattened_results = self.flatten(results)
 
+      # only give the unique ones
+      # unique_results = list(set(flattened_results))
+
+      # return unique_results
+
       return flattened_results
 
   def _single_search(self, term):
@@ -138,7 +143,7 @@ class SearchEngine(object):
       query_obj = self.parser.parse(term)
       # this variable is closed when the searcher is closed, so save this data
       # in a variable outside the with-block
-      results = searcher.search(query_obj)
+      results = searcher.search(query_obj, limit=None)
       # this is still a list of Hits; convert to just a list of dicts
       result_dicts = [hit.fields() for hit in list(results)]
       # make sure we store it outside the with-block b/c scope
