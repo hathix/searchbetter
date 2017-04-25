@@ -10,7 +10,6 @@ cultural capital
 lorentz
 metaphysics
 differential equations
-l'hopital's rule
 trigonometry
 semiconductor
 electric field
@@ -112,3 +111,6 @@ pronoun
 serial comma
 semicolon
 sentence fragment
+capitalism
+socialism
+communism
