@@ -14,7 +14,13 @@ SearchBetter lets you power up your search engines with minimal effort. It's esp
 
 ## Getting started
 
+To drop this module into your app:
 
+```
+pip install searchbetter
+```
+
+For more advanced analysis and research purposes, use the demo to get yourself set up!
 
 ## Where to find data
 
