@@ -1,4 +1,4 @@
-# Query Rewriter
+# SearchBetter: query rewriting for search engines on small corpuses
 
 ## Demo
 
