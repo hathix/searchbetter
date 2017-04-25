@@ -63,7 +63,9 @@ class WikipediaRewriter(Rewriter):
     # append the original term just for completeness
     raw_results = wikipedia_results + [term]
     # convert to unicode for consistency w/ other rewriters
-    return [unicode(rr) for rr in raw_results]
+    # TODO this doesn't work
+    return raw_results
+    # return [unicode(rr) for rr in raw_results]
 
 
 class Word2VecRewriter(Rewriter):
