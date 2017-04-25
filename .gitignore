@@ -4,6 +4,9 @@
 # secure files
 secure.py
 
+# temporary storage
+tmp
+
 
 # Created by https://www.gitignore.io/api/macos,python
 
