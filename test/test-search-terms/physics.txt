@@ -66,7 +66,7 @@ Attenuation coefficient
 Audio frequency
 Average speed
 Avogadro constant
-Avogadro's Law 
+Avogadro's Law
 Avogadro's Number
 Axion
 Azimuthal quantum number
@@ -226,7 +226,7 @@ Electronics
 Electronvolt
 Elementary particle
 Emission spectrum
-Endothermic 
+Endothermic
 Energy
 Engineering physics
 Entropy
@@ -240,7 +240,7 @@ Faraday
 Faraday constant
 Fermat's principle
 Ferrimagnetism
-Ferromagnetism 
+Ferromagnetism
 FIRST
 Fission
 Fluid
@@ -269,7 +269,7 @@ Gravitational constant
 Gravitational energy
 Gravitational field
 Gravitational potential
-Gravitational waves 
+Gravitational waves
 Gravity
 Ground
 Ground state
@@ -285,7 +285,7 @@ Henderson
 Henry's law
 Hertz
 Higgs boson
-Homeokinetics 
+Homeokinetics
 Horsepower
 Hubble Deep Field
 Huygens
@@ -322,7 +322,7 @@ Light
 Linear actuator
 Linear algebra
 Linear elasticity
-Liouville's Theorem 
+Liouville's Theorem
 Liquid
 Liquid crystal
 M
@@ -464,7 +464,7 @@ Stress
 Stress
 String duality
 String theory
-Structural load 
+Structural load
 Subatomic particle
 Sublimation
 Superconductivity
