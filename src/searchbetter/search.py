@@ -164,10 +164,11 @@ class UdacitySearchEngine(SearchEngine):
     :param create {bool}: If True, recreates an index from scratch.
         If False, loads the existing index
     """
+    self.dataset_path = dataset_path
     super(UdacitySearchEngine, self).__init__(
         create, self.SEARCH_FIELDS, index_path)
 
-    self.dataset_path = dataset_path
+
 
   def create_index(self):
     """
