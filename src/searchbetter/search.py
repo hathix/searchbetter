@@ -387,7 +387,7 @@ class EdXSearchEngine(SearchEngine):
     return index
 
 
-class PrebuiltSearchEngine(search.SearchEngine):
+class PrebuiltSearchEngine(SearchEngine):
     """
     A search engine designed for when you're just given a model file and can
     use that directly without having to build anything.
