@@ -12,6 +12,15 @@ SearchBetter lets you power up your search engines with minimal effort. It's esp
 
 [Try out the interactive demo](https://github.com/hathix/searchbetter/blob/master/notebooks/searchbetter-demo.ipynb)!
 
+For a truly quick-and-dirty dive into SearchBetter (no setup required), use:
+
+```py
+from searchbetter import rewriter
+
+query_rewriter = rewriter.WikipediaRewriter()
+query_rewriter.rewrite('biochemistry')
+```
+
 ## Getting started
 
 To drop this module into your app:
