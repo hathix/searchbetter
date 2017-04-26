@@ -4,8 +4,9 @@ import scipy
 import plotly
 import plotly.graph_objs as go
 import plotly.offline as py
-
 py.init_notebook_mode()
+
+import matplotlib.pyplot as plt
 
 def plotSeriesWithRegression(xs, ys, name, color):
     """
@@ -56,3 +57,58 @@ def plotSeriesWithRegression(xs, ys, name, color):
     )
 
     return [traceScatter, traceRegression]
+
+
+def plotly_scatter(control_hits, wiki_hits, w2v_hits):
+    # reference: https://plot.ly/python/reference/#scattergl
+
+    traceControl = go.Scattergl(
+        x = control_hits,
+        y = control_hits,
+        mode = 'lines',
+        name = 'Control (no rewriting)',
+        hoverinfo = 'text+name',
+        line = dict(
+            color = color_strings[0]
+        )
+    )
+
+    # plot wiki
+    wikiTraces = plots.plotSeriesWithRegression(
+        control_hits, wiki_hits, name='Wikipedia Categories', color=color_strings[1])
+    w2vTraces = plots.plotSeriesWithRegression(
+        control_hits, w2v_hits, name='Word2Vec', color=color_strings[2])
+
+    plot = [traceControl] + wikiTraces + w2vTraces
+
+    layout = go.Layout(
+        title='Effect of query rewriting on search engine hits (edX)',
+        xaxis=dict(
+            title='# hits before rewriting'
+        ),
+        yaxis=dict(
+            title='# hits after rewriting'
+        )
+    )
+
+    fig = go.Figure(data=plot, layout=layout)
+
+    # Plot and embed in ipython notebook!
+    py.iplot(fig)
+
+
+def matplotlib_scatter(subplot, xs, ys, color):
+    # scatter plot
+    subplot.scatter(x=xs, y=ys, alpha=0.5, c=color)
+
+    # line of best fit
+    subplot.plot(np.unique(xs), np.poly1d(np.polyfit(xs, ys, 1))(np.unique(xs)), c=color)
+
+    # control line
+    subplot.plot(np.unique(xs), np.unique(xs), c="#444444")
+
+    # TODO make the maxes dynamic
+    subplot.set_xlim(0, 50)
+    subplot.set_ylim(0, 200)
+
+    return axs
