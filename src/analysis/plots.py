@@ -97,7 +97,7 @@ def plotly_scatter(control_hits, wiki_hits, w2v_hits):
     py.iplot(fig)
 
 
-def matplotlib_scatter(subplot, xs, ys, color):
+def matplotlib_scatter(subplot, xs, ys, max_x, max_y, x_label, y_label, color):
     # scatter plot
     subplot.scatter(x=xs, y=ys, alpha=0.5, c=color)
 
@@ -108,7 +108,10 @@ def matplotlib_scatter(subplot, xs, ys, color):
     subplot.plot(np.unique(xs), np.unique(xs), c="#444444")
 
     # TODO make the maxes dynamic
-    subplot.set_xlim(0, 50)
-    subplot.set_ylim(0, 200)
+    subplot.set_xlim(0, max_x)
+    subplot.set_ylim(0, max_y)
+
+    subplot.set_xlabel(x_label)
+    subplot.set_ylabel(y_label)
 
     return subplot

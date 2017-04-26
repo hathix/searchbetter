@@ -35,7 +35,7 @@ def generate_stats(engine, slug, rewriters, filename, cached=False):
     return df
 
 
-def display_engine_plots(slug, colors, dfs):
+def display_engine_plots(colors, dfs):
 
     # plots.plotly_scatter(control_hits, wiki_hits, w2v_hits)
 
@@ -54,11 +54,21 @@ def display_engine_plots(slug, colors, dfs):
         wiki_hits = list(fdf['wiki'])
         w2v_hits = list(fdf['word2vec'])
 
+        # max x = maximum of the control hits
+        max_x = max(control_hits)
+        # max y = maximum of the wiki+w2v hits
+        max_y = max(max(wiki_hits), max(w2v_hits))
+
         for j, cell in enumerate(row):
             color = colors[j]
             # show wiki, w2v on diff sides
             ys = [wiki_hits, w2v_hits][j]
-            plots.matplotlib_scatter(cell, control_hits, ys, color)
+
+            xlabel = "Hits before rewriting"
+            ylabel = "Hits after rewriting"
+
+            plots.matplotlib_scatter(
+                cell, control_hits, ys, max_x, max_y, xlabel, ylabel, color)
 
     # display
     fig.tight_layout()
