@@ -32,26 +32,33 @@ def generate_stats(engine, slug, rewriters, filename, cached=False):
         # store it for future reference
         df.to_csv(cache_file)
 
+    return df
 
-def display_engine_plots(slug, colors, df):
-    # filter out the crazy big stuff
-    # TODO make this dynamic so it doesn't auto cut off bad stuff
-    fdf = df[df['control'] <= 50]
 
-    control_hits = list(fdf['control'])
-    wiki_hits = list(fdf['wiki'])
-    w2v_hits = list(fdf['word2vec'])
+def display_engine_plots(slug, colors, dfs):
 
-    plots.plotly_scatter(control_hits, wiki_hits, w2v_hits)
+    # plots.plotly_scatter(control_hits, wiki_hits, w2v_hits)
 
     # mpl
     fig, ax = plt.subplots(3,2, figsize=(12,12))
 
     for i, row in enumerate(ax):
+        df = dfs[i]
+
+        # filter out the crazy big stuff
+        # TODO make this dynamic so it doesn't auto cut off bad stuff
+        # fdf = df[df['control'] <= 50]
+        fdf = df
+
+        control_hits = list(fdf['control'])
+        wiki_hits = list(fdf['wiki'])
+        w2v_hits = list(fdf['word2vec'])
+
         for j, cell in enumerate(row):
             color = colors[j]
+            # show wiki, w2v on diff sides
             ys = [wiki_hits, w2v_hits][j]
-            matplotlib_scatter(cell, control_hits, ys, color)
+            plots.matplotlib_scatter(cell, control_hits, ys, color)
 
     # display
     fig.tight_layout()

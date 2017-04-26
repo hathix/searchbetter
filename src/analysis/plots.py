@@ -111,4 +111,4 @@ def matplotlib_scatter(subplot, xs, ys, color):
     subplot.set_xlim(0, 50)
     subplot.set_ylim(0, 200)
 
-    return axs
+    return subplot
