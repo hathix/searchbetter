@@ -51,3 +51,9 @@ perl processing-scripts/wiki-clean.pl enwik8 > wikiclean8
 ```
 
 This might take a minute or two to run.
+
+## Context
+
+SearchBetter was designed as part of a research project by [Neel Mehta](https://github.com/hathix), [Daniel Seaton](https://github.com/dseaton), and [Dustin Tingley](http://scholar.harvard.edu/dtingley/home) for Harvard's CS 91r, a research for credit course.
+
+It was originally designed for [Harvard DART](https://dart.harvard.edu/), a tool that helps educators reuse HarvardX assets such as videos and exercises in their online or offline courses. SearchBetter is especially useful for MOOCs, which often have small corpuses and have to deal with many uncommon queries (students will search for the most unfamiliar terms, after all.) Still, SearchBetter has been made general-purpose enough that it can be used with any corpus or any search engine.
