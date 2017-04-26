@@ -4,7 +4,7 @@ import stats
 
 import matplotlib.pyplot as plt
 
-def term_stats(engine, term):
+def term_stats(term, engine, rewriters):
     ans = [num_results(engine, term, rw) for rw in rewriters]
     ans = [term] + ans
     return ans
@@ -17,7 +17,7 @@ def num_results(engine, term, rw):
     return num_results
 
 
-def generate_stats(engine, slug, filename, cached=False):
+def generate_stats(engine, slug, rewriters, filename, cached=False):
     cache_file = '../tmp/queries-%s.csv' % slug
     if cached:
         # rehydrate the cached version
@@ -26,7 +26,7 @@ def generate_stats(engine, slug, filename, cached=False):
         with open(filename, 'r') as f:
             # read terms but chop the newlines at the end of each line
             terms = [line.rstrip('\n') for line in f]
-            data = [term_stats(engine, term) for term in terms]
+            data = [term_stats(term, engine, rewriters) for term in terms]
 
         df = pd.DataFrame(columns=["term","control","wiki","word2vec"], data=data)
         # store it for future reference
