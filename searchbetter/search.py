@@ -124,17 +124,17 @@ class SearchEngine(object):
       flattened_results = self.flatten(results)
 
       # only give the unique ones
-      # unique_results = list(set(flattened_results))
+      # this works now that we use a Result object, which is hashable!
+      unique_results = list(set(flattened_results))
 
-      # return unique_results
-
-      return flattened_results
+      return unique_results
 
   def _single_search(self, term):
     """
     Helper function for search() that just returns search results for a
     single, non-rewritten search term.
-    Returns a list of results. The makeup of the results objects varies
+    Returns a list of results, each of which is a Result object.
+    The makeup of the results objects varies
     from search engine to search engine.
     """
     outer_results = []
@@ -149,7 +149,10 @@ class SearchEngine(object):
       # make sure we store it outside the with-block b/c scope
       outer_results = result_dicts
 
-    return outer_results
+    # those are raw results, we need to map to a Result object
+    cleaned_results = [Result(d) for d in outer_results]
+
+    return cleaned_results
 
 
 class UdacitySearchEngine(SearchEngine):
@@ -403,3 +406,34 @@ class PrebuiltSearchEngine(SearchEngine):
         # TODO raise an error
         raise NotImplementedError("This search engine doesn't need to create an index! Use create = False.")
         pass
+
+
+class Result(object):
+    """
+    Encodes a search result. Basically a wrapper around a result dict.
+    """
+
+    def __init__(self, dict_data):
+        self.dict_data = dict_data
+
+
+    def get_dict(self):
+        """
+        Get the underlying dict data
+        """
+        return self.dict_data
+
+
+    def __repr__(self):
+        """
+        Stringified version of the dict.
+        """
+        return str(self.dict_data)
+
+    # to enable hashing
+    def __hash__(self):
+        return hash(frozenset(self.dict_data.items()))
+
+
+    def __eq__(self, other):
+        return frozenset(self.dict_data.items()) == frozenset(other.dict_data.items())
