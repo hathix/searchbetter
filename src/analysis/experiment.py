@@ -35,7 +35,7 @@ def generate_stats(engine, slug, rewriters, filename, cached=False):
     return df
 
 
-def display_engine_plots(colors, dfs):
+def display_engine_plots(dfs, engine_names, rewriter_names, colors):
 
     # plots.plotly_scatter(control_hits, wiki_hits, w2v_hits)
 
@@ -67,8 +67,13 @@ def display_engine_plots(colors, dfs):
             xlabel = "Hits before rewriting"
             ylabel = "Hits after rewriting"
 
+            title = "Rewriting efficacy for {}".format(engine_names[i])
+            rewriter_name = rewriter_names[j]
+
             plots.matplotlib_scatter(
-                cell, control_hits, ys, max_x, max_y, xlabel, ylabel, color)
+                cell, control_hits, ys, max_x, max_y, xlabel, ylabel, title, rewriter_name, color)
 
     # display
     fig.tight_layout()
+
+    return fig

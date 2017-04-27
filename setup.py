@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'searchbetter',
   packages = ['searchbetter'], # this must be the same as the name above
-  version = '0.1',
+  version = '0.2',
   description = 'Query rewriting for search engines on small corpuses ',
   author = 'Neel Mehta',
   author_email = 'neelmehta96@gmail.com',

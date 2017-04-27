@@ -97,15 +97,15 @@ def plotly_scatter(control_hits, wiki_hits, w2v_hits):
     py.iplot(fig)
 
 
-def matplotlib_scatter(subplot, xs, ys, max_x, max_y, x_label, y_label, color):
+def matplotlib_scatter(subplot, xs, ys, max_x, max_y, x_label, y_label, title, rewriter_name, color):
     # scatter plot
-    subplot.scatter(x=xs, y=ys, alpha=0.5, c=color)
+    scatter = subplot.scatter(x=xs, y=ys, alpha=0.5, c=color)
 
     # line of best fit
-    subplot.plot(np.unique(xs), np.poly1d(np.polyfit(xs, ys, 1))(np.unique(xs)), c=color)
+    regression, = subplot.plot(np.unique(xs), np.poly1d(np.polyfit(xs, ys, 1))(np.unique(xs)), c=color)
 
     # control line
-    subplot.plot(np.unique(xs), np.unique(xs), c="#444444")
+    control, = subplot.plot(np.unique(xs), np.unique(xs), c="#444444")
 
     # TODO make the maxes dynamic
     subplot.set_xlim(0, max_x)
@@ -113,5 +113,12 @@ def matplotlib_scatter(subplot, xs, ys, max_x, max_y, x_label, y_label, color):
 
     subplot.set_xlabel(x_label)
     subplot.set_ylabel(y_label)
+
+    subplot.set_title(title)
+
+    subplot.legend(
+        handles=[scatter, regression, control],
+        labels=[rewriter_name, "Regression for {}".format(rewriter_name), "Control"]
+    )
 
     return subplot
