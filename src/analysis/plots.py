@@ -8,6 +8,8 @@ py.init_notebook_mode()
 
 import matplotlib.pyplot as plt
 
+import stats
+
 def plotSeriesWithRegression(xs, ys, name, color):
     """
     Returns a list of traces:
@@ -121,3 +123,69 @@ def matplotlib_scatter(subplot, xs, ys, max_x, max_y, x_label, y_label, title, r
     )
 
     return subplot
+
+
+
+def summary_bar_chart(df, engine_name):
+    # BAR CHARTS
+    # more stats
+    rewriter_names =[
+        'control',
+        'wiki',
+        'word2vec'
+    ]
+
+    # filter out any rows where there are always zero hits
+    fdf = df[(df['control'] > 0) | (df['wiki'] > 0) | (df['word2vec'] > 0)]
+    fdf = fdf.reset_index(drop=True)
+
+    print stats.summary_of_frame(fdf)
+
+    # series containing # of hits for each search term
+    data_series = [fdf[name] for name in rewriter_names]
+    average_hits = [s.mean() for s in data_series]
+
+    # now filter on just those terms where the control gives nothing
+
+    df_where_no_hits = fdf[fdf['control'] == 0]
+    data_series_zero = [df_where_no_hits[name] for name in rewriter_names]
+    average_hits_zero = [s.mean() for s in data_series_zero]
+
+    print stats.summary_of_frame(df_where_no_hits)
+
+
+    # bar chart of hits
+
+    # first trace: all search terms
+    rewriter_fancy_names = [
+        'Control (no rewriting)',
+        'Wikipedia Categories',
+        'Word2Vec'
+    ]
+
+    traceAllTerms = go.Bar(
+        x=rewriter_fancy_names,
+        y=average_hits,
+        name='All terms'
+    )
+    traceJustMisses = go.Bar(
+        x=rewriter_fancy_names,
+        y=average_hits_zero,
+        name='Terms where no hits by default'
+    )
+
+    traces = [traceAllTerms, traceJustMisses]
+    layout = go.Layout(
+        barmode='group',
+        title='Average hits per rewriter (%s)' % engine_name,
+        xaxis=dict(
+            title='Query rewriter'
+        ),
+        yaxis=dict(
+            title='Average # hits'
+        )
+    )
+
+    fig = go.Figure(data=traces, layout=layout)
+
+    return fig
