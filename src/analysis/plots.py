@@ -107,7 +107,6 @@ def matplotlib_scatter(subplot, xs, ys, max_x, max_y, x_label, y_label, title, r
     # control line
     control, = subplot.plot(np.unique(xs), np.unique(xs), c="#444444", linestyle="dashed")
 
-    # TODO make the maxes dynamic
     subplot.set_xlim(0, max_x)
     subplot.set_ylim(0, max_y)
 
