@@ -105,7 +105,7 @@ def matplotlib_scatter(subplot, xs, ys, max_x, max_y, x_label, y_label, title, r
     regression, = subplot.plot(np.unique(xs), np.poly1d(np.polyfit(xs, ys, 1))(np.unique(xs)), c=color)
 
     # control line
-    control, = subplot.plot(np.unique(xs), np.unique(xs), c="#444444")
+    control, = subplot.plot(np.unique(xs), np.unique(xs), c="#444444", linestyle="dashed")
 
     # TODO make the maxes dynamic
     subplot.set_xlim(0, max_x)

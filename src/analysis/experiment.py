@@ -67,7 +67,7 @@ def display_engine_plots(dfs, engine_names, rewriter_names, colors):
             xlabel = "Hits before rewriting"
             ylabel = "Hits after rewriting"
 
-            title = "Rewriting efficacy for {}".format(engine_names[i])
+            title = "{}".format(engine_names[i])
             rewriter_name = rewriter_names[j]
 
             plots.matplotlib_scatter(
