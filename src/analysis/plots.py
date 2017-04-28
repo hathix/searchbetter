@@ -171,7 +171,7 @@ def summary_bar_chart(df, engine_name):
     traceJustMisses = go.Bar(
         x=rewriter_fancy_names,
         y=average_hits_zero,
-        name='Terms where no hits by default'
+        name='Terms with no hits by default'
     )
 
     traces = [traceAllTerms, traceJustMisses]
@@ -183,6 +183,9 @@ def summary_bar_chart(df, engine_name):
         ),
         yaxis=dict(
             title='Average # hits'
+        ),
+        legend=dict(
+            # orientation="h",
         )
     )
 
