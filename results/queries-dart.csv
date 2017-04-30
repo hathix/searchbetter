@@ -1,0 +1,1719 @@
+,term,control,wiki,word2vec
+0,abbe number,1,49,130
+1,abscisic acid,0,4,0
+2,abscission,0,9,0
+3,absolute advantage,52,83,52
+4,absolute electrode potential,0,35,0
+5,absolute humidity,0,0,0
+6,absolute magnitude,23,25,272
+7,absolute motion,46,46,46
+8,absolute pressure,42,42,42
+9,absolute scale,95,368,95
+10,absolute zero,55,1937,55
+11,absorbance,0,16,439
+12,absorption,54,54,472
+13,absorption spectroscopy,6,163,42
+14,absorption spectrum,19,19,138
+15,absorptivity,0,0,0
+16,abyssal zone,0,2,0
+17,accelerating universe,9,9,9
+18,acceleration,61,113,816
+19,acceleration due to gravity,8,8,8
+20,accelerometer,2,63,2
+21,acclimatization,1,29,1
+22,accuracy,104,104,1840
+23,acid,234,234,398
+24,acid anhydride,0,0,0
+25,acid dissociation constant,0,191,0
+26,acid precipitation,3,3,3
+27,acoelomate,0,0,0
+28,acoustics,10,10,316
+29,actin,2,40,2
+30,actinides,2,2,32
+31,action potential,166,166,237
+32,activated complex,39,44,39
+33,activation energy,40,72,152
+34,active site,128,231,128
+35,active transport,53,132,119
+36,activity series,129,129,129
+37,actual yield,42,42,42
+38,adaptive expectations,4,8,109
+39,addition reaction,85,159,85
+40,adenosine triphosphate,4,4,223
+41,adenylate cyclase,4,4,369
+42,adhesion,1,161,74
+43,adiabatic cooling,4,4,4
+44,adiabatic heating,2,2,2
+45,adverse selection,27,251,27
+46,advertising,173,173,1836
+47,aeration,0,110,0
+48,aerobic,36,36,387
+49,aerobiology,0,0,0
+50,aerodynamics,1,108,482
+51,afocal system,0,23,0
+52,agency costs,61,61,61
+53,agricultural policy,50,62,310
+54,agriculture,156,316,655
+55,agrobiology,0,11,0
+56,aid,351,449,3994
+57,air mass,105,108,105
+58,air mass (astronomy),2,6,2
+59,air mass (solar energy),12,167,12
+60,albedo,6,128,327
+61,alcohol,111,113,622
+62,aldehyde,9,70,52
+63,alkali metals,0,0,69
+64,alkaline earth metals,0,0,0
+65,alkane,0,0,59
+66,alkene,0,61,54
+67,alkyl group,0,0,159
+68,alkyne,0,61,59
+69,allomer,0,0,0
+70,allotropy,0,138,66
+71,alloy,6,150,99
+72,alpha particle,4,140,102
+73,alternating current,29,123,89
+74,alternative hypothesis,69,88,69
+75,altruism,15,179,72
+76,amino acid,85,97,511
+77,ammeter,4,33,358
+78,amniote,0,0,0
+79,amorphous solid,0,33,89
+80,amortisation,0,0,0
+81,ampere,0,10,61
+82,amplifier,5,11,260
+83,amplitude,19,899,502
+84,anatomy,44,63,507
+85,aneuploidy,1,1,1
+86,angle of incidence,3,3,3
+87,angle of reflection,14,14,14
+88,angstrom,7,7,7
+89,angular acceleration,4,160,4
+90,angular displacement,0,181,0
+91,angular frequency,2,220,82
+92,angular momentum,5,120,252
+93,angular velocity,4,323,427
+94,animal spirits,8,8,8
+95,anion,2,2,170
+96,annihilation,16,80,988
+97,anode,1,1,432
+98,antibiotic,44,44,496
+99,anticodon,0,0,0
+100,antigravity,0,0,0
+101,antimatter,2,99,473
+102,antineutron,0,25,0
+103,antiparticle,2,2,407
+104,antiproton,0,63,136
+105,antitrust,17,17,196
+106,appreciation,124,124,766
+107,arachnology,0,1,0
+108,arbitrage,10,84,587
+109,arbitrage pricing theory,2,117,2
+110,arc length,12,772,12
+111,archimedes' principle,2,1015,2
+112,area moment of inertia,8,8,8
+113,aromaticity,0,5,0
+114,artificial selection,17,17,17
+115,asexual reproduction,0,0,112
+116,asian crisis,17,17,17
+117,assets,103,103,922
+118,astrobiology,18,21,281
+119,astronomical unit,9,63,200
+120,astrophysics,18,87,360
+121,asymmetric information,3,3,3
+122,asymmetric shock,0,0,0
+123,atom,102,226,521
+124,atomic line filter,3,4,3
+125,atomic mass,40,1019,156
+126,atomic mass unit,8,8,8
+127,atomic number,60,239,164
+128,atomic orbital,4,99,110
+129,atomic packing factor,0,10,0
+130,atomic physics,49,49,100
+131,atomic radius,9,149,9
+132,atomic structure,45,45,211
+133,atomic weight,17,17,171
+134,attenuation coefficient,0,43,0
+135,auctions,7,7,159
+136,audio frequency,19,884,19
+137,austrian economics,4,4,619
+138,autarky,0,371,302
+139,autoimmunity,1,19,65
+140,autotrophic,0,0,0
+141,average,830,3542,3750
+142,average atomic mass,5,5,5
+143,average speed,53,53,78
+144,avogadro constant,0,79,0
+145,avogadro's law,0,81,0
+146,avogadro's number,0,0,0
+147,axion,0,141,0
+148,azimuthal quantum number,0,66,0
+149,b cell,397,466,397
+150,babinet's principle,0,8,0
+151,background radiation,21,31,156
+152,backwardation,0,0,0
+153,bacteria,107,117,638
+154,bacteriophage,0,0,86
+155,balance of payments,25,130,25
+156,balanced budget,5,88,5
+157,balmer series,2,113,2
+158,bank,335,337,763
+159,bankruptcy,30,383,1681
+160,barometer,5,30,89
+161,barr body,0,73,0
+162,barriers to entry (or exit),6,6,6
+163,barter,19,785,282
+164,basal body,4,12,4
+165,base,602,602,2518
+166,base anhydride,0,10,0
+167,basel 1 and 2,24,24,24
+168,basis point,463,484,463
+169,battery,59,59,323
+170,beam,54,54,496
+171,bear,408,408,1159
+172,beat,175,175,2901
+173,beer-lambert law,0,0,0
+174,behavioral ecology,0,0,147
+175,behavioural economics,0,0,0
+176,bending,60,230,531
+177,bending moment,43,1281,43
+178,benthic zone,0,1,0
+179,bernoulli equation,0,0,0
+180,bernoulli's principle,0,6,0
+181,bessel function,0,4,0
+182,beta,234,321,465
+183,beta particle,4,117,4
+184,big bang,73,73,602
+185,big mac index,44,44,44
+186,bile,2,39,80
+187,binary fission,0,0,0
+188,binary star,76,153,170
+189,binding energy,44,182,44
+190,binomial random variable,4,4,4
+191,biocatalysis,0,151,0
+192,biochemistry,38,105,573
+193,biodiversity,47,47,247
+194,bioenergetics,0,90,0
+195,bioengineering,10,10,10
+196,biogeography,0,183,42
+197,bioinformatics,9,9,339
+198,biological organization,34,34,34
+199,biology,240,240,1754
+200,biomass,32,124,279
+201,biomathematics,0,0,0
+202,biome,0,13,28
+203,biomechanics,3,33,14
+204,biomedical engineering,18,33,715
+205,biomedical research,30,30,140
+206,biomimetic,1,1,1
+207,biomolecule,4,323,4
+208,bionics,1,1,48
+209,biophysics,1,3,257
+210,biotechnology,23,62,643
+211,bipedal,0,0,107
+212,black,924,2616,2926
+213,black economy,90,90,90
+214,black hole,44,181,443
+215,black-scholes,0,0,0
+216,blastocyst,0,2,0
+217,block and tackle,42,208,42
+218,blood,604,604,1213
+219,bohr model,10,86,520
+220,boiling,29,164,266
+221,boiling point,13,297,578
+222,boiling point elevation,0,0,0
+223,boiling-point elevation,0,126,0
+224,boltzmann constant,11,81,11
+225,bond,146,146,1924
+226,bonds,133,133,698
+227,boom and bust,2,2,2
+228,bose,2,2,312
+229,boson,1,76,437
+230,botany,12,13,338
+231,bounded rationality,3,190,3
+232,bowman's capsule,0,2,0
+233,boyle's law,5,461,5
+234,bra,5,66,79
+235,bragg's law,0,120,0
+236,brand,166,166,1140
+237,bretton woods,6,6,142
+238,brewster's angle,0,191,0
+239,british thermal unit,2,92,2
+240,brittle,21,21,167
+241,brønsted,0,0,0
+242,brønsted-lowrey acid,0,0,0
+243,brønsted-lowrey base,0,0,0
+244,brownian motion,27,69,269
+245,bubble,110,114,497
+246,buckminsterfullerene,0,15,233
+247,budget,206,261,1922
+248,buffered solution,1,1,1
+249,building biology,38,214,38
+250,bulk modulus,0,45,0
+251,bull,64,142,661
+252,bumping,6,6,159
+253,buoyancy,2,994,143
+254,burette,0,20,0
+255,business confidence,58,58,58
+256,business cycle,73,73,382
+257,buyer's market,14,14,14
+258,calculus,55,55,1076
+259,calorimeter,0,24,256
+260,calvin cycle,1,1,1
+261,cannibalise,0,0,0
+262,capacitance,0,382,202
+263,capacitive reactance,0,0,0
+264,capacity,485,485,2805
+265,capital,818,818,1404
+266,capital adequacy ratio,0,81,0
+267,capital asset pricing model,2,78,2
+268,capital controls,15,15,15
+269,capital flight,27,386,27
+270,capital gains,31,31,275
+271,capital intensive,25,25,25
+272,capital markets,53,53,53
+273,capital structure,185,185,185
+274,capitalism,75,75,454
+275,capm,0,0,0
+276,capsid,1,20,49
+277,carbon fixation,0,359,0
+278,carbonate,10,10,151
+279,carnot cycle,0,6,84
+280,cartel,4,23,122
+281,cartesian coordinates,8,8,158
+282,catalyst,52,86,307
+283,catch-up effect,73,73,73
+284,cathode,12,12,268
+285,cathode ray,4,11,188
+286,cation,2,2,155
+287,cell,397,397,980
+288,cell biology,60,60,179
+289,cell membrane,51,66,386
+290,cell nucleus,22,28,251
+291,cell plate,13,99,13
+292,cell potential,72,72,72
+293,cell theory,52,152,52
+294,celsius scale,4,4,371
+295,center of curvature,19,113,19
+296,center of gravity,42,42,42
+297,center of mass,193,931,193
+298,center of pressure,116,116,116
+299,centigrade,8,8,52
+300,central bank,70,70,450
+301,central force motion,19,19,19
+302,central limit theorem,66,70,66
+303,centrifugal force,2,1199,202
+304,centrifugation,0,0,0
+305,centrifuge,12,12,148
+306,centriole,0,80,196
+307,centripetal force,1,1202,409
+308,centroid,2,3011,2
+309,centrosome,0,8,0
+310,ceteris paribus,4,195,4
+311,chain reaction,71,137,244
+312,change of base rule,69,69,69
+313,charity,57,57,752
+314,charles's law,107,123,107
+315,chelation,2,11,2
+316,chemical bond,37,41,223
+317,chemical compound,26,153,163
+318,chemical equilibrium,26,52,134
+319,chemical formula,18,335,73
+320,chemical kinetics,7,74,49
+321,chemical law,24,63,24
+322,chemical physics,23,157,23
+323,chemical reaction,67,182,427
+324,chemistry,138,138,2529
+325,chicago school,130,130,130
+326,chloride,8,9,123
+327,chloroplast,0,8,123
+328,cholesterol,46,149,500
+329,chromate,0,0,0
+330,chromosome,53,53,435
+331,circle,390,535,1247
+332,circular motion,17,192,726
+333,classical dichotomy,4,98,4
+334,classical economics,12,36,73
+335,classical mechanics,48,90,182
+336,cloning,8,64,535
+337,closed economy,39,39,39
+338,closed system,171,505,171
+339,coase theorem,0,200,0
+340,coherence,47,47,171
+341,cold fusion,8,72,2049
+342,collateral,30,30,239
+343,colligative properties,0,537,0
+344,colloid,0,11,284
+345,collusion,6,133,213
+346,combustion,40,40,535
+347,command economy,20,20,431
+348,commoditisation,0,0,0
+349,commodity,53,480,1417
+350,common goods,101,101,101
+351,communism,26,48,364
+352,comparative advantage,16,223,367
+353,competition,448,714,2265
+354,competitive advantage,49,844,49
+355,competitiveness,11,196,798
+356,complementary goods,5,5,5
+357,complex harmonic motion,0,48,0
+358,compound,98,98,835
+359,compound interest,21,1139,21
+360,compression,70,70,623
+361,compton scattering,0,78,68
+362,concave lens,2,2,2
+363,concentration,242,283,1192
+364,condensation,18,29,362
+365,condensation point,5,66,5
+366,condensed matter physics,6,125,6
+367,conditionality,4,359,4
+368,conductor,44,44,343
+369,conjugate acid,0,9,6
+370,conjugated system,0,3,0
+371,conservation biology,10,15,10
+372,conservation of momentum,11,11,11
+373,constructive interference,4,4,182
+374,consumer confidence,15,247,15
+375,consumer prices,32,32,58
+376,consumer surplus,3,3,3
+377,consumption,223,223,591
+378,contagion,6,6,286
+379,contestable market,0,74,0
+380,continuous spectrum,25,26,54
+381,continuum mechanics,6,52,6
+382,convection,13,86,460
+383,convergence,38,38,550
+384,convex lens,4,4,4
+385,cooling curve,7,55,7
+386,corruption,137,150,1361
+387,cosmic background radiation,4,27,4
+388,cosmic rays,12,12,252
+389,cost of capital,192,238,192
+390,cost-benefit analysis,60,60,60
+391,coulomb,0,7,173
+392,coulomb's law,0,1012,0
+393,covalent bond,22,34,197
+394,covalent compound,0,0,0
+395,creative destruction,24,226,24
+396,credit,930,930,2868
+397,credit creation,65,65,65
+398,credit crunch,0,1019,0
+399,creditor,4,1002,113
+400,crest,16,16,709
+401,crest factor,3,5,3
+402,critical angle,24,24,24
+403,critical mass,106,956,162
+404,crony capitalism,0,81,193
+405,crowding out,20,20,20
+406,cryobiology,0,11,258
+407,crystal,54,54,261
+408,currency board,12,325,92
+409,currency peg,0,0,0
+410,current account,220,263,677
+411,current density,66,245,66
+412,curvilinear motion,0,91,0
+413,cuvette,0,0,0
+414,cyclin,0,198,0
+415,cyclotron,2,36,65
+416,cytosine,14,17,37
+417,dalton,4,4,169
+418,dalton's law,3,53,3
+419,dalton's law of partial pressures,0,0,0
+420,damped vibration,0,0,0
+421,damping,0,236,48
+422,darcy,0,0,74
+423,dark energy,75,201,469
+424,dark matter,141,141,289
+425,darwinian fitness,5,5,5
+426,dc motor,2,2,2
+427,"de soto, hernando",0,0,0
+428,deadweight cost/loss,1,1,1
+429,debt,95,1043,1478
+430,debt forgiveness,1,1,1
+431,debt-equity ratio,7,7,7
+432,decibel,0,12,274
+433,deciduous,3,17,34
+434,default,541,541,1135
+435,deficit,41,41,639
+436,definite integral,2,2,106
+437,deflation,3,3,293
+438,deflection,13,13,281
+439,deformation (engineering),4,16,4
+440,deformation (mechanics),2,22,2
+441,dehydration reaction,14,14,14
+442,deionization,0,0,0
+443,deliquescence,0,0,0
+444,demand,420,441,2320
+445,demand curve,31,422,31
+446,demographics,71,71,257
+447,denaturation,0,0,226
+448,dendrite,0,1,139
+449,denitrification,5,21,5
+450,density,191,229,933
+451,deoxyribonucleic acid,4,4,234
+452,deoxyribose,8,8,353
+453,depolarization,0,18,0
+454,deposit insurance,0,24,0
+455,deposition,15,15,309
+456,depreciation,5,102,326
+457,depression,149,149,1455
+458,deregulation,11,70,639
+459,derivative,72,660,3254
+460,derivatives,21,21,1021
+461,derived unit,26,26,26
+462,desmosome,0,6,0
+463,destructive interference,5,5,120
+464,devaluation,2,38,225
+465,developing countries,305,305,900
+466,development economics,98,372,98
+467,dew point,16,126,16
+468,diatomic-consistent of two atoms,0,0,0
+469,dielectric,6,39,125
+470,diffraction,2,55,428
+471,diffusion,47,55,466
+472,diminishing returns,17,83,17
+473,dipolar bond,0,0,0
+474,dipole,1,145,177
+475,dipole moment,1,1,28
+476,direct taxation,15,15,15
+477,discount rate,13,13,478
+478,discounted cashflow,0,0,0
+479,diseconomies of scale,0,52,0
+480,disequilibrium,14,14,14
+481,disinflation,0,42,0
+482,disintermediation,0,893,0
+483,dispersion,11,11,379
+484,displacement (fluid),5,53,5
+485,displacement (vector),3,772,3
+486,dissolution or solvation,0,0,0
+487,distance,547,1154,1373
+488,diversification,9,9,248
+489,dividend,1,9,294
+490,division of labour,6,6,6
+491,dna,179,179,1154
+492,dna replication,27,27,179
+493,dna sequencing,23,23,1714
+494,dollarisation,0,0,0
+495,dominant firm,21,21,21
+496,doppler effect,11,11,129
+497,double bond,30,40,327
+498,drag,135,135,995
+499,drift velocity,0,6,0
+500,ductility,0,7,0
+501,dumping,12,12,181
+502,dynamics,166,166,873
+503,dyne,0,50,0
+504,dynein,1,4,1
+505,earth metal,62,66,62
+506,ecb,0,0,388
+507,ecdysone,0,5,0
+508,ecological efficiency,13,13,13
+509,ecological niche,4,139,334
+510,ecological pyramid,4,97,4
+511,ecological succession,6,86,6
+512,ecology,94,94,727
+513,econometrics,2,73,257
+514,economic and monetary union,8,70,8
+515,economic indicator,21,21,21
+516,economic man,140,140,140
+517,economic rent,36,174,36
+518,economic sanctions,15,421,636
+519,economics,295,295,1330
+520,economies of scale,87,127,87
+521,econophysics,0,125,0
+522,ecophysiology,0,122,0
+523,ecosystem,58,158,331
+524,ecotype,0,110,0
+525,ectoderm,0,13,313
+526,ectotherm,0,3,0
+527,effective exchange rate,13,26,13
+528,effector,10,10,211
+529,effector cell,7,7,7
+530,efferent,0,6,0
+531,efficiency,314,406,1725
+532,efficiency wages,0,0,0
+533,efficient market hypothesis,6,6,6
+534,egg,66,67,866
+535,elastic collision,3,111,3
+536,elastic energy,6,183,6
+537,elastic instability,1,233,1
+538,elastic modulus,0,4,0
+539,elasticity,19,19,197
+540,electric charge,28,87,420
+541,electric circuit,10,10,10
+542,electric current,55,55,307
+543,electric displacement field,1,9,1
+544,electric field,58,106,271
+545,electric field gradient,1,57,1
+546,electric field intensity,10,10,10
+547,electric generator,21,38,21
+548,electric motor,12,17,93
+549,electric potential,34,145,277
+550,electric power,88,95,405
+551,electrical and electronics engineering,3,3,3
+552,electrical conductor,2,281,2
+553,electrical insulator,0,0,109
+554,electrical network,17,312,17
+555,electrical potential energy,20,20,20
+556,electrical resistance,10,10,125
+557,electricity,279,279,817
+558,electrochemical cell,0,1020,64
+559,electrochemical gradient,7,110,7
+560,electrodynamics,32,32,101
+561,electrolyte,6,61,176
+562,electrolytic cell,0,0,88
+563,electromagnet,3,60,3
+564,electromagnetic field,13,20,131
+565,electromagnetic induction,0,88,62
+566,electromagnetic radiation,19,105,291
+567,electromagnetic spectrum,19,184,501
+568,electromagnetic wave equation,2,120,2
+569,electromagnetism,7,38,681
+570,electromechanics,0,217,0
+571,electromotive force,0,79,239
+572,electron,156,159,503
+573,electron acceptor,28,28,28
+574,electron carrier,10,10,10
+575,electron donor,12,12,12
+576,electron microscope,1,37,274
+577,electron pair,10,40,480
+578,electron shell,0,103,0
+579,electron shells,0,0,235
+580,electron transport chain,48,58,48
+581,electronegativity,2,53,438
+582,electronics,36,36,1970
+583,electronvolt,0,183,196
+584,element,792,792,2566
+585,elementary particle,5,154,132
+586,embryo,2,6,195
+587,embryo sac,0,0,0
+588,embryology,2,2,222
+589,emerging markets,36,429,36
+590,emission spectrum,13,187,88
+591,empirical formula,18,23,697
+592,enantiomer,0,6,0
+593,endangered species,9,83,273
+594,endemic species,5,5,41
+595,endemism,0,97,0
+596,endergonic reaction,7,7,7
+597,endocrine gland,0,2,0
+598,endocrine system,2,2,175
+599,endocytosis,3,50,74
+600,endoderm,0,13,0
+601,endodermis,0,8,0
+602,endogenous,13,13,133
+603,endoplasmic reticulum,10,10,113
+604,endosperm,0,8,0
+605,endosymbiotic theory,0,0,0
+606,endotherm,0,3,0
+607,endothermic,2,2,186
+608,energy,1034,1210,1921
+609,engel's law,0,133,0
+610,engineering physics,51,139,51
+611,enron,3,11,298
+612,enterprise,211,211,943
+613,enthalpy,10,397,165
+614,entomology,1,241,13
+615,entrepreneur,59,59,318
+616,entropy,34,84,827
+617,environmental biology,41,41,41
+618,environmental economics,49,149,49
+619,enzyme,170,304,623
+620,epicotyl,0,8,0
+621,epidemiology,115,127,464
+622,epigenetics,3,7,3
+623,epinephrine,13,184,100
+624,epiphyte,0,86,0
+625,epistasis,0,4,0
+626,eppendorf tube,0,0,0
+627,equilibrium,101,101,547
+628,equipartition,0,0,0
+629,equities,0,0,0
+630,equity,174,174,837
+631,equity risk premium,2,2,2
+632,escape velocity,11,49,193
+633,estrogen,6,85,124
+634,ethology,0,0,282
+635,eukaryote,0,0,41
+636,euro,16,29,533
+637,euro zone,6,6,6
+638,eurodollar,0,258,0
+639,european central bank,11,11,11
+640,european union,77,77,1237
+641,evolution,259,270,1588
+642,evolutionary biology,22,36,332
+643,evolutionary economics,10,159,10
+644,excess returns,7,7,7
+645,exchange controls,15,15,15
+646,exchange rate,54,276,1003
+647,exocytosis,2,30,2
+648,exogenous,6,6,56
+649,exon,18,193,233
+650,exothermic,4,4,205
+651,exothermic process,4,12,4
+652,expectations,201,201,2775
+653,expected returns,109,109,109
+654,expenditure tax,5,5,5
+655,experimental physics,52,328,52
+656,exponential growth,8,22,477
+657,export credit,9,9,9
+658,exports,21,21,722
+659,expressivity,0,0,0
+660,external fertilization,2,6,2
+661,externality,6,216,79
+662,extrinsic property,5,5,5
+663,factor cost,188,255,188
+664,factors of production,101,1296,101
+665,factory prices,5,5,5
+666,facultative anaerobe,0,0,0
+667,fair trade,112,112,112
+668,falling bodies,34,34,34
+669,farad,0,2,39
+670,faraday,6,6,33
+671,faraday constant,4,32,4
+672,faraday's law of electrolysis,0,0,0
+673,fdi,0,0,253
+674,federal reserve system,19,19,19
+675,fermat's principle,0,572,0
+676,ferrimagnetism,0,3,139
+677,ferromagnetism,0,3,23
+678,fick's laws of diffusion,0,97,0
+679,financial centre,7,79,270
+680,financial instrument,21,171,21
+681,financial intermediary,10,170,10
+682,financial markets,76,76,566
+683,financial system,262,282,262
+684,fine tuning,14,14,208
+685,firms,121,121,1161
+686,first,6445,6445,9486
+687,first-mover advantage,19,455,19
+688,fiscal drag,2,34,2
+689,fiscal neutrality,1,1,1
+690,fiscal policy,34,34,342
+691,fission,56,56,249
+692,fixed costs,109,109,109
+693,flotation,4,4,15
+694,fluid,116,116,597
+695,fluid mechanics,8,49,40
+696,fluid physics,11,11,11
+697,fluid statics,0,0,0
+698,fluorescence,4,63,211
+699,flux,53,614,476
+700,focus,1787,1787,4676
+701,foetus,0,0,154
+702,food chain,70,98,122
+703,force,991,1124,2876
+704,forecasting,10,758,261
+705,foreign direct investment,17,467,17
+706,forward contracts,36,36,36
+707,founder effect,58,213,58
+708,fraunhofer lines,0,65,0
+709,free lunch,82,204,82
+710,free riding,31,76,31
+711,free trade,158,331,724
+712,freezing,34,43,496
+713,freezing point,22,30,313
+714,frequency,199,368,864
+715,frequency modulation,2,2,345
+716,frictional unemployment,0,44,0
+717,"friedman, milton",9,9,491
+718,full employment,45,55,404
+719,function,2154,2154,2894
+720,fundamental frequency,49,67,225
+721,fundamental theorem of calculus,0,0,0
+722,fungible,3,3,3
+723,fusion,59,59,620
+724,futures,51,51,597
+725,"g7, g8, g10, g21, g22, g26",0,0,0
+726,galvanic cell,0,7,95
+727,game theory,127,127,1445
+728,gamma,56,147,302
+729,gamma ray,5,170,494
+730,ganglion,0,0,220
+731,gas,321,346,840
+732,gatt,1,1,238
+733,gay-lussac's law,0,0,0
+734,gdp,89,89,2502
+735,gearing,4,4,18
+736,gene,266,312,880
+737,gene pool,7,542,704
+738,general agreement on tariffs and trade,1,1,1
+739,general equilibrium,31,31,31
+740,general relativity,112,120,601
+741,generational accounting,1,9,1
+742,genetic code,19,284,643
+743,genetic drift,3,49,756
+744,genetic variation,21,42,106
+745,genetics,73,73,635
+746,genome,131,269,1126
+747,geochemistry,6,58,106
+748,geophysics,4,4,17
+749,gibbs energy,0,0,0
+750,giffen goods,0,0,0
+751,gilts,0,0,0
+752,gini coefficient,7,20,433
+753,global public goods,57,57,57
+754,globalisation,6,6,242
+755,gluon,0,0,185
+756,gni,0,0,863
+757,gnp,6,6,323
+758,gold,366,366,1182
+759,gold standard,42,42,254
+760,golden rule,39,39,150
+761,government,1829,1847,3240
+762,government bonds,24,24,24
+763,government debt,40,40,40
+764,government expenditure,27,27,27
+765,government revenue,88,126,88
+766,graham's law of diffusion,0,0,0
+767,gram-atom,0,0,0
+768,gravitation,4,4,325
+769,gravitational constant,20,40,80
+770,gravitational energy,25,171,25
+771,gravitational field,29,122,258
+772,gravitational potential,7,131,337
+773,gravitational waves,15,15,607
+774,gravity,120,181,1025
+775,"greenspan, alan",0,0,0
+776,gresham's law,0,56,0
+777,gross domestic product,24,74,24
+778,gross national product,25,35,25
+779,ground,869,869,2013
+780,ground state,331,395,331
+781,group,2201,2201,6468
+782,group velocity,18,171,216
+783,growth,496,496,1883
+784,guanine,14,37,53
+785,gular,0,0,0
+786,habitat,52,137,494
+787,hadron,3,112,40
+788,half,1328,1328,3796
+789,halogens,2,2,214
+790,hamilton's principle,5,573,5
+791,hard currency,26,91,445
+792,harmonic mean,4,3011,448
+793,hawala,0,66,523
+794,"hayek, friedrich",4,4,4
+795,heat,248,324,1094
+796,heat transfer,17,100,651
+797,hedge,44,281,131
+798,hedge funds,5,5,1763
+799,helmholtz free energy,0,262,0
+800,henderson,23,23,192
+801,henry's law,44,44,44
+802,herfindahl-hirschman index,0,0,0
+803,hermaphrodite,1,336,37
+804,herpetology,0,0,150
+805,hertz,13,24,87
+806,hess's law,0,32,0
+807,heterosis,0,92,0
+808,higgs boson,1,211,85
+809,histology,2,12,218
+810,homeokinetics,0,475,0
+811,homo economicus,9,110,9
+812,horizontal equity,9,9,9
+813,horizontal integration,10,547,10
+814,hormone,27,75,353
+815,horsepower,2,2,125
+816,hot money,80,193,80
+817,house prices,45,45,45
+818,hubble deep field,4,4,4
+819,human capital,238,238,238
+820,human development index,41,41,41
+821,human nutrition,40,114,40
+822,hund's rules,0,716,0
+823,huygens,0,8,11
+824,hydrocarbon,13,13,345
+825,hydrostatics,0,472,65
+826,hyper-inflation,0,0,623
+827,hypothecation,0,218,0
+828,hysteresis,1,1,320
+829,ice point,80,80,80
+830,ichthyology,0,0,56
+831,ideal gas,13,13,143
+832,ideal gas constant,4,4,4
+833,ideal gas law,3,54,3
+834,ilo,3,5,215
+835,imf,18,18,1348
+836,immune response,34,78,71
+837,immunogloblin,0,0,0
+838,impedance,0,0,45
+839,imperfect competition,13,14,13
+840,imports,42,42,686
+841,income,607,607,2119
+842,income effect,156,156,156
+843,income tax,113,134,753
+844,incomplete dominance,4,4,4
+845,incumbent advantage,6,6,6
+846,indefinite integral,0,0,0
+847,index numbers,187,187,187
+848,indexation,0,108,0
+849,indicator,130,130,228
+850,indifference curve,1,261,1
+851,indirect taxation,1,1,1
+852,induced radioactivity,1,46,1
+853,inductance,0,73,120
+854,inductive reactance,0,0,0
+855,inelastic,2,2,558
+856,inequality,173,173,353
+857,inertia,33,77,309
+858,inferior goods,22,22,22
+859,inflation,42,315,1016
+860,inflation target,5,5,5
+861,information,2205,2219,5579
+862,infrasound,0,826,0
+863,infrastructure,450,450,1638
+864,innovation,483,1699,2083
+865,inorganic chemistry,9,138,51
+866,inorganic compound,2,2,2
+867,insider trading,4,242,299
+868,institutional economics,39,39,39
+869,institutional investors,15,15,15
+870,insulator,0,0,150
+871,insulin,41,77,354
+872,insurance,430,430,2279
+873,intangible assets,0,0,0
+874,integral,131,140,1015
+875,integral transform,16,16,16
+876,integrative biology,1,1,1
+877,intellectual capital,87,184,87
+878,interest,1132,1356,5843
+879,interest rate,144,163,701
+880,interferon,2,7,95
+881,interleukin,0,0,0
+882,internal fertilization,2,5,2
+883,international aid,136,136,136
+884,international labour organisation,0,0,0
+885,international monetary fund,11,11,11
+886,international system of units,43,43,43
+887,international trade,140,157,951
+888,intervention,421,421,1450
+889,intrinsic property,18,18,18
+890,invariant mass,1,1050,1
+891,invertebrate,1,1,28
+892,investment,319,319,1619
+893,invisible hand,71,258,678
+894,invisible trade,19,19,19
+895,inward investment,3,4,3
+896,ion,21,49,286
+897,ionic bond,0,0,112
+898,ionization,6,117,409
+899,isomer,6,27,158
+900,isotonic solution,0,0,0
+901,isotope,10,67,97
+902,iupac,0,0,173
+903,j-curve,230,230,230
+904,jejunum,0,7,0
+905,job search,127,127,127
+906,jodium,0,0,0
+907,joint supply,29,29,29
+908,joule,6,84,139
+909,kelvin,23,42,79
+910,ketone,28,89,76
+911,"keynes, john maynard",6,6,6
+912,keynesian,8,8,120
+913,kinematics,11,114,11
+914,kinetic energy,49,185,568
+915,kinetics,42,42,268
+916,kirchhoff's circuit laws,0,45,0
+917,kirchhoff's equations,0,0,0
+918,kleptocracy,0,254,0
+919,kondratieff wave,0,0,0
+920,krebs cycle,0,0,134
+921,labour,36,36,1790
+922,labour intensive,0,0,0
+923,labour market flexibility,0,1533,0
+924,labour theory of value,6,6,6
+925,lacteal,0,7,0
+926,laffer curve,0,211,0
+927,lagging indicators,1,1,1
+928,lagging strand,0,0,113
+929,laissez-faire,14,14,14
+930,laminar flow,0,15,0
+931,land,896,915,1812
+932,land tax,117,117,117
+933,lanthanides,0,0,5
+934,laplace,2,10,152
+935,laplace transform,0,72,292
+936,larva,0,4,74
+937,laser,47,69,314
+938,lattice,12,12,232
+939,law and economics,66,177,66
+940,law of independent assortment,0,0,0
+941,law of universal gravitation,0,0,0
+942,laws of motion,60,175,60
+943,laws of thermodynamics,11,52,11
+944,lbo,0,0,0
+945,lc circuit,0,0,0
+946,leading indicators,27,27,27
+947,lender of last resort,4,69,4
+948,lepton,0,56,194
+949,leukocyte,0,0,0
+950,lever,8,128,234
+951,leverage,185,185,817
+952,leveraged buy-out,8,8,8
+953,lewis acid,0,0,0
+954,lewis base,5,5,5
+955,liberal economics,17,17,17
+956,liberalisation,3,3,155
+957,libor,0,145,0
+958,life,3471,3471,5311
+959,life-cycle hypothesis,15,111,15
+960,ligament,0,14,12
+961,light,1292,1292,2497
+962,linear actuator,1,6,1
+963,linear algebra,59,90,421
+964,linear elasticity,3,18,3
+965,linked genes,13,13,13
+966,liouville's theorem,0,0,0
+967,lipid,37,37,186
+968,lipoprotein,2,51,125
+969,liquid,117,537,855
+970,liquid crystal,6,6,99
+971,liquidity,3,3,92
+972,liquidity preference,0,28,0
+973,liquidity trap,0,8,0
+974,lock-in,108,108,108
+975,london dispersion forces,0,0,0
+976,long run,785,785,1103
+977,lump of labour fallacy,0,1,0
+978,lump-sum tax,0,44,0
+979,luxuries,18,18,987
+980,m,0,0,44
+981,m phase,309,309,309
+982,mach number,12,18,12
+983,machine,409,409,2101
+984,machine element,118,275,118
+985,maclaurin series,0,6,0
+986,macroeconomic policy,12,12,12
+987,macroeconomics,7,7,436
+988,macroevolution,0,22,634
+989,macromolecule,0,324,163
+990,macronutrient,0,0,0
+991,macrophage,4,64,74
+992,magnetic field,38,98,590
+993,magnetic quantum number,7,66,7
+994,magnetism,27,27,190
+995,mammalogy,0,0,113
+996,manometer,0,0,0
+997,manufacturing,106,681,1655
+998,marginal,119,119,2099
+999,marine biology,1,2,1
+1000,market capitalisation,0,0,0
+1001,market failure,53,53,53
+1002,market forces,103,103,103
+1003,market power,183,395,183
+1004,marshall plan,22,22,438
+1005,"marshall, alfred",1,1,1
+1006,"marx, karl",10,10,10
+1007,mass,890,917,2690
+1008,mass balance,60,896,60
+1009,mass concentration,40,40,40
+1010,mass density,60,60,60
+1011,mass flux,13,58,13
+1012,mass fraction,23,23,23
+1013,mass moment of inertia,3,3,3
+1014,mass number,300,344,300
+1015,mass spectrometry,2,72,9
+1016,mast cell,1,60,1
+1017,material properties,66,66,66
+1018,materials science,120,253,304
+1019,mathematical physics,65,65,177
+1020,mathematics,181,181,2249
+1021,matrix,318,318,2211
+1022,matter,1769,1769,7437
+1023,maxwell's equations,19,352,19
+1024,mean,3101,3111,4337
+1025,mean reversion,1,1,1
+1026,measures of central tendency,8,8,8
+1027,mechanical filter,8,250,8
+1028,mechanical wave,12,179,12
+1029,mechanics,171,203,694
+1030,median,101,3082,975
+1031,medium term,106,106,106
+1032,medulla,4,4,236
+1033,meiosis,3,103,93
+1034,melting,42,210,567
+1035,membrane potential,21,103,21
+1036,menu costs,27,27,27
+1037,mercantilism,2,60,490
+1038,mergers and acquisitions,8,8,8
+1039,meson,2,2,60
+1040,messenger rna,9,9,661
+1041,metal,185,185,948
+1042,metalloid,0,28,145
+1043,metaphase,0,70,112
+1044,methylene blue,9,14,9
+1045,microbiology,8,8,145
+1046,microcentrifuge,1,1,1
+1047,microcentrifuge or eppendorf tube with coomassie blue solution,0,0,0
+1048,microeconomics,2,9,724
+1049,microevolution,0,28,18
+1050,microtome,0,6,0
+1051,minimum wage,13,115,206
+1052,misery index,4,4,4
+1053,mitosis,4,70,168
+1054,mixed economy,49,579,563
+1055,mobility,112,112,1234
+1056,mode,357,357,1849
+1057,modelling,13,13,505
+1058,modern portfolio theory,8,13,8
+1059,modulus of elasticity,0,0,0
+1060,molality,0,46,318
+1061,molar attenuation coefficient,0,2,0
+1062,molar concentration,6,52,6
+1063,molar mass,0,891,0
+1064,molarity,0,0,124
+1065,mole,33,33,360
+1066,molecular biology,51,51,501
+1067,molecular formula,9,9,319
+1068,molecular orbital,2,36,111
+1069,molecular orbital diagram,2,16,2
+1070,molecular physics,13,13,87
+1071,molecule,213,2028,667
+1072,moment of inertia,13,130,13
+1073,monetarism,0,114,288
+1074,monetary neutrality,0,0,0
+1075,monetary policy,24,141,542
+1076,money,1203,1329,3718
+1077,money illusion,32,99,32
+1078,money markets,111,111,111
+1079,money supply,169,217,1102
+1080,monomer,7,7,554
+1081,monopolistic competition,0,13,0
+1082,monopoly,65,65,761
+1083,monopsony,0,0,0
+1084,moral hazard,11,173,11
+1085,most-favoured nation,2,2,2
+1086,motor neuron,0,39,30
+1087,mucous membrane,0,57,0
+1088,multicellular organism,1,25,1
+1089,multiplier,12,12,321
+1090,muon,5,5,165
+1091,mycology,0,0,0
+1092,myofibril,0,27,0
+1093,myosin,2,157,2
+1094,nafta,0,0,541
+1095,nairu,0,0,0
+1096,nanoengineering,1,59,1
+1097,nanotechnology,5,64,337
+1098,nash equilibrium,0,26,833
+1099,nation building,129,129,129
+1100,national debt,36,36,429
+1101,national income,166,166,166
+1102,nationalisation,0,0,419
+1103,natural monopoly,21,78,21
+1104,natural rate of unemployment,5,44,5
+1105,natural selection,64,834,1066
+1106,navier,0,0,0
+1107,neat,124,124,168
+1108,negative income tax,15,451,15
+1109,neo-classical economics,1,1,52
+1110,net present value,38,370,38
+1111,network effect,150,641,150
+1112,neurobiology,20,20,182
+1113,neuromuscular junction,0,18,0
+1114,neuron,8,14,78
+1115,neurophysics,0,27,0
+1116,neurotransmitter,7,9,260
+1117,neutrality,98,98,1182
+1118,neutrino,5,160,158
+1119,neutron,23,23,241
+1120,new economy,388,399,388
+1121,new growth theory,79,79,79
+1122,new trade theory,93,164,93
+1123,newton's law of universal gravitation,0,46,0
+1124,newton's laws of motion,17,193,17
+1125,newtonian fluid,1,7,1
+1126,ngo,110,110,182
+1127,nobel prize for economics,9,9,9
+1128,noble gases,4,4,141
+1129,nominal value,10,10,10
+1130,non-metal,45,45,45
+1131,non-price competition,25,62,25
+1132,normal goods,22,22,22
+1133,normative economics,11,47,11
+1134,npv,0,0,0
+1135,nth root,2,5,2
+1136,nuclear,283,283,1047
+1137,nuclear magnetic resonance spectroscopy,2,16,2
+1138,nuclear physics,59,107,400
+1139,nuclear transmutation,0,73,0
+1140,nucleic acid,20,110,94
+1141,nucleic acid sequence,2,348,2
+1142,nucleobase,2,243,2
+1143,nucleoid,0,8,0
+1144,nucleolus,0,8,0
+1145,nucleotide,70,289,363
+1146,nucleus,71,71,517
+1147,null hypothesis,107,204,107
+1148,number density,83,229,83
+1149,oecd,77,77,372
+1150,offshore,7,7,532
+1151,ohm,3,10,230
+1152,ohm's law,0,78,0
+1153,okun's law,0,85,0
+1154,oligopoly,0,0,0
+1155,oncology,28,28,103
+1156,opec,0,0,122
+1157,open economy,143,258,143
+1158,open-market operations,22,22,22
+1159,opportunity cost,247,893,311
+1160,optics,23,160,496
+1161,optimal currency area,1,1,1
+1162,optimum,14,14,897
+1163,option,490,490,2177
+1164,orbital,31,31,540
+1165,organ,73,73,474
+1166,organic chemistry,21,21,275
+1167,organic compound,12,25,284
+1168,organic redox reaction,0,0,0
+1169,organism,63,63,1089
+1170,ornithology,0,0,25
+1171,osmosis,1,241,43
+1172,other metal,145,145,145
+1173,output,388,388,1877
+1174,output gap,22,46,22
+1175,outsourcing,17,1037,603
+1176,outward investment,3,3,3
+1177,over the counter,230,230,230
+1178,overheating,4,4,218
+1179,overshooting,1,1,1
+1180,oxidation,79,79,460
+1181,oxidation state,17,64,194
+1182,oxidizing agent,2,48,51
+1183,paleontology,0,83,188
+1184,paraffin,0,0,48
+1185,parallel evolution,31,51,31
+1186,parasitology,0,26,0
+1187,pareto efficiency,1,210,1
+1188,paris club,6,6,483
+1189,parity (mathematics),0,56,0
+1190,parity (physics),2,202,2
+1191,particle accelerator,5,5,115
+1192,particle displacement,2,868,2
+1193,particle physics,68,69,594
+1194,pascal's law,2,10,2
+1195,patents,34,34,1871
+1196,path dependence,7,353,7
+1197,pathobiology,1,1,1
+1198,pathology,45,61,256
+1199,peak pricing,9,9,9
+1200,pendulum,17,17,170
+1201,percentage point,174,224,174
+1202,percentile,16,58,53
+1203,perfect competition,66,197,66
+1204,periodic table,28,101,299
+1205,permanent income hypothesis,8,119,8
+1206,ph,47,47,331
+1207,pharmacology,18,93,74
+1208,phase (matter),97,165,97
+1209,phase (waves),15,99,15
+1210,phase equilibrium,5,5,5
+1211,phenotype,7,16,710
+1212,pheromone,1,3,203
+1213,phillips curve,0,51,0
+1214,phloem,0,8,0
+1215,phosphorescence,1,17,1
+1216,photon,43,67,473
+1217,physical chemistry,26,26,228
+1218,physical quantity,56,84,108
+1219,physics,389,389,2816
+1220,physiology,28,28,441
+1221,phytochemistry,0,175,0
+1222,phytopathology,0,0,0
+1223,pigou effect,0,46,0
+1224,placebo,55,308,245
+1225,planck constant,16,46,16
+1226,plant nutrition,7,20,7
+1227,plasma,22,22,660
+1228,plasma physics,2,2,138
+1229,plasmolysis,0,14,0
+1230,plasticity,11,11,272
+1231,plaza accord,0,0,0
+1232,pneumatics,2,2,2
+1233,pollination,1,4,97
+1234,polygene,0,73,0
+1235,polymer,26,26,194
+1236,polymerase chain reaction,3,69,3
+1237,polyploid,0,5,48
+1238,population,1311,1314,2291
+1239,population biology,46,46,46
+1240,population ecology,26,1333,26
+1241,population genetics,28,92,263
+1242,positional goods,0,0,0
+1243,positive economics,35,51,35
+1244,potential energy,155,267,379
+1245,poverty,347,704,1472
+1246,poverty trap,13,420,13
+1247,power (electric),88,88,88
+1248,power (physics),73,111,73
+1249,ppp,2,2,313
+1250,precautionary motive,0,0,0
+1251,precipitate,8,8,634
+1252,precision,184,184,1881
+1253,predation,2,4,30
+1254,predatory pricing,0,66,0
+1255,preference,80,88,2236
+1256,present value,304,867,304
+1257,pressure,471,519,1559
+1258,price,531,555,2947
+1259,price discrimination,18,38,296
+1260,price elasticity,11,11,11
+1261,price mechanism,67,76,67
+1262,price regulation,42,42,42
+1263,price/earnings ratio,0,0,0
+1264,primase,0,27,0
+1265,principal-agent theory,7,7,7
+1266,prisoners' dilemma,1,1,1
+1267,private equity,56,56,592
+1268,privatisation,0,0,552
+1269,probability,270,270,968
+1270,probability distribution,115,115,2958
+1271,probability theory,61,61,433
+1272,producer prices,10,10,10
+1273,producer surplus,2,2,2
+1274,production function,169,208,169
+1275,productivity,136,918,1521
+1276,profit,254,254,3099
+1277,profit margin,25,261,25
+1278,profit maximisation,0,0,0
+1279,progesterone,0,0,37
+1280,progressive taxation,7,7,7
+1281,prokaryote,0,41,52
+1282,propensity,26,26,373
+1283,property rights,153,153,688
+1284,prospect theory,20,127,20
+1285,protectionism,3,176,117
+1286,protein,256,285,717
+1287,proton,61,78,479
+1288,protonation,0,97,0
+1289,psi particle,7,7,7
+1290,psychobiology,2,2,2
+1291,public goods,138,138,138
+1292,public spending,166,166,403
+1293,public utility,52,84,52
+1294,public-private,580,580,580
+1295,pulley,5,268,314
+1296,pulse,42,50,521
+1297,pulse wave,7,175,7
+1298,purchasing power parity,4,131,4
+1299,q theory,952,952,952
+1300,quanta,19,19,204
+1301,quantity theory of money,22,58,22
+1302,quantum,128,128,603
+1303,quantum electrodynamics,8,148,307
+1304,quantum field theory,29,152,29
+1305,quantum mechanics,70,70,468
+1306,quantum physics,90,90,315
+1307,quark,0,0,384
+1308,quarks,4,4,153
+1309,quartile,4,46,196
+1310,queueing,0,0,216
+1311,quota,5,5,683
+1312,r squared,183,183,183
+1313,radiant energy,10,169,72
+1314,radiation,105,156,599
+1315,radioactive decay,14,23,148
+1316,radius of curvature,5,143,5
+1317,random walk,113,114,113
+1318,raoult's law,0,496,0
+1319,rate of return,107,468,107
+1320,rate of return regulation,25,25,25
+1321,ratings,31,31,1306
+1322,rational expectations,7,7,7
+1323,rationality,52,157,875
+1324,rationing,2,77,668
+1325,reactivity series,6,15,6
+1326,reagent,3,79,20
+1327,real balance effect,103,103,103
+1328,real exchange rate,32,32,32
+1329,real interest rate,77,184,77
+1330,real options theory,64,64,64
+1331,real terms,811,811,811
+1332,recession,45,117,947
+1333,reciprocity,47,47,284
+1334,redlining,11,127,11
+1335,redox,4,73,329
+1336,redshift,27,90,179
+1337,reducing agent,19,88,75
+1338,reduction potential,66,95,66
+1339,reflation,0,338,0
+1340,refraction,9,68,487
+1341,refractive index,0,53,145
+1342,regional policy,84,1453,84
+1343,regression analysis,39,64,39
+1344,regressive tax,3,21,3
+1345,regulation,326,447,1361
+1346,regulatory arbitrage,0,0,0
+1347,regulatory capture,9,212,9
+1348,regulatory failure,19,19,19
+1349,regulatory risk,68,68,68
+1350,relative atomic mass,5,127,5
+1351,relative income hypothesis,11,75,11
+1352,rent,91,91,1374
+1353,rent-seeking,6,243,6
+1354,replacement cost,39,39,39
+1355,replacement rate,22,22,22
+1356,repo,9,9,589
+1357,reproduction,64,139,419
+1358,required return,197,197,197
+1359,rescheduling,0,0,334
+1360,reservation wage,0,5,0
+1361,reserve currency,3,72,36
+1362,reserve ratio,9,9,9
+1363,reserve requirements,7,7,7
+1364,reserves,37,37,1213
+1365,residual risk,26,1015,26
+1366,restrictive practice,13,13,13
+1367,returns,452,452,5162
+1368,revealed preference,3,322,3
+1369,ricardian equivalence,0,151,0
+1370,"ricardo, david",7,7,7
+1371,rigid body,24,31,24
+1372,risk,1015,1024,1969
+1373,risk averse,6,6,6
+1374,risk management,148,150,536
+1375,risk neutral,34,330,34
+1376,risk premium,35,189,35
+1377,risk seeking,48,48,48
+1378,risk-free rate,55,55,55
+1379,rna,122,122,517
+1380,roche limit,1,535,1
+1381,rotational energy,4,198,4
+1382,rotational speed,3,55,654
+1383,rydberg formula,0,132,142
+1384,s-block elements,177,177,177
+1385,safe harbour,2,2,2
+1386,saline solution,1,1,1
+1387,salt bridge,8,20,8
+1388,salts,15,15,291
+1389,satisficing,2,217,2
+1390,savings,129,129,874
+1391,say's law,616,616,616
+1392,scalability,19,258,348
+1393,scalar (mathematics),3,78,3
+1394,scalar (physics),5,53,5
+1395,scarcity,44,282,803
+1396,scattering,7,176,321
+1397,scenario analysis,59,718,59
+1398,schrödinger equation,0,272,0
+1399,"schumpeter, joseph",2,2,2
+1400,science,2058,2058,3427
+1401,screw,64,64,236
+1402,sdr,0,0,15
+1403,search costs,66,66,66
+1404,seasonally adjusted,0,0,0
+1405,second-best theory,238,238,238
+1406,secondary market,24,97,24
+1407,securities,10,10,1104
+1408,securitisation,0,0,0
+1409,seignorage,0,0,0
+1410,seller's market,12,12,12
+1411,semiconductor,7,7,279
+1412,seniority,3,370,326
+1413,sequencing,72,120,507
+1414,services,893,893,2280
+1415,sexual reproduction,5,249,76
+1416,shadow matter,58,58,58
+1417,shadow price,14,80,14
+1418,shareholder value,1,422,1
+1419,shares,186,186,2754
+1420,sharpe ratio,1,22,1
+1421,shear strength,3,70,3
+1422,shear stress,3,61,3
+1423,shock,96,96,964
+1424,short-termism,0,0,0
+1425,shorting,2,2,2
+1426,shortwave radiation,0,172,0
+1427,si units,16,16,75
+1428,signalling,8,8,734
+1429,simple harmonic motion,1,50,1
+1430,simple interest,352,352,352
+1431,simple machine,219,244,219
+1432,single bond,61,68,61
+1433,siphon,2,8,2
+1434,"smith, adam",27,27,27
+1435,snell's law,0,2,0
+1436,social benefits/costs,61,61,61
+1437,social capital,265,265,265
+1438,social market,222,222,222
+1439,socialism,27,39,372
+1440,sociobiology,0,554,62
+1441,soft currency,4,4,4
+1442,soft dollars,10,10,10
+1443,soft loan,4,67,4
+1444,soil biology,4,33,4
+1445,soil microbiology,1,8,1
+1446,sol,7,7,116
+1447,solar cell,31,128,31
+1448,solid,270,296,838
+1449,solid mechanics,14,14,14
+1450,solubility,7,544,186
+1451,solute,2,2,103
+1452,solution,655,681,3059
+1453,solvent,15,554,220
+1454,sound,826,1344,1731
+1455,sovereign risk,16,16,16
+1456,special relativity,95,138,287
+1457,speciation,1,122,462
+1458,species,177,194,837
+1459,spectrochemistry,0,16,0
+1460,spectroscopy,16,18,369
+1461,speculation,68,176,1923
+1462,speculative motive,5,5,5
+1463,speed of light,200,1343,200
+1464,spin quantum number,2,73,2
+1465,spot price,42,42,42
+1466,spread,601,601,1901
+1467,stabilisation,0,0,0
+1468,stability and growth pact,0,0,0
+1469,stagflation,2,337,2
+1470,stagnation,16,16,187
+1471,stakeholders,91,91,695
+1472,standard deviation,174,202,342
+1473,standard error,270,270,270
+1474,standard model,315,315,539
+1475,state of matter,559,577,559
+1476,statics,2,338,190
+1477,statistical significance,21,53,21
+1478,statistics,304,2448,2261
+1479,stem cell,16,96,164
+1480,sterilised intervention,0,0,0
+1481,steroid,2,2,53
+1482,sticky prices,0,0,0
+1483,stiffness,6,117,50
+1484,stochastic process,3,55,3
+1485,stocks,53,55,850
+1486,strain,110,110,589
+1487,strain hardening,0,0,0
+1488,strength of materials,38,285,38
+1489,stress,349,349,1650
+1490,stress-testing,30,30,30
+1491,string duality,3,79,3
+1492,string theory,76,469,178
+1493,structural adjustment,26,26,91
+1494,structural biology,29,159,29
+1495,structural formula,11,14,11
+1496,structural load,30,255,30
+1497,structural unemployment,14,44,14
+1498,subatomic particle,2,72,869
+1499,subatomic particles,0,0,37
+1500,sublimation,4,4,168
+1501,subsidy,15,257,119
+1502,substance,187,187,1028
+1503,substitute goods,15,15,15
+1504,substitution effect,14,51,14
+1505,sunk costs,2,2,2
+1506,superconductivity,0,60,218
+1507,superconductor,0,0,549
+1508,superhard material,0,618,0
+1509,supernova,2,108,46
+1510,superposition principle,9,378,9
+1511,supply,468,468,1795
+1512,supply curve,26,26,26
+1513,supply-side policies,31,31,31
+1514,surface tension,39,157,366
+1515,sustainable growth,54,54,54
+1516,swap,91,91,576
+1517,symbiogenesis,0,50,0
+1518,synthetic biology,10,219,10
+1519,systematic risk,43,432,43
+1520,systematics,0,34,93
+1521,systemic risk,25,556,25
+1522,t cell,397,466,397
+1523,talc,0,5,24
+1524,tangible assets,2,2,2
+1525,tariff,3,3,446
+1526,tax arbitrage,1,1,1
+1527,tax avoidance,7,156,7
+1528,tax base,47,47,423
+1529,tax burden,52,52,831
+1530,tax competition,44,97,44
+1531,tax efficient,30,30,30
+1532,tax evasion,3,3,89
+1533,tax haven,46,46,160
+1534,tax incidence,3,3,3
+1535,taxation,80,80,1362
+1536,technical progress,104,104,104
+1537,technical standard,171,854,171
+1538,temperature,222,319,937
+1539,tensile modulus,0,0,0
+1540,tensile strength,0,0,604
+1541,terms of trade,249,316,249
+1542,tesla,15,15,25
+1543,test particle,24,24,24
+1544,testosterone,3,3,194
+1545,theoretical physics,43,117,215
+1546,theoretical yield,13,13,13
+1547,theory,952,1338,1756
+1548,theory of relativity,116,147,116
+1549,thermal conduction,2,110,2
+1550,thermal conductivity,1,110,55
+1551,thermal equilibrium,6,339,159
+1552,thermal radiation,14,85,182
+1553,thermionic emission,0,393,46
+1554,thermochemistry,0,26,17
+1555,thermodynamic free energy,10,336,10
+1556,thermodynamic stability,1,1,1
+1557,thermodynamics,42,110,340
+1558,thermometer,8,25,82
+1559,third law of thermodynamics,3,13,3
+1560,third way,1362,1362,1362
+1561,thymine,10,12,38
+1562,tick,39,39,127
+1563,tiger economies,0,0,0
+1564,time series,740,774,740
+1565,time value of money,311,2047,311
+1566,titration,0,0,139
+1567,"tobin, james",1,1,1
+1568,torque,6,1069,407
+1569,torr,2,28,11
+1570,total internal reflection,11,47,11
+1571,total return,215,232,215
+1572,toughness,6,204,333
+1573,trade,613,613,1918
+1574,trade area,134,134,134
+1575,trade cycle,38,38,38
+1576,trade deficit/surplus,0,0,0
+1577,trade unions,14,14,577
+1578,trade-weighted exchange rate,1,1,1
+1579,tragedy of the commons,3,631,3
+1580,trajectory,154,314,770
+1581,transaction costs,9,9,329
+1582,transcription,154,154,775
+1583,transducer,1,1,75
+1584,transfer pricing,2,122,2
+1585,transfer rna,18,18,18
+1586,transfers,60,60,557
+1587,transition economies,33,33,33
+1588,transition metal,22,50,69
+1589,translation,488,489,5197
+1590,transmission mechanism,10,10,10
+1591,transparency,114,114,545
+1592,transuranic element,2,2,15
+1593,transverse wave,0,201,0
+1594,treasury bills,4,4,4
+1595,trigonometry,6,6,169
+1596,trimean,0,3073,0
+1597,triple bond,2,16,195
+1598,triple point,72,266,248
+1599,trophic level,0,94,0
+1600,trough,10,10,189
+1601,truncated mean,26,3024,26
+1602,trust,374,374,4957
+1603,tyndall effect,0,166,0
+1604,un number,140,140,140
+1605,uncertainty,157,792,1148
+1606,uncertainty principle,38,743,134
+1607,underground economy,25,25,25
+1608,unemployment,37,361,1104
+1609,unemployment trap,2,2,2
+1610,unicellular organism,0,19,0
+1611,uniform circular motion,3,3,3
+1612,uniform motion,18,18,18
+1613,unions,86,86,957
+1614,unit cell,68,68,68
+1615,unit factor,90,90,90
+1616,unit of measurement,35,35,35
+1617,unit vector,35,3411,359
+1618,uracil,6,6,127
+1619,urea,12,14,151
+1620,uric acid,5,5,5
+1621,urine,13,15,277
+1622,usury,6,112,40
+1623,uterus,7,346,118
+1624,utility,163,198,1600
+1625,utility frequency,2,89,2
+1626,vacuole,0,27,106
+1627,vacuum,58,58,532
+1628,valence,9,9,92
+1629,valence band,0,0,0
+1630,valence bond theory,0,23,0
+1631,valence electron,0,49,0
+1632,valence shell,1,1,82
+1633,valency,0,0,0
+1634,value added,267,268,749
+1635,value at risk,270,376,270
+1636,van 't hoff factor,0,0,0
+1637,van der waals force,2,2,2
+1638,vapor,31,604,225
+1639,vaporization,2,81,93
+1640,vapour pressure,0,0,0
+1641,variable capacitor,0,3,0
+1642,variable costs,69,69,69
+1643,variable resistor,0,0,0
+1644,vasodilation,2,4,67
+1645,vector,207,207,1640
+1646,vector space,67,350,1308
+1647,vegetative reproduction,0,2,0
+1648,velocity,125,200,729
+1649,velocity of circulation,2,2,2
+1650,venture capital,43,184,364
+1651,vertical equity,16,16,16
+1652,vertical integration,23,23,23
+1653,vesicle,15,15,85
+1654,vestigiality,0,22,0
+1655,virology,0,0,11
+1656,virtual particle,7,130,7
+1657,virus,122,123,819
+1658,viscoelasticity,0,126,0
+1659,viscosity,2,2,368
+1660,visible light,132,132,314
+1661,visible trade,27,27,27
+1662,volatility,9,9,250
+1663,volt,4,14,504
+1664,volta potential,2,37,2
+1665,voltmeter,0,26,0
+1666,volumetric analysis,4,4,4
+1667,voluntary unemployment,0,0,0
+1668,wage drift,3,3,3
+1669,wages,50,50,1269
+1670,water,968,975,1571
+1671,water potential,143,143,143
+1672,watt,28,137,76
+1673,wave,270,275,1281
+1674,wave equation,24,99,348
+1675,wave function,95,262,195
+1676,wavelength,45,866,694
+1677,weak interaction,14,121,194
+1678,wealth effect,95,495,95
+1679,wealth tax,100,132,100
+1680,weber,50,58,312
+1681,wedge,26,26,62
+1682,weightless economy,0,0,0
+1683,welfare,151,281,1282
+1684,welfare economics,23,23,164
+1685,welfare to work,82,82,82
+1686,wheel and axle,2,138,2
+1687,white blood cell,19,707,19
+1688,white dwarf,1,147,192
+1689,whole genome sequencing,16,47,16
+1690,wind,384,387,1097
+1691,wind shear,3,384,3
+1692,windfall gains,0,0,0
+1693,windfall profit,2,2,2
+1694,winner-takes-all markets,7,7,7
+1695,withholding tax,4,21,4
+1696,wobble base pair,0,44,0
+1697,wood,274,389,1055
+1698,work,4502,4502,7168
+1699,world bank,254,254,1058
+1700,world trade organisation,0,0,0
+1701,x-efficiency,314,314,314
+1702,x-ray,100,126,100
+1703,x-ray diffraction,0,0,0
+1704,x-ray photoelectron spectroscopy,0,0,0
+1705,xanthophyll,0,4,0
+1706,xylem,0,28,0
+1707,yeast artificial chromosome,1,52,1
+1708,yield,127,127,1327
+1709,yield curve,11,43,11
+1710,yield gap,7,17,7
+1711,yolk,0,0,21
+1712,zero-sum game,45,97,45
+1713,zinc,1,54,222
+1714,zone melting,1,86,1
+1715,zoology,6,9,325
+1716,zwitterion,2,40,2
+1717,zygote,0,18,131

@@ -1,0 +1,139 @@
+,term,control,wiki,word2vec
+0,a/b testing,20,20,20
+1,ai,2,2,20
+2,algebra,5,5,12
+3,algorithm,12,15,26
+4,amazon,3,3,5
+5,android,29,29,29
+6,api,20,20,63
+7,app,64,64,65
+8,apple,6,6,13
+9,application,42,42,92
+10,ar,0,0,8
+11,arrays,8,8,21
+12,artificial intelligence,5,5,19
+13,ascii,0,0,7
+14,augmented reality,1,3,1
+15,aws,0,0,0
+16,big data,16,16,16
+17,binary,5,5,22
+18,binary search,2,2,4
+19,browser,17,17,82
+20,brute force,3,3,8
+21,bubble sort,1,2,22
+22,c,0,0,0
+23,cache,8,8,42
+24,calculus,0,0,21
+25,class,42,42,62
+26,client,6,6,80
+27,cloud,15,15,16
+28,coding,12,12,34
+29,command-line arguments,0,0,0
+30,computer,30,30,73
+31,computer programming,12,18,24
+32,computer science,10,11,25
+33,conditions,3,3,25
+34,cryptography,3,3,44
+35,css,8,8,9
+36,csv,1,1,1
+37,data,79,79,99
+38,data analysis,23,24,23
+39,data compression,0,19,21
+40,data science,14,15,14
+41,data structures,7,7,51
+42,data visualization,9,79,9
+43,deep learning,1,1,1
+44,design,56,56,89
+45,development,55,55,105
+46,dropbox,0,0,0
+47,dynamic memory allocation,0,0,0
+48,emacs,0,0,10
+49,facebook,3,3,3
+50,file i/o,12,12,12
+51,functional programming,3,3,33
+52,functions,20,20,41
+53,galaxy,0,0,0
+54,game,17,17,39
+55,git,4,4,4
+56,github,3,3,3
+57,google,38,41,97
+58,hash tables,3,3,19
+59,heroku,1,1,1
+60,html,17,17,59
+61,http,39,39,48
+62,huffman coding,0,1,12
+63,insertion sort,1,3,4
+64,ios,19,19,19
+65,ip,2,2,40
+66,ipad,2,2,2
+67,iphone,4,4,4
+68,java,10,10,30
+69,javascript,23,23,36
+70,json,8,8,8
+71,library,14,14,30
+72,linked lists,1,1,3
+73,linux,7,7,33
+74,loops,7,7,9
+75,machine learning,15,53,16
+76,macos,0,0,0
+77,maps,10,10,46
+78,math,4,4,28
+79,memory management,3,4,7
+80,merge sort,1,1,2
+81,microservice,0,0,0
+82,microsoft,3,4,36
+83,mobile,40,40,45
+84,mvc,3,3,3
+85,networking,14,14,71
+86,neural networks,2,2,4
+87,nexus,0,0,0
+88,object,16,16,41
+89,object-oriented programming,5,5,5
+90,objective-c,2,2,2
+91,open data,13,13,13
+92,opengl,0,0,3
+93,operating system,4,4,63
+94,os,5,5,12
+95,phone,7,7,45
+96,pointers,0,0,34
+97,programming,47,47,80
+98,programming language,20,24,23
+99,python,18,18,20
+100,queues,4,4,4
+101,recursion,2,2,10
+102,responsive,6,6,9
+103,responsive design,5,5,5
+104,restful,2,2,2
+105,ruby,3,3,3
+106,searching and sorting,2,2,2
+107,selection sort,0,2,0
+108,semantics,3,5,45
+109,server,16,16,48
+110,stacks,2,2,7
+111,statistics,8,79,21
+112,sublime,1,1,3
+113,swift,8,8,8
+114,syntax,12,12,21
+115,tablet,2,2,2
+116,tcp,2,2,8
+117,thread,3,3,3
+118,trees,7,7,8
+119,tries,1,1,1
+120,trigonometry,1,1,2
+121,ubuntu,2,2,4
+122,ui,16,16,17
+123,unicode,1,1,10
+124,unity,3,3,4
+125,user experience,27,30,27
+126,user interface,17,20,29
+127,ux,3,3,3
+128,vim,0,0,20
+129,virtual reality,2,2,9
+130,vr,5,5,18
+131,web app,34,34,34
+132,web design,19,22,19
+133,web development,26,26,26
+134,web programming,18,18,18
+135,webgl,1,1,1
+136,wiki,6,6,98
+137,windows,1,1,12

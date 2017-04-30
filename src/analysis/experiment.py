@@ -18,7 +18,7 @@ def num_results(engine, term, rw):
 
 
 def generate_stats(engine, slug, rewriters, filename, cached=False):
-    cache_file = '../tmp/queries-%s.csv' % slug
+    cache_file = '../results/queries-%s.csv' % slug
     if cached:
         # rehydrate the cached version
         df = pd.read_csv(cache_file, index_col=0)
