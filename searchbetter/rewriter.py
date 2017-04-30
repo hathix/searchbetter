@@ -141,6 +141,9 @@ class Word2VecRewriter(Rewriter):
       # TODO consider choosing fewer results! or have a higher bar on how
       # related they need to be
       raw_results = self.model.similar_by_word(encoded_term, topn=10)
+
+      print raw_results
+
       # extract just the name, which is index 0
       # and decode all the results we get from word2vec
       results = [self.decode_term(r[0]) for r in raw_results]
