@@ -175,7 +175,10 @@ def summary_bar_chart(df, engine_name):
     traceJustMisses = go.Bar(
         x=rewriter_fancy_names,
         y=average_hits_zero,
-        name='Terms with no hits by default'
+        # for some reason, when you export the image, it chops off the
+        # trailing letters of this label. so let's pad it with spaces to
+        # save the text
+        name='Terms with no hits by default  '
     )
 
     traces = [traceAllTerms, traceJustMisses]
@@ -189,8 +192,12 @@ def summary_bar_chart(df, engine_name):
             title='Average # hits'
         ),
         legend=dict(
+            # center the legend and put it below the graph
             x=0.35,
-            y=-0.4
+            # when you export plot to image, for some reason it moves the
+            # legend up no matter what you do. so we need to exaggerate how
+            # far down the legend is here.
+            y=-0.7
         )
     )
 
