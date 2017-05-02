@@ -63,6 +63,7 @@ class SearchEngine(object):
     # TODO let someone pass this in the constructor
     self.rewriter = None
 
+
   def load_index(self):
     """
     Used when the index is already created. This just loads it and
@@ -71,6 +72,7 @@ class SearchEngine(object):
     index = open_dir(self.index_path)
     return index
 
+
   def create_index(self):
     """
     Creates and returns a brand-new index. This will call
@@ -78,6 +80,7 @@ class SearchEngine(object):
     Subclasses must implement!
     """
     raise NotImplementedError("Subclasses must implement!")
+
 
   def get_empty_index(self, path, schema):
     """
@@ -92,11 +95,13 @@ class SearchEngine(object):
     index = create_in(path, schema)
     return index
 
+
   def flatten(self, l):
     """
     Flattens a list.
     """
     return [item for sublist in l for item in sublist]
+
 
   def set_rewriter(self, rewriter):
     """
@@ -104,6 +109,21 @@ class SearchEngine(object):
     rewriter for this search engine.
     """
     self.rewriter = rewriter
+
+  def get_num_documents(self):
+      """
+      Returns the number of documents in this search engine's corpus. That is,
+      this is the size of the search engine.
+      """
+      query = Every()
+      with self.index.searcher() as searcher:
+          result = searcher.search(query)
+          return len(result)
+
+      return None
+
+  def __len__(self):
+      return self.get_num_documents()
 
   def search(self, term):
     """
@@ -128,6 +148,7 @@ class SearchEngine(object):
       unique_results = list(set(flattened_results))
 
       return unique_results
+
 
   def _single_search(self, term):
     """
