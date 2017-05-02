@@ -104,7 +104,11 @@ def matplotlib_scatter(subplot, xs, ys, max_x, max_y, x_label, y_label, title, r
     scatter = subplot.scatter(x=xs, y=ys, alpha=0.5, c=color)
 
     # line of best fit
-    regression, = subplot.plot(np.unique(xs), np.poly1d(np.polyfit(xs, ys, 1))(np.unique(xs)), c=color)
+    slope, intercept, r_value, p_value, std_err = scipy.stats.linregress(xs, ys)
+    line_of_best_fit = np.poly1d([slope, intercept])
+    r_squared = r_value ** 2
+    regression, = subplot.plot(np.unique(xs), line_of_best_fit(np.unique(xs)), c=color)
+    print("y = %.2fx + %.2f, r^2 = %.2f" % (slope, intercept, r_squared))
 
     # control line
     control, = subplot.plot(np.unique(xs), np.unique(xs), c="#444444", linestyle="dashed")
