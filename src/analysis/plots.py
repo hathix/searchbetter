@@ -189,7 +189,8 @@ def summary_bar_chart(df, engine_name):
             title='Average # hits'
         ),
         legend=dict(
-            orientation="h",
+            x=0.35,
+            y=-0.4
         )
     )
 
