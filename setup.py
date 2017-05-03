@@ -2,8 +2,8 @@ from distutils.core import setup
 setup(
   name = 'searchbetter',
   packages = ['searchbetter'], # this must be the same as the name above
-  version = '0.2',
-  description = 'Query rewriting for search engines on small corpuses ',
+  version = '0.3',
+  description = 'Query rewriting for search engines on small corpuses',
   author = 'Neel Mehta',
   author_email = 'neelmehta96@gmail.com',
   url = 'https://github.com/hathix/searchbetter', # use the URL to the github repo
