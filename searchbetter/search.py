@@ -9,8 +9,8 @@ import json
 import os.path
 import sys
 
-# TODO clean up formattin
-
+import utils
+reload(utils)
 
 class SearchEngine(object):
   """
@@ -96,13 +96,6 @@ class SearchEngine(object):
     return index
 
 
-  def flatten(self, l):
-    """
-    Flattens a list.
-    """
-    return [item for sublist in l for item in sublist]
-
-
   def set_rewriter(self, rewriter):
     """
     Sets a new query rewriter (from this_package.rewriter) as the default
@@ -110,20 +103,23 @@ class SearchEngine(object):
     """
     self.rewriter = rewriter
 
-  def get_num_documents(self):
-      """
-      Returns the number of documents in this search engine's corpus. That is,
-      this is the size of the search engine.
-      """
-      query = Every()
-      with self.index.searcher() as searcher:
-          result = searcher.search(query)
-          return len(result)
 
-      return None
+  def get_num_documents(self):
+    """
+    Returns the number of documents in this search engine's corpus. That is,
+    this is the size of the search engine.
+    """
+    query = Every()
+    with self.index.searcher() as searcher:
+      result = searcher.search(query)
+      return len(result)
+
+    return None
+
 
   def __len__(self):
-      return self.get_num_documents()
+    return self.get_num_documents()
+
 
   def search(self, term):
     """
@@ -141,14 +137,13 @@ class SearchEngine(object):
       results = [self._single_search(q) for q in rewritten_queries]
 
       # results are multi-level... flatten it
-      flattened_results = self.flatten(results)
+      flattened_results = utils.flatten(results)
 
       # only give the unique ones
       # this works now that we use a Result object, which is hashable!
       unique_results = list(set(flattened_results))
 
       return unique_results
-
 
   def _single_search(self, term):
     """
@@ -196,7 +191,6 @@ class UdacitySearchEngine(SearchEngine):
     self.dataset_path = dataset_path
     super(UdacitySearchEngine, self).__init__(
         create, self.SEARCH_FIELDS, index_path)
-
 
 
   def create_index(self):
@@ -249,6 +243,32 @@ class UdacitySearchEngine(SearchEngine):
 
     # all done for now
     return index
+
+
+  def count_words(self):
+    """
+    Returns the number of words in the underlying Udacity dataset.
+    """
+
+    # will be useful for extracting textual content from a course later
+    def extract_text_from_course(c):
+      return [c[field] for field in self.SEARCH_FIELDS]
+
+    # load data
+    with open(self.dataset_path, 'r') as file:
+      udacity_data = json.load(file)
+
+      # extract just the text fields, no other markup or fields
+      courses = udacity_data['courses']
+      paragraphs = [extract_text_from_course(c) for c in courses]
+
+      # these are nested... flatten into one huge string array
+      raw_lines = utils.flatten(paragraphs)
+
+      # then flatten into one huge string
+      mega_string = (" ").join(raw_lines)
+
+      return utils.unique_words_in_string(mega_string)
 
 
 class HarvardXSearchEngine(SearchEngine):
@@ -411,50 +431,68 @@ class EdXSearchEngine(SearchEngine):
     return index
 
 
+  def count_words(self):
+    """
+    Returns the number of words in the underlying Udacity dataset.
+    """
+    with open(self.dataset_path, 'r') as csvfile:
+        reader = csv.DictReader(csvfile)
+
+        # the only text field that's useful is the name field
+        names = [row['name'].decode('utf8') for row in reader]
+
+        # turn into one huge string then count words in that
+        mega_string = (" ").join(names)
+
+        return utils.unique_words_in_string(mega_string)
+
+
 class PrebuiltSearchEngine(SearchEngine):
-    """
-    A search engine designed for when you're just given a model file and can
-    use that directly without having to build anything.
-    """
+  """
+  A search engine designed for when you're just given a model file and can
+  use that directly without having to build anything.
+  """
 
-    def __init__(self, search_fields, index_path):
-        super(PrebuiltSearchEngine, self).__init__(
-            create=False, search_fields=search_fields, index_path=index_path)
+  def __init__(self, search_fields, index_path):
+    super(PrebuiltSearchEngine, self).__init__(
+        create=False, search_fields=search_fields, index_path=index_path)
 
 
-    def create_index(self):
-        # no need to create!!
-        # TODO raise an error
-        raise NotImplementedError("This search engine doesn't need to create an index! Use create = False.")
-        pass
+  def create_index(self):
+    # no need to create!!
+    # TODO raise an error
+    raise NotImplementedError(
+        "This search engine doesn't need to create an index! Use create = False.")
+    pass
 
 
 class Result(object):
+  """
+  Encodes a search result. Basically a wrapper around a result dict.
+  """
+
+  def __init__(self, dict_data):
+    self.dict_data = dict_data
+
+
+  def get_dict(self):
     """
-    Encodes a search result. Basically a wrapper around a result dict.
+    Get the underlying dict data
     """
-
-    def __init__(self, dict_data):
-        self.dict_data = dict_data
+    return self.dict_data
 
 
-    def get_dict(self):
-        """
-        Get the underlying dict data
-        """
-        return self.dict_data
+  def __repr__(self):
+    """
+    Stringified version of the dict.
+    """
+    return str(self.dict_data)
 
 
-    def __repr__(self):
-        """
-        Stringified version of the dict.
-        """
-        return str(self.dict_data)
-
-    # to enable hashing
-    def __hash__(self):
-        return hash(frozenset(self.dict_data.items()))
+  # to enable hashing
+  def __hash__(self):
+    return hash(frozenset(self.dict_data.items()))
 
 
-    def __eq__(self, other):
-        return frozenset(self.dict_data.items()) == frozenset(other.dict_data.items())
+  def __eq__(self, other):
+    return frozenset(self.dict_data.items()) == frozenset(other.dict_data.items())
