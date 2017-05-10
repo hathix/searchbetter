@@ -8,15 +8,22 @@ import gensim.models.phrases as phrases
 import gensim.models.word2vec as word2vec
 
 
-# Abstract Rewriter class
-# TODO: abstract out more functionality here
 class Rewriter(object):
+  """
+  Abstract class around a query rewriter, which takes a given term and
+  rewrites it to a set of semantically related terms. This, hopefully,
+  helps search engines return more, and more useful, results.
+  """
   # make it an abstract class
   __metaclass__ = abc.ABCMeta
 
   def rewrite(self, term):
     """
-    Rewrites a term to a list of new terms to search with.
+    Rewrites a term to a list of new terms to search with. Abstract base!
+
+    :param str term: a string to rewrite
+    :return: a list of semantically related strings, including ``term``
+    :rtype: list(str)
     """
     raise NotImplementedError("Subclasses must implement!")
 
@@ -24,9 +31,20 @@ class Rewriter(object):
 class ControlRewriter(Rewriter):
   """
   A rewriter that's basically a no-op. Just returns the term you give it.
+  This is mostly useful for testing purposes.
   """
 
   def rewrite(self, term):
+    """
+    Rewrites a term to a list containing just itself. This is the degenerate case
+    of query rewriting - the original term isn't actually rewritten at all.
+
+    ``rewrite(x) == [x]`` for all x.
+
+    :param str term: a string to rewrite
+    :return: a list containing just ``term``
+    :rtype: list(str)
+    """
     return [term]
 
 
