@@ -10,7 +10,6 @@ import os.path
 import sys
 
 import utils
-reload(utils)
 
 class SearchEngine(object):
   """
@@ -172,8 +171,12 @@ class SearchEngine(object):
 
 
 class UdacitySearchEngine(SearchEngine):
+  """
+  Udacity
+  """
   # DATASET_PATH = secure.DATASET_PATH_BASE+'udacity-api.json'
   # INDEX_PATH = secure.INDEX_PATH_BASE+'udacity'
+  """Which dataset fields we should search over."""
   SEARCH_FIELDS = ["title", "subtitle", "expected_learning",
                    "syllabus", "summary", "short_summary"]
 
@@ -272,6 +275,9 @@ class UdacitySearchEngine(SearchEngine):
 
 
 class HarvardXSearchEngine(SearchEngine):
+  """
+  HX
+  """
   # INDEX_PATH = secure.INDEX_PATH_BASE+'harvardx'
   SEARCH_FIELDS = ["display_name", "contents"]
 
@@ -364,6 +370,9 @@ class HarvardXSearchEngine(SearchEngine):
 
 
 class EdXSearchEngine(SearchEngine):
+  """
+  edX
+  """
   # INDEX_PATH = secure.INDEX_PATH_BASE+'edx'
   SEARCH_FIELDS = ["name"]
 
