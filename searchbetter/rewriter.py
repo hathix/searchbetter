@@ -50,7 +50,7 @@ class ControlRewriter(Rewriter):
 
 class WikipediaRewriter(Rewriter):
   """
-  A class to rewrite queries using Wikipedia's category api.
+  A class to rewrite queries using Wikipedia's Category API.
   """
 
   WIKI_BASE = 'https://en.wikipedia.org/w/api.php?format=xml&action=query&prop=categories&titles='
@@ -62,6 +62,13 @@ class WikipediaRewriter(Rewriter):
     """
     Given a base term, returns a list of related terms based on the Wikipedia
     category API.
+
+    For example, visit your favorite Wikipedia page and look for the list of
+    Categories at the very bottom of the page.
+
+    :param str term: a string to rewrite
+    :return: a list of semantically related strings, including ``term``
+    :rtype: list(str)
     """
     api = self.WIKI_BASE + term
     r = requests.get(api)
@@ -88,31 +95,32 @@ class WikipediaRewriter(Rewriter):
 
 class Word2VecRewriter(Rewriter):
   """
-  A class to rewrite queries using Word2Vec trained on a user-provided
-  corpus.
+  A class to rewrite queries using Word2Vec, an NLP package that finds
+  semantically related words and phrases to inputted words and phrases.
+  Word2Vec must be trained on a user-provided dataset before it is used.
   """
 
   # TODO use kwargs or something to make creating this less insane
   # http://stackoverflow.com/questions/1098549/proper-way-to-use-kwargs-in-python#1098556
   def __init__(self, model_path, create=False, corpus=None, bigrams=True):
     """
-    Initializes the rewriter, given a particular word2vec corpus.
-    A good example corpus is the Text8Corpus or the Brown corpus.
+    Initializes the rewriter, given a particular Word2Vec corpus.
+    A good example corpus is the Wikipedia Text8Corpus.
     You only need the corpus if you are recreating the model from scratch.
 
-    If create is True, this generates a new Word2Vec
-    model (which takes a really long time to build.) If False, this loads
+    If ``create == True``, this generates a new Word2Vec
+    model (which takes a really long time to build.) If ``False``, this loads
     an existing model we already saved.
 
-    :param model_path {string}: where to store the model files. This file
+    :param str model_path: where to store the model files. This file
         needn't exist, but its parent folder should.
-    :param create {bool}: True to create a new Word2Vec model, False to
-        use the one stored at `model_path`.
-    :param corpus {Iterable}: only needed if `create=True`. Defines a corpus
+    :param bool create: True to create a new Word2Vec model, False to
+        use the one stored at ``model_path``.
+    :param Iterable corpus: only needed if ``create=True``. Defines a corpus
         for Word2Vec to learn from.
-    :param bigrams {bool}: only needed if `create=True`. If True, takes some
-        more time to build a model that supports bigrams (e.g. `new_york`).
-        Otherwise, it'll only support one-word searches. `bigram=True` makes
+    :param bool bigrams: only needed if ``create=True``. If True, takes some
+        more time to build a model that supports bigrams (e.g. ```new_york``).
+        Otherwise, it'll only support one-word searches. ``bigram=True`` makes
         this slower but more complete.
     """
 
