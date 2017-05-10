@@ -488,11 +488,9 @@ class Result(object):
     """
     return str(self.dict_data)
 
-
   # to enable hashing
   def __hash__(self):
     return hash(frozenset(self.dict_data.items()))
-
 
   def __eq__(self, other):
     return frozenset(self.dict_data.items()) == frozenset(other.dict_data.items())
