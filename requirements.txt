@@ -1,3 +1,4 @@
-lxml>=3.6.4
-gensim>=1.0.1
-Whoosh>=2.7.4
+gensim==1.0.1
+requests==2.13.0
+Whoosh==2.7.4
+lxml==3.7.3
