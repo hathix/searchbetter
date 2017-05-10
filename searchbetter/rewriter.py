@@ -119,7 +119,7 @@ class Word2VecRewriter(Rewriter):
     :param Iterable corpus: only needed if ``create=True``. Defines a corpus
         for Word2Vec to learn from.
     :param bool bigrams: only needed if ``create=True``. If True, takes some
-        more time to build a model that supports bigrams (e.g. ```new_york``).
+        more time to build a model that supports bigrams (e.g. `new_york`).
         Otherwise, it'll only support one-word searches. ``bigram=True`` makes
         this slower but more complete.
     """
@@ -157,6 +157,15 @@ class Word2VecRewriter(Rewriter):
       self.model = word2vec.Word2Vec.load(self.model_path)
 
   def rewrite(self, term):
+    """
+    Rewrites a term to a list of new terms to search with. These words
+    are the `k` most similar words and phrases to the inputted term, as judged
+    by Word2Vec. Here, ``k==10``.
+
+    :param str term: a string to rewrite
+    :return: a list of semantically related strings, including ``term``
+    :rtype: list(str)
+    """
     # try using the model to rewrite the term
     results = []
     try:
@@ -182,7 +191,12 @@ class Word2VecRewriter(Rewriter):
   def encode_term(self, term):
     """
     Converts a search term like `Hadrian's Wall` to `hadrians_wall`, which
-    plays better with word2vec.
+    plays better with Word2Vec. Primarily for internal use.
+
+    :param str term: a search term you'd normally feed into
+        :method:`Word2VecRewriter.rewrite`.
+    :return: a cleaned up version of the term, which works better in `rewrite`.
+    :rtype: str
     """
     # remove anything that isn't alphanumeric or space
     alphanum_pattern = re.compile(r'[^\w\d\s]')
@@ -198,6 +212,10 @@ class Word2VecRewriter(Rewriter):
     """
     Converts an encoded search term into something more human readable,
     like `hadrians_wall` to `hadrians wall`.
+
+    :param str term: a cleaned term from :method:`Word2VecRewriter:encode_term`.
+    :return: a more human-readable version of the inputted term.
+    :rtype: str
     """
     # not much we can do besides replace underscores with spaces
     underscore_pattern = re.compile('_')
