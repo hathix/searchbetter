@@ -1,0 +1,6 @@
+======
+Search
+======
+
+.. automodule:: search
+    :members:

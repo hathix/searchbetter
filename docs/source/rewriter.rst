@@ -1,0 +1,6 @@
+========
+Rewriter
+========
+
+.. automodule:: rewriter
+    :members:
