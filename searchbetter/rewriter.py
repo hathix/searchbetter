@@ -194,7 +194,7 @@ class Word2VecRewriter(Rewriter):
     plays better with Word2Vec. Primarily for internal use.
 
     :param str term: a search term you'd normally feed into
-        :method:`Word2VecRewriter.rewrite`.
+        `Word2VecRewriter.rewrite`.
     :return: a cleaned up version of the term, which works better in `rewrite`.
     :rtype: str
     """
@@ -213,7 +213,7 @@ class Word2VecRewriter(Rewriter):
     Converts an encoded search term into something more human readable,
     like `hadrians_wall` to `hadrians wall`.
 
-    :param str term: a cleaned term from :method:`Word2VecRewriter:encode_term`.
+    :param str term: a cleaned term from `Word2VecRewriter:encode_term`.
     :return: a more human-readable version of the inputted term.
     :rtype: str
     """
