@@ -349,3 +349,21 @@ texinfo_documents = [
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #
 # texinfo_no_detailmenu = False
+
+
+
+
+
+#######
+#######
+####### MORE CUSTOM CONFIG
+#######
+#######
+
+# get the cool read the docs theme
+# https://github.com/rtfd/sphinx_rtd_theme
+import sphinx_rtd_theme
+
+html_theme = "sphinx_rtd_theme"
+
+html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
