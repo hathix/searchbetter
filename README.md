@@ -8,6 +8,16 @@ For instance, a search for `machine learning` might only return results for item
 
 SearchBetter lets you power up your search engines with minimal effort. It's especially useful if you have a small dataset to search on, or if you don't have the time or data to make fancy bespoke query rewriting algorithms.
 
+## Getting started
+
+To drop this module into your app:
+
+```
+pip install searchbetter
+```
+
+For more advanced analysis and research purposes, use the [interactive demo]((https://github.com/hathix/searchbetter/blob/master/notebooks/searchbetter-demo.ipynb)) to get yourself set up!
+
 ## Usage
 
 [Try out the interactive demo](https://github.com/hathix/searchbetter/blob/master/notebooks/searchbetter-demo.ipynb)!
@@ -21,15 +31,21 @@ query_rewriter = rewriter.WikipediaRewriter()
 query_rewriter.rewrite('biochemistry')
 ```
 
-## Getting started
 
-To drop this module into your app:
+
+## Documentation
+
+Documentation is available online at <http://searchbetter.readthedocs.io/>.
+
+To build the docs yourself using Sphinx:
 
 ```
-pip install searchbetter
+cd docs
+make html
+open _build/html/index.html
 ```
 
-For more advanced analysis and research purposes, use the demo to get yourself set up!
+
 
 ## Where to find data
 
@@ -52,18 +68,6 @@ perl processing-scripts/wiki-clean.pl enwik8 > wikiclean8
 
 This might take a minute or two to run.
 
-
-## Documentation
-
-Documentation is available online at <http://searchbetter.readthedocs.io/>.
-
-To build the docs yourself using Sphinx:
-
-```
-cd docs
-make html
-open _build/html/index.html
-```
 
 
 ## Context
