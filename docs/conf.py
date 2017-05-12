@@ -20,6 +20,12 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../searchbetter'))
 
+# get table of contents in the sidebar
+# http://stackoverflow.com/a/19007358
+html_sidebars = { '**': [
+    'localtoc.html', 'globaltoc.html', 'relations.html',
+    'sourcelink.html', 'searchbox.html'], }
+
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -324,7 +330,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'SearchBetter', u'SearchBetter Documentation',
-     author, 'SearchBetter', 'One line description of project.',
+     author, 'SearchBetter', 'SearchBetter Documentation',
      'Miscellaneous'),
 ]
 
