@@ -23,7 +23,7 @@ sys.path.insert(0, os.path.abspath('../searchbetter'))
 # get table of contents in the sidebar
 # http://stackoverflow.com/a/19007358
 html_sidebars = { '**': [
-    'localtoc.html', 'globaltoc.html', 'relations.html',
+    'globaltoc.html', 'relations.html',
     'sourcelink.html', 'searchbox.html'], }
 
 # -- General configuration ------------------------------------------------
