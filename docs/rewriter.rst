@@ -13,6 +13,16 @@ Visit the `interactive demo <https://github.com/hathix/searchbetter/blob/master/
 to learn how to use these classes.
 
 
+Usage
+======
+
+First, ``pip install searchbetter``.
+
+Then, in your Python code::
+
+    from searchbetter import rewriter
+
+
 Documentation
 ==============
 
