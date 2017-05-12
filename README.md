@@ -52,6 +52,20 @@ perl processing-scripts/wiki-clean.pl enwik8 > wikiclean8
 
 This might take a minute or two to run.
 
+
+## Documentation
+
+Documentation is available online at <http://searchbetter.readthedocs.io/>.
+
+To build the docs yourself using Sphinx:
+
+```
+cd docs
+make html
+open _build/html/index.html
+```
+
+
 ## Context
 
 SearchBetter was designed as part of a research project by [Neel Mehta](https://github.com/hathix), [Daniel Seaton](https://github.com/dseaton), and [Dustin Tingley](http://scholar.harvard.edu/dtingley/home) for Harvard's CS 91r, a research for credit course.
