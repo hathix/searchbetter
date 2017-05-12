@@ -24,14 +24,12 @@ For more advanced analysis and research purposes, use the [interactive demo]((ht
 
 For a truly quick-and-dirty dive into SearchBetter (no setup required), use:
 
-```py
+```python
 from searchbetter import rewriter
 
 query_rewriter = rewriter.WikipediaRewriter()
 query_rewriter.rewrite('biochemistry')
 ```
-
-
 
 ## Documentation
 
@@ -44,8 +42,6 @@ cd docs
 make html
 open _build/html/index.html
 ```
-
-
 
 ## Where to find data
 
@@ -67,8 +63,6 @@ perl processing-scripts/wiki-clean.pl enwik8 > wikiclean8
 ```
 
 This might take a minute or two to run.
-
-
 
 ## Context
 
