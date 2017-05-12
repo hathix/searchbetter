@@ -16,9 +16,13 @@ SearchBetter lets you power up your search engines with minimal effort. It's esp
 Getting started
 ================
 
-Refer to the `SearchBetter GitHub repository <https://github.com/hathix/searchbetter/>`_ for instructions.
+Using SearchBetter in your Python project is easy::
+
+    pip install searchbetter
 
 
+Refer to the `SearchBetter GitHub repository <https://github.com/hathix/searchbetter/>`_ for more instructions
+and the `interactive demo <https://github.com/hathix/searchbetter/blob/master/notebooks/searchbetter-demo.ipynb>`_ for usage examples.
 
 Contents of this documentation
 ==============================
