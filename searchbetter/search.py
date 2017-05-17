@@ -11,7 +11,30 @@ import sys
 
 import utils
 
-class WhooshSearchEngine(object):
+
+class GenericSearchEngine(object):
+    """
+    An abstract class for any search engine, whether that's an external API
+    you've already built or a Whoosh-based search engine you can make from
+    scratch via searchbetter.
+
+    This class encapsulates some useful functionality like query rewriting
+    that can benefit any search engine, even one not made using SearchBetter
+    tools.
+
+    Extending this class is easy - you just need to provide a search function
+    and a few other details, and we'll build in functionality from there.
+    """
+
+  # make it an abstract class
+  __metaclass__ = abc.ABCMeta
+
+
+
+
+
+
+class WhooshSearchEngine(GenericSearchEngine):
   """
   An abstract class for custom, Whoosh-based search engines.
 
@@ -169,7 +192,7 @@ class WhooshSearchEngine(object):
       # this list of Hits, each of which has `fields()`` which is a dict version
       # of the item we got (contains title, description, or other fields)
       # `score` tells you how relevant the hit is (higher = better)
-      cleaned_results = [Result(hit.fields(), hit.score) for hit in results]
+      cleaned_results = [WhooshResult(hit.fields(), hit.score) for hit in results]
 
       # make sure we store it outside the with-block b/c scope
       outer_results = cleaned_results
@@ -482,10 +505,11 @@ class PrebuiltSearchEngine(WhooshSearchEngine):
     pass
 
 
-class Result(object):
+class WhooshResult(object):
   """
-  Encodes a search result. Basically a wrapper around a result dict and
-  its relevance score (higher is better).
+  Encodes a search result from a Whoosh-based search engine.
+  Basically a wrapper around a result dict and its relevance score
+  (higher is better).
   """
 
   def __init__(self, dict_data, score):
