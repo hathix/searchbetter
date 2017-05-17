@@ -497,6 +497,10 @@ class Result(object):
     """
     return str(self.dict_data)
 
+  # enable lookup as if this was a real dict
+  def __getitem__(self, key):
+    return self.dict_data[key]
+
   # to enable hashing
   def __hash__(self):
     return hash(frozenset(self.dict_data.items()))
