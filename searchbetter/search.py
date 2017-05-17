@@ -142,6 +142,11 @@ class SearchEngine(object):
       # this works now that we use a Result object, which is hashable!
       unique_results = list(set(flattened_results))
 
+      # now let's sort all the results by their relevance score (descending
+      # b/c higher is better)
+      # so the best stuff bubbles to the top
+      unique_results.sort(key=lambda result: result.score, reverse=True)
+
       return unique_results
 
   def _single_search(self, term):
@@ -158,16 +163,17 @@ class SearchEngine(object):
       query_obj = self.parser.parse(term)
       # this variable is closed when the searcher is closed, so save this data
       # in a variable outside the with-block
-      results = searcher.search(query_obj, limit=None)
-      # this is still a list of Hits; convert to just a list of dicts
-      result_dicts = [hit.fields() for hit in list(results)]
+      results = list(searcher.search(query_obj, limit=None))
+
+      # this list of Hits, each of which has `fields()`` which is a dict version
+      # of the item we got (contains title, description, or other fields)
+      # `score` tells you how relevant the hit is (higher = better)
+      cleaned_results = [Result(hit.fields(), hit.score) for hit in results]
+
       # make sure we store it outside the with-block b/c scope
-      outer_results = result_dicts
+      outer_results = cleaned_results
 
-    # those are raw results, we need to map to a Result object
-    cleaned_results = [Result(d) for d in outer_results]
-
-    return cleaned_results
+    return outer_results
 
 
 class UdacitySearchEngine(SearchEngine):
@@ -477,11 +483,13 @@ class PrebuiltSearchEngine(SearchEngine):
 
 class Result(object):
   """
-  Encodes a search result. Basically a wrapper around a result dict.
+  Encodes a search result. Basically a wrapper around a result dict and
+  its relevance score (higher is better).
   """
 
-  def __init__(self, dict_data):
+  def __init__(self, dict_data, score):
     self.dict_data = dict_data
+    self.score = score
 
 
   def get_dict(self):
@@ -493,9 +501,9 @@ class Result(object):
 
   def __repr__(self):
     """
-    Stringified version of the dict.
+    Stringified version of the result, which encodes the dict and the score
     """
-    return str(self.dict_data)
+    return str((self.dict_data, self.score))
 
   # enable lookup as if this was a real dict
   def __getitem__(self, key):
