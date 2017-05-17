@@ -73,7 +73,12 @@ class GenericSearchEngine(object):
         # default operation is a no-op
         return raw_results
 
-    # functions you need to specify
+    ###
+    ###
+    ### functions you need to specify
+    ###
+    ###
+
     def single_search(self, term):
         """
         Runs the search engine on a single term (no rewriting or anything),
