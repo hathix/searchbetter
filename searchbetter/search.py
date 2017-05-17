@@ -11,9 +11,10 @@ import sys
 
 import utils
 
-class SearchEngine(object):
+class WhooshSearchEngine(object):
   """
-  An abstract class for search engines.
+  An abstract class for custom, Whoosh-based search engines.
+
   A batteries-included search engine that can operate on any
   given dataset. Uses the Whoosh library to index and run searches
   on the dataset. Has built-in support for query rewriting.
@@ -176,7 +177,7 @@ class SearchEngine(object):
     return outer_results
 
 
-class UdacitySearchEngine(SearchEngine):
+class UdacitySearchEngine(WhooshSearchEngine):
   """
   Udacity
   """
@@ -280,7 +281,7 @@ class UdacitySearchEngine(SearchEngine):
       return utils.unique_words_in_string(mega_string)
 
 
-class HarvardXSearchEngine(SearchEngine):
+class HarvardXSearchEngine(WhooshSearchEngine):
   """
   HX
   """
@@ -375,7 +376,7 @@ class HarvardXSearchEngine(SearchEngine):
     return index
 
 
-class EdXSearchEngine(SearchEngine):
+class EdXSearchEngine(WhooshSearchEngine):
   """
   edX
   """
@@ -462,7 +463,7 @@ class EdXSearchEngine(SearchEngine):
         return utils.unique_words_in_string(mega_string)
 
 
-class PrebuiltSearchEngine(SearchEngine):
+class PrebuiltSearchEngine(WhooshSearchEngine):
   """
   A search engine designed for when you're just given a model file and can
   use that directly without having to build anything.
