@@ -2,7 +2,6 @@
 setup.cfg
 setup.py
 searchbetter/__init__.py
-searchbetter/corpus.py
 searchbetter/rewriter.py
 searchbetter/search.py
 searchbetter/utils.py
