@@ -26,10 +26,35 @@ class GenericSearchEngine(object):
     and a few other details, and we'll build in functionality from there.
     """
 
-  # make it an abstract class
-  __metaclass__ = abc.ABCMeta
+    # make it an abstract class
+    __metaclass__ = abc.ABCMeta
 
 
+    # functions you need to specify
+    def single_search(self, term):
+        """
+        Runs the search engine on a single term (no rewriting or anything),
+        returning a list of objects.
+
+        Subclasses must implement!
+
+        :param str term: a word or phrase to search for
+        :return: a list of objects that were found. Can be anything: dicts,
+            strings, custom objects, whatever.
+        :rtype: list(object)
+        """
+        raise NotImplementedError("Subclasses must implement!")
+
+
+    def process_raw_results(self, raw_results):
+        """
+        After rewriting, we'll pass the full list of results in here
+        for you to clean up. This could include sorting, removing duplicates,
+        etc. (What you can do, and how you do it, really depends on what kind
+        of objects your search engine returns.)
+        """
+        # default operation is a no-op
+        return raw_results
 
 
 
@@ -64,6 +89,9 @@ class WhooshSearchEngine(GenericSearchEngine):
     :param index_path {str}: A relative path to a folder where the whoosh
         index should be stored.
     """
+
+    super(GenericSearchEngine, self).__init__()
+
     # TODO have an auto-detect feature that will determine if the
     # index exists, and depending on that creates or loads the index
     # TODO have the `create` option become `force_create`; normally
@@ -144,6 +172,7 @@ class WhooshSearchEngine(GenericSearchEngine):
     return self.get_num_documents()
 
 
+  # TODO move this to the generic search engine class
   def search(self, term):
     """
     Runs a plain-English search and returns results.
@@ -153,33 +182,27 @@ class WhooshSearchEngine(GenericSearchEngine):
     if self.rewriter is None:
       # if there's no query rewriter in place, just search for the
       # original term
-      return self._single_search(term)
+      return self.single_search(term)
     else:
       # there's a rewriter! use it
       rewritten_queries = self.rewriter.rewrite(term)
-      results = [self._single_search(q) for q in rewritten_queries]
+      results = [self.single_search(q) for q in rewritten_queries]
 
       # results are multi-level... flatten it
       flattened_results = utils.flatten(results)
 
-      # only give the unique ones
-      # this works now that we use a Result object, which is hashable!
-      unique_results = list(set(flattened_results))
+      return self.process_raw_results(flattened_results)
 
-      # now let's sort all the results by their relevance score (descending
-      # b/c higher is better)
-      # so the best stuff bubbles to the top
-      unique_results.sort(key=lambda result: result.score, reverse=True)
 
-      return unique_results
-
-  def _single_search(self, term):
+  def single_search(self, term):
     """
     Helper function for search() that just returns search results for a
     single, non-rewritten search term.
     Returns a list of results, each of which is a Result object.
     The makeup of the results objects varies
     from search engine to search engine.
+
+    OVERRIDDEN from GenericSearchEngine.
     """
     outer_results = []
 
@@ -199,6 +222,19 @@ class WhooshSearchEngine(GenericSearchEngine):
 
     return outer_results
 
+  def process_raw_results(self, raw_results):
+    # our search engine returns WhooshResult objects, so we can unique/sort
+    # them
+    # only give the unique ones
+    # this works now that we use a Result object, which is hashable!
+    unique_results = list(set(raw_results))
+
+    # now let's sort all the results by their relevance score (descending
+    # b/c higher is better)
+    # so the best stuff bubbles to the top
+    unique_results.sort(key=lambda result: result.score, reverse=True)
+
+    return unique_results
 
 class UdacitySearchEngine(WhooshSearchEngine):
   """
