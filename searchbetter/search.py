@@ -29,6 +29,49 @@ class GenericSearchEngine(object):
     # make it an abstract class
     __metaclass__ = abc.ABCMeta
 
+    def __init__(self):
+        # no rewriter yet
+        # TODO let someone pass this in the constructor
+        self.rewriter = None
+
+    def set_rewriter(self, rewriter):
+        """
+        Sets a new query rewriter (from this_package.rewriter) as the default
+        rewriter for this search engine.
+        """
+        self.rewriter = rewriter
+
+
+    def search(self, term):
+        """
+        Runs a plain-English search and returns results.
+        :param term {String}: a query like you'd type into Google.
+        :return: a list of dicts, each of which encodes a search result.
+        """
+        if self.rewriter is None:
+          # if there's no query rewriter in place, just search for the
+          # original term
+          return self.single_search(term)
+        else:
+          # there's a rewriter! use it
+          rewritten_queries = self.rewriter.rewrite(term)
+          results = [self.single_search(q) for q in rewritten_queries]
+
+          # results are multi-level... flatten it
+          flattened_results = utils.flatten(results)
+
+          return self.process_raw_results(flattened_results)
+
+
+    def process_raw_results(self, raw_results):
+        """
+        After rewriting, we'll pass the full list of results in here
+        for you to clean up. This could include sorting, removing duplicates,
+        etc. (What you can do, and how you do it, really depends on what kind
+        of objects your search engine returns.)
+        """
+        # default operation is a no-op
+        return raw_results
 
     # functions you need to specify
     def single_search(self, term):
@@ -44,18 +87,6 @@ class GenericSearchEngine(object):
         :rtype: list(object)
         """
         raise NotImplementedError("Subclasses must implement!")
-
-
-    def process_raw_results(self, raw_results):
-        """
-        After rewriting, we'll pass the full list of results in here
-        for you to clean up. This could include sorting, removing duplicates,
-        etc. (What you can do, and how you do it, really depends on what kind
-        of objects your search engine returns.)
-        """
-        # default operation is a no-op
-        return raw_results
-
 
 
 
@@ -110,10 +141,6 @@ class WhooshSearchEngine(GenericSearchEngine):
     # first, query parser
     self.parser = MultifieldParser(search_fields, self.index.schema)
 
-    # no rewriter yet
-    # TODO let someone pass this in the constructor
-    self.rewriter = None
-
 
   def load_index(self):
     """
@@ -147,13 +174,6 @@ class WhooshSearchEngine(GenericSearchEngine):
     return index
 
 
-  def set_rewriter(self, rewriter):
-    """
-    Sets a new query rewriter (from this_package.rewriter) as the default
-    rewriter for this search engine.
-    """
-    self.rewriter = rewriter
-
 
   def get_num_documents(self):
     """
@@ -170,28 +190,6 @@ class WhooshSearchEngine(GenericSearchEngine):
 
   def __len__(self):
     return self.get_num_documents()
-
-
-  # TODO move this to the generic search engine class
-  def search(self, term):
-    """
-    Runs a plain-English search and returns results.
-    :param term {String}: a query like you'd type into Google.
-    :return: a list of dicts, each of which encodes a search result.
-    """
-    if self.rewriter is None:
-      # if there's no query rewriter in place, just search for the
-      # original term
-      return self.single_search(term)
-    else:
-      # there's a rewriter! use it
-      rewritten_queries = self.rewriter.rewrite(term)
-      results = [self.single_search(q) for q in rewritten_queries]
-
-      # results are multi-level... flatten it
-      flattened_results = utils.flatten(results)
-
-      return self.process_raw_results(flattened_results)
 
 
   def single_search(self, term):
