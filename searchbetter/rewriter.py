@@ -70,27 +70,36 @@ class WikipediaRewriter(Rewriter):
     :return: a list of semantically related strings, including ``term``
     :rtype: list(str)
     """
-    api = self.WIKI_BASE + term
-    r = requests.get(api)
-    tree = etree.fromstring(r.text)
+    api_url = self.WIKI_BASE + term
 
-    # TODO join this and the below
-    wikipedia_results = [self.clean_category(
-        x.get('title')) for x in tree.findall('.//cl')]
+    try:
+        raw_result = requests.get(api_url)
+        tree = etree.fromstring(raw_result.text)
 
-    # Words that identify a need to drop the category
-    dropwords = ['articles', 'wikipedia', 'accuracy', 'articles', 'statements',
-                 'magic', 'pages', 'authors', 'editors', 'appearances', 'redirects', 'cs1']
-    dropwords.append(term)
-    wikipedia_results = [w.split('Category:')[-1].lower()
-                         for w in wikipedia_results if not any(d in w.lower() for d in dropwords)]
+        # TODO join this and the below
+        wikipedia_results = [self.clean_category(
+            x.get('title')) for x in tree.findall('.//cl')]
 
-    # append the original term just for completeness
-    raw_results = wikipedia_results + [term]
-    # convert to unicode for consistency w/ other rewriters
-    # TODO this doesn't work
-    return raw_results
-    # return [unicode(rr) for rr in raw_results]
+        # Words that identify a need to drop the category
+        dropwords = ['articles', 'wikipedia', 'accuracy', 'articles', 'statements',
+                     'magic', 'pages', 'authors', 'editors', 'appearances', 'redirects', 'cs1']
+        dropwords.append(term)
+        wikipedia_results = [w.split('Category:')[-1].lower()
+                             for w in wikipedia_results if not any(d in w.lower() for d in dropwords)]
+
+        # append the original term just for completeness
+        raw_results = wikipedia_results + [term]
+        # convert to unicode for consistency w/ other rewriters
+        # TODO this doesn't work
+        # return [unicode(rr) for rr in raw_results]
+        return raw_results
+    except Exception as e:
+        # TODO more fine grained exception handling
+
+        # this'll probably happen if the user is offline
+        # and we can't connect to wikipedia
+        # in this case, just make this rewriter a no-op
+        return [term]
 
 
 class Word2VecRewriter(Rewriter):

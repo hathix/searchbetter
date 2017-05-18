@@ -126,7 +126,7 @@ class WhooshSearchEngine(GenericSearchEngine):
         index should be stored.
     """
 
-    super(GenericSearchEngine, self).__init__()
+    super(WhooshSearchEngine, self).__init__()
 
     # TODO have an auto-detect feature that will determine if the
     # index exists, and depending on that creates or loads the index
