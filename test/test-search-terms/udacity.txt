@@ -1,6 +1,0 @@
-neural networks
-swift
-venture capital
-object-oriented programming
-deep learning
-macOS
